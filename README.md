@@ -135,3 +135,16 @@ git push origin main
 
 **Author:** [Yichen Zhou](https://github.com/zhouyichen30)  
 **License:** MIT
+
+##Logging Setup
+
+The project uses Python’s built-in logging module to track all processing steps, warnings, and errors across scripts.
+A single centralized logger is configured in src/utils.py, and all functions (e.g., clean_data(), merge_structure(), etc.) write to it.
+
+How It Works
+
+When you run any script (e.g. python -m src.clean), the logger automatically:
+
+Writes logs to both the console and a file located in:
+
+logs/project.log

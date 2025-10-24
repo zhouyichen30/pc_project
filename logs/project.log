@@ -1,0 +1,10 @@
+2025-10-23 22:09:27,782 [INFO] pc_project: Starting data cleaning.
+2025-10-23 22:09:27,782 [INFO] pc_project: Input shape: (137, 6)
+2025-10-23 22:09:27,793 [INFO] pc_project: Data cleaning complete.
+2025-10-23 22:09:27,794 [INFO] pc_project: Output shape: (137, 6)
+2025-10-23 22:09:27,794 [INFO] pc_project: --------------------------------------------------
+2025-10-23 22:10:44,186 [INFO] pc_project: Starting data cleaning.
+2025-10-23 22:10:44,187 [INFO] pc_project: Input shape: (137, 6)
+2025-10-23 22:10:44,198 [INFO] pc_project: Data cleaning complete.
+2025-10-23 22:10:44,198 [INFO] pc_project: Output shape: (137, 6)
+2025-10-23 22:10:44,198 [INFO] pc_project: --------------------------------------------------

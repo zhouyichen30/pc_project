@@ -16,7 +16,5 @@ cash_flow_text_cols = ['entity_id','entity_type','cashflow_type','currency']
 cash_flow_num_cols = ['amount']
 
 # ---- CLEANING ----
-
-
 df = clean_data(cash_flow,cash_flow_date_cols,cash_flow_text_cols,cash_flow_num_cols)
 print(df.dtypes)
