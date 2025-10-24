@@ -1,0 +1,6 @@
+facility_id,facility_name,deal_id,deal_name,strategy_bucket,region,sector,fund
+F001,Term Loan A,D001,Acme Industrials Unitranche,Direct Lending,NA,Industrials,HBC Private Credit Fund I
+F002,Delayed Draw TL,D001,Acme Industrials Unitranche,Direct Lending,NA,Industrials,HBC Private Credit Fund I
+F003,Mezz Loan,D002,GreenLeaf Real Estate Mezz,Real Estate Credit,NA,Real Estate,HBC Private Credit Fund I
+F004,Refinance TL,D002  ,GreenLeaf Real Estate Mezz,Real Estate Credit,NA,Real Estate,HBC Private Credit Fund I
+F005,Senior Secured TL,D003,BlueWave Software Sr Secured,Opportunistic Credit,EU,Technology,HBC Private Credit Fund II

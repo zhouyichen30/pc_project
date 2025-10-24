@@ -1,0 +1,3 @@
+fund,advance_rate,cost_of_funds_curve,spread_bps,undrawn_fee_bps,commitment
+HBC Private Credit Fund I,0.5,SOFR,150,50,400000000
+HBC Private Credit Fund II,0.4,EURIBOR,175,35,250000000

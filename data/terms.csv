@@ -1,0 +1,6 @@
+facility_id,rate_type,spread_bps,day_count,origination_fee_bps,OID_bps,pik,amort_pct_per_qtr,delayed_draw,fixed_rate_bps
+F001,SOFR+Spread,450.0,ACT/360,100,200,No,2.0,No,
+F002,SOFR+Spread,525.0,ACT/360,125,0,Yes,0.0,Yes,
+F003,SOFR+Spread,700.0,ACT/360,150,300,Yes,0.0,No,
+F004,Fixed,,30/360,0,0,No,3.0,No,900.0
+F005,EURIBOR+Spread,375.0,ACT/360,75,100,No,1.5,No,

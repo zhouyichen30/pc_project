@@ -1,0 +1,4 @@
+deal_id,metric,operator,threshold
+D001,Net Leverage,<=,4.5
+D001,Interest Coverage,>=,2.0
+D003,Net Leverage,<=,3.5
