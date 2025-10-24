@@ -8,3 +8,335 @@
 2025-10-23 22:10:44,198 [INFO] pc_project: Data cleaning complete.
 2025-10-23 22:10:44,198 [INFO] pc_project: Output shape: (137, 6)
 2025-10-23 22:10:44,198 [INFO] pc_project: --------------------------------------------------
+2025-10-24 07:36:38,001 [INFO] pc_project: Starting data cleaning.
+2025-10-24 07:36:38,002 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 07:36:38,021 [INFO] pc_project: Data cleaning complete.
+2025-10-24 07:36:38,021 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 07:36:38,021 [INFO] pc_project: --------------------------------------------------
+2025-10-24 07:37:24,473 [INFO] pc_project: Starting data cleaning.
+2025-10-24 07:37:24,474 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 07:37:24,480 [INFO] pc_project: Data cleaning complete.
+2025-10-24 07:37:24,480 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 07:37:24,480 [INFO] pc_project: --------------------------------------------------
+2025-10-24 07:39:00,095 [INFO] pc_project: Starting data cleaning.
+2025-10-24 07:39:00,095 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 07:39:00,106 [INFO] pc_project: Data cleaning complete.
+2025-10-24 07:39:00,106 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 07:39:00,107 [INFO] pc_project: --------------------------------------------------
+2025-10-24 07:41:42,035 [INFO] pc_project: Starting data cleaning.
+2025-10-24 07:41:42,036 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 07:41:42,052 [INFO] pc_project: Data cleaning complete.
+2025-10-24 07:41:42,053 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 07:41:42,053 [INFO] pc_project: --------------------------------------------------
+2025-10-24 07:48:07,803 [INFO] pc_project: Starting data cleaning.
+2025-10-24 07:48:07,838 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 07:48:07,871 [INFO] pc_project: Data cleaning complete.
+2025-10-24 07:48:07,874 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 07:48:07,875 [INFO] pc_project: --------------------------------------------------
+2025-10-24 07:48:19,930 [INFO] pc_project: Starting data cleaning.
+2025-10-24 07:48:19,932 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 07:48:19,943 [INFO] pc_project: Data cleaning complete.
+2025-10-24 07:48:19,943 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 07:48:19,943 [INFO] pc_project: --------------------------------------------------
+2025-10-24 07:58:21,074 [INFO] pc_project: Starting data cleaning.
+2025-10-24 07:58:21,075 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 07:58:21,104 [INFO] pc_project: Data cleaning complete.
+2025-10-24 07:58:21,104 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 07:58:21,105 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:00:29,890 [INFO] pc_project: Starting data cleaning.
+2025-10-24 08:00:29,890 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 08:00:29,905 [INFO] pc_project: Data cleaning complete.
+2025-10-24 08:00:29,905 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 08:00:29,905 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:04:11,086 [INFO] pc_project: Starting data cleaning.
+2025-10-24 08:04:11,087 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 08:04:11,099 [INFO] pc_project: Data cleaning complete.
+2025-10-24 08:04:11,100 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 08:04:11,100 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:04:11,102 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-24 08:04:11,103 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:04:11,104 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-24 08:04:11,105 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:04:11,107 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-24 08:04:11,107 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:04:11,109 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-24 08:04:11,109 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:08:24,304 [INFO] pc_project: Starting data cleaning.
+2025-10-24 08:08:24,306 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 08:08:24,326 [INFO] pc_project: Data cleaning complete.
+2025-10-24 08:08:24,337 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 08:08:24,339 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:08:24,342 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-24 08:08:24,344 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:08:24,346 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-24 08:08:24,347 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:08:24,350 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-24 08:08:24,353 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:08:24,357 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-24 08:08:24,358 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:08:50,925 [INFO] pc_project: Starting data cleaning.
+2025-10-24 08:08:50,926 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 08:08:50,941 [INFO] pc_project: Data cleaning complete.
+2025-10-24 08:08:50,942 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 08:08:50,943 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:08:50,945 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-24 08:08:50,946 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:08:50,949 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-24 08:08:50,950 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:08:50,953 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-24 08:08:50,954 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:08:50,956 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-24 08:08:50,957 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:15:22,248 [INFO] pc_project: Starting data cleaning.
+2025-10-24 08:15:22,249 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 08:15:22,262 [INFO] pc_project: Data cleaning complete.
+2025-10-24 08:15:22,263 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 08:15:22,264 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:15:22,269 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-24 08:15:22,270 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:15:22,273 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-24 08:15:22,274 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:15:22,276 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-24 08:15:22,279 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:15:22,281 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-24 08:15:22,281 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:15:35,395 [INFO] pc_project: Starting data cleaning.
+2025-10-24 08:15:35,395 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 08:15:35,406 [INFO] pc_project: Data cleaning complete.
+2025-10-24 08:15:35,406 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 08:15:35,407 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:15:35,412 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-24 08:15:35,413 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:15:35,415 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-24 08:15:35,415 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:15:35,417 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-24 08:15:35,419 [INFO] pc_project: --------------------------------------------------
+2025-10-24 08:15:35,422 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-24 08:15:35,423 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:37:34,801 [INFO] pc_project: Starting data cleaning.
+2025-10-24 14:37:34,803 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 14:37:34,824 [INFO] pc_project: Data cleaning complete.
+2025-10-24 14:37:34,825 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 14:37:34,826 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:37:34,835 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-24 14:37:34,836 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:37:34,838 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-24 14:37:34,839 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:37:34,841 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-24 14:37:34,843 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:37:34,845 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-24 14:37:34,846 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:37:34,851 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-24 14:37:34,852 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-24 14:37:34,855 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-24 14:37:34,856 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-24 14:37:34,869 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-24 14:57:56,789 [INFO] pc_project: Starting data cleaning.
+2025-10-24 14:57:56,789 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 14:57:56,808 [INFO] pc_project: Data cleaning complete.
+2025-10-24 14:57:56,809 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 14:57:56,810 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:57:56,811 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-24 14:57:56,814 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:57:56,818 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-24 14:57:56,818 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:57:56,820 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-24 14:57:56,821 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:57:56,823 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-24 14:57:56,824 [INFO] pc_project: --------------------------------------------------
+2025-10-24 14:57:56,825 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-24 14:57:56,826 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-24 14:57:56,826 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-24 14:57:56,826 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-24 14:57:56,833 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-24 15:38:32,667 [INFO] pc_project: Starting data cleaning.
+2025-10-24 15:38:32,669 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 15:38:32,700 [INFO] pc_project: did not drop any missing values.
+2025-10-24 15:38:32,701 [INFO] pc_project: Data cleaning complete.
+2025-10-24 15:38:32,702 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 15:38:32,703 [INFO] pc_project: --------------------------------------------------
+2025-10-24 15:38:32,709 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-24 15:38:32,710 [INFO] pc_project: --------------------------------------------------
+2025-10-24 15:38:32,712 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-24 15:38:32,713 [INFO] pc_project: --------------------------------------------------
+2025-10-24 15:38:32,716 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-24 15:38:32,717 [INFO] pc_project: --------------------------------------------------
+2025-10-24 15:38:32,720 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-24 15:38:32,721 [INFO] pc_project: --------------------------------------------------
+2025-10-24 15:38:32,725 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-24 15:38:32,726 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-24 15:38:32,728 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-24 15:38:32,728 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-24 15:38:32,737 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-24 15:41:57,238 [INFO] pc_project: Starting data cleaning.
+2025-10-24 15:41:57,239 [INFO] pc_project: Input shape: (137, 6)
+2025-10-24 15:41:57,252 [INFO] pc_project: did not drop any missing values.
+2025-10-24 15:41:57,253 [INFO] pc_project: Data cleaning complete.
+2025-10-24 15:41:57,254 [INFO] pc_project: Output shape: (137, 6)
+2025-10-24 15:41:57,255 [INFO] pc_project: --------------------------------------------------
+2025-10-24 15:41:57,257 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-24 15:41:57,259 [INFO] pc_project: --------------------------------------------------
+2025-10-24 15:41:57,262 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-24 15:41:57,263 [INFO] pc_project: --------------------------------------------------
+2025-10-24 15:41:57,267 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-24 15:41:57,269 [INFO] pc_project: --------------------------------------------------
+2025-10-24 15:41:57,271 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-24 15:41:57,272 [INFO] pc_project: --------------------------------------------------
+2025-10-24 15:41:57,273 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-24 15:41:57,274 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-24 15:41:57,274 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-24 15:41:57,275 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-24 15:41:57,282 [INFO] pc_project: ----------------------------------------------------------------------

@@ -4,6 +4,7 @@ from pathlib import Path
 
 # -------------------------------------------------------------------
 # Global logger setup — shared across all utility functions
+#logger will write to logs folder under PC_PROJECT
 # -------------------------------------------------------------------
 LOG_DIR = Path(__file__).resolve().parent.parent / "logs"
 LOG_DIR.mkdir(exist_ok=True)
@@ -11,6 +12,7 @@ LOG_FILE = LOG_DIR / "project.log"  # single file for all logs
 
 logging.basicConfig(
     level=logging.INFO,
+    #example logger format: 2025-10-23 22:09:27,782 [INFO] pc_project: Starting data cleaning.
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
     handlers=[
         logging.FileHandler(LOG_FILE, mode="a", encoding="utf-8"),
@@ -22,9 +24,9 @@ logging.basicConfig(
 logger = logging.getLogger("pc_project")
 
 # -------------------------------------------------------------------
-# Example function 1: clean_data
+# function 1: clean_data
 # -------------------------------------------------------------------
-def clean_data(data, date_cols, text_cols, num_cols):
+def clean_data_format(data : pd.DataFrame, date_cols : list, text_cols :list, num_cols:list ) -> pd.DataFrame:
     """
     Clean a pandas DataFrame and output a cleaned DataFrame that has correct
     data types and standardized formatting for each category of columns.
@@ -64,8 +66,13 @@ def clean_data(data, date_cols, text_cols, num_cols):
             df[col] = (
                 df[col]
                 .astype(str)
+                # remove leading/trailing white space
                 .str.strip()
+                #make sure all data are lowered case
                 .str.lower()
+                 # replace multiple spaces or underscores with a single underscore
+                .str.replace(r'[\s_]+', '_', regex=True)
+                
             )
             logger.debug(f"Cleaned text column '{col}'.")
         else:
@@ -78,8 +85,29 @@ def clean_data(data, date_cols, text_cols, num_cols):
             logger.debug(f"Converted '{col}' to numeric type.")
         else:
             logger.warning(f"Numeric column '{col}' not found in DataFrame.")
-
+            
+    # Drop rows with missing key fields (dates or numeric amounts)
+    # and log how many were removed. Keeps it straightforward.
+    # ---------------------------------------------------------------------
+    before = len(df)
+    df = df.dropna(subset=date_cols + num_cols)
+    dropped = before - len(df)
+    if dropped > 0:
+        logger.warning(f"Dropped {dropped} malformed rows with missing date or amount values.")
+    else:
+        logger.info("did not drop any missing values.")
     logger.info("Data cleaning complete.")
     logger.info(f"Output shape: {df.shape}")
     logger.info("-" * 50)
+        # ---------------------------------------------------------------------
+    # Summary of cleaned text columns
+    #   Logs high-level stats for each text column after cleaning:
+    #   total rows, number of unique values, null/empty counts, and
+    #   top 5 most frequent values. Helps verify normalization results.
+    # ---------------------------------------------------------------------
+    for col in text_cols:
+        if col in df.columns:
+            top_values = df[col].value_counts().head(5)
+            logger.info(f"Top values in '{col}':\n{top_values.to_string()}")
+            logger.info("-" * 50)
     return df
