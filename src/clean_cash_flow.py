@@ -2,6 +2,8 @@ import numpy as np
 import logging
 import pandas as pd
 
+#this script contains all the funcations to clean the cashflows_deal.csv 
+
 logger = logging.getLogger("pc_project")
 
 def cash_flow_sign_convert(cleaned_df : pd.DataFrame) -> pd.DataFrame:

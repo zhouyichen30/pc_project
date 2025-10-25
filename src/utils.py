@@ -49,8 +49,13 @@ def clean_data_format(data : pd.DataFrame, date_cols : list, text_cols :list, nu
         A cleaned copy of the original DataFrame with normalized formats.
     """
     df = data.copy()
+    
+
     logger.info("Starting data cleaning.")
     logger.info(f"Input shape: {df.shape}")
+    
+    #make sure all columns dont have leading or trailing spaces
+    df.columns = df.columns.str.strip()
 
     # 1. Convert date columns
     for col in date_cols:
@@ -75,6 +80,7 @@ def clean_data_format(data : pd.DataFrame, date_cols : list, text_cols :list, nu
                 
             )
             logger.debug(f"Cleaned text column '{col}'.")
+            
         else:
             logger.warning(f"Text column '{col}' not found in DataFrame.")
 
@@ -83,19 +89,26 @@ def clean_data_format(data : pd.DataFrame, date_cols : list, text_cols :list, nu
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors='coerce')
             logger.debug(f"Converted '{col}' to numeric type.")
+            #we then filiter out missing na value for numeric columns as 0
+            df[col] = df[col].fillna(0)
         else:
             logger.warning(f"Numeric column '{col}' not found in DataFrame.")
             
     # Drop rows with missing key fields (dates or numeric amounts)
     # and log how many were removed. Keeps it straightforward.
     # ---------------------------------------------------------------------
+    #this part handing na
     before = len(df)
-    df = df.dropna(subset=date_cols + num_cols)
-    dropped = before - len(df)
-    if dropped > 0:
-        logger.warning(f"Dropped {dropped} malformed rows with missing date or amount values.")
+    #find the na row
+    na_rows = df[df.isna().any(axis=1)]
+    #logging na row so we know what roles the code dropped
+    if not na_rows.empty:
+        logger.info(f"Rows containing NaN values (showing up to 5):\n{na_rows.head(5).to_string(index=False)}")
     else:
-        logger.info("did not drop any missing values.")
+        logger.info("No NaN values detected in the dataset.")
+    #dorpping na row for date only
+    df = df.dropna(subset=date_cols)
+
     logger.info("Data cleaning complete.")
     logger.info(f"Output shape: {df.shape}")
     logger.info("-" * 50)

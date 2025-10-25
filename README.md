@@ -103,17 +103,36 @@ pip freeze > requirements.txt
 ## ▶️ How to Run the Current Version
 
 ### Clean the dataset
-```bash
-python -m src.clean
-```
+Key Behaviors
 
-This runs the cleaning script using your current setup and prints out:
-- Data types after cleaning  
-- First few rows of the normalized dataset  
+Date columns:
+Converted using pd.to_datetime(errors='coerce') — invalid strings become NaT.
 
-You should see confirmation of datetime, text, and numeric conversions.
+Text columns:
 
----
+Leading/trailing whitespace removed
+
+Converted to lowercase
+
+Multiple spaces or underscores replaced with a single underscore ("exit fee" → "exit_fee")
+
+Numeric columns:
+Converted to float using pd.to_numeric(errors='coerce'), coercing invalid strings to NaN.
+
+Malformed rows:
+For this script I only treat date as malformed role as for example, fixed coupon rate term loan's spread will show na
+
+
+
+
+Logging:
+Uses the shared project logger (pc_project) to record:
+
+Input/output shape
+
+Cleaning steps completed
+
+Top 5 value distributions for each text column
 
 ## 🧠 References
 
@@ -134,7 +153,6 @@ git push origin main
 ---
 
 **Author:** [Yichen Zhou](https://github.com/zhouyichen30)  
-**License:** MIT
 
 ##Logging Setup
 
@@ -148,3 +166,11 @@ When you run any script (e.g. python -m src.clean), the logger automatically:
 Writes logs to both the console and a file located in:
 
 logs/project.log
+
+I have one script to handle each csv's cleanning and golbal cleaning funcation are stored in utils
+
+## Assumtions
+# No additional base currency conversation is needed; we can report IRR/MOIC in the fund’s currency as defined in the structure.csv.
+
+# both OID and origination fees wil be treated as day-one adjustments. Added a function to adjust that
+# treat the provided cash flows as fixed for this exercise; the curves are intended for optional rate-sensitivity analysis.
