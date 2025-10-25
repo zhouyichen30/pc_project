@@ -120,7 +120,8 @@ def clean_data_format(data : pd.DataFrame, date_cols : list, text_cols :list, nu
     # ---------------------------------------------------------------------
     for col in text_cols:
         if col in df.columns:
-            top_values = df[col].value_counts().head(5)
+            #find teh top 7 unique values for each text columns and logg these so I can always debug data error
+            top_values = df[col].value_counts().head(7)
             logger.info(f"Top values in '{col}':\n{top_values.to_string()}")
             logger.info("-" * 50)
     return df

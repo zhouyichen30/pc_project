@@ -2,9 +2,10 @@ import pandas as pd
 from pathlib import Path
 import numpy as np
 from utils import clean_data_format   # import the helper function
-from clean_cash_flow import cash_flow_sign_convert
+from clean_cash_flow import cash_flow_clean
 from clean_curve import clean_curve_df
-from clean_leverage import clean_leverage_df
+from merge import merge_db,merge_curve
+
 
 
 # Get the project root (one level up from src/)
@@ -46,17 +47,24 @@ leverage_data_num_cols = ['advance_rate','spread_bps','undrawn_fee_bps','commitm
 # ---- CLEANING ----
 cashflow_df = clean_data_format(cash_flow,cash_flow_date_cols,cash_flow_text_cols,cash_flow_num_cols)
 #further clean cashflow data
-cashflow_df_cleaned = cash_flow_sign_convert(cashflow_df)
+cashflow_df_cleaned = cash_flow_clean(cashflow_df)
 
-term_df = clean_data_format(term_df,term_data_date_cols,term_data_text_cols,term_data_num_cols)
+term_df_cleaned = clean_data_format(term_df,term_data_date_cols,term_data_text_cols,term_data_num_cols)
 
 curve_df = clean_data_format(curve_df,curve_data_date_cols,curve_data_text_cols,curve_data_num_cols)
 #futher clean curve data
 curve_df_cleaned = clean_curve_df(curve_df)
 
-structure_df = clean_data_format(structure_df,structure_data_date_cols,structure_data_text_cols,structure_data_num_cols)
+structure_df_cleaned = clean_data_format(structure_df,structure_data_date_cols,structure_data_text_cols,structure_data_num_cols)
 
 
-leverage_df = clean_data_format(leverage_df,leverage__data_date_cols,leverage__data_text_cols,leverage_data_num_cols)
-leverage_df_cleaned =clean_leverage_df(leverage_df)
-print(leverage_df_cleaned)
+leverage_df_cleaned = clean_data_format(leverage_df,leverage__data_date_cols,leverage__data_text_cols,leverage_data_num_cols)
+#merge the term data, cashflow data, structure data and leverage data together
+mdb = merge_db(cashflow_df_cleaned,term_df_cleaned,structure_df_cleaned,leverage_df_cleaned)
+# Merge curves at the fund level using cost_of_funds_curve.
+# Assumption: For this assessment, interest rates are treated as fixed.
+# In a full implementation, we would merge at the deal/facility level
+# to capture distinct base-rate exposures (e.g., SOFR vs. EURIBOR).
+mdbc = merge_curve(mdb, curve_df_cleaned)
+print('s')
+

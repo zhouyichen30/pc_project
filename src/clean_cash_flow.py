@@ -6,7 +6,26 @@ import pandas as pd
 
 logger = logging.getLogger("pc_project")
 
-def cash_flow_sign_convert(cleaned_df : pd.DataFrame) -> pd.DataFrame:
+def _clean_entity_id(cleaned_df: pd.DataFrame) -> pd.DataFrame:
+    """"
+    Normalize entity_id values (e.g., convert 'fo02' -> 'f002').
+
+    Parameters
+    ----------
+    cleaned_df : pd.DataFrame
+
+    Returns
+    -------
+    pd.DataFrame
+        A new DataFrame with make sure entity_id is converted
+    """
+    # replace all o to 0
+    cleaned_df['entity_id'] = cleaned_df['entity_id'].str.replace('o', '0')
+    logger.info(f"entity_id clean complete - cleaned db: {cleaned_df['entity_id'].value_counts()}")
+    return cleaned_df
+
+
+def _cash_flow_sign_convert(cleaned_df : pd.DataFrame) -> pd.DataFrame:
     """
     Convert cash flow 'amount' signs based on cashflow_type conventions.
 
@@ -57,3 +76,23 @@ def cash_flow_sign_convert(cleaned_df : pd.DataFrame) -> pd.DataFrame:
     logger.info("-" * 70)
 
     return df
+
+def cash_flow_clean(cleaned_df : pd.DataFrame) -> pd.DataFrame:
+    """
+    This funcation is a wrapper that do cashflow clean for cashflow_deal.csv
+
+    Parameters
+    ----------
+    cleaned_df : pd.DataFrame
+
+    Returns
+    -------
+    pd.DataFrame
+        apply all the models to make sure cash_flow_data is cleanned
+
+    
+    """
+    cleaned_df = _clean_entity_id(cleaned_df)
+    cleaned_df = _cash_flow_sign_convert(cleaned_df)
+
+    return cleaned_df

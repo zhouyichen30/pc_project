@@ -137,10 +137,20 @@ eu     1
 but since region data will not be used in this project so we will not further clean it. In case we need it in the future, we will add another script called clean_stecture data or we need to contact data vendor to provide better quality of data.
 
 # curve data addiononal clean
-this script is called clean_curve_.py which it clean sepefic data for curve data
+this script is called clean_curve_.py which it clean sepefic clean euribor and data
 
-## leverage data additional clean
-this script is callend clean
+# merging
+a merge.py script contains all the merging code
+
+The first step merge starts integrates multiple financial datasets into a unified analytical table. Cleaned data from cashflow_df_cleaned, term_df, structure_df, and leverage_df are merged using key relationships between entities. Specifically, cashflow_df_cleaned.entity_id is joined with term_df.facility_id and structure_df.facility_id to align transactional cashflows with facility and deal-level attributes. The resulting dataset is then linked to leverage_df on the fund field
+
+I used outer join for my merger because its easier to debug if we have addtional role that is not cleaned which it will show na
+
+quality check - merger data is most important in this project in my opinion, thus build two quality data checks in the logg which check if the meregd data contain na or duplcaited data.
+
+The second step is merging the curve data. For this excersied I merged the curve data on the fund level cost_of_funds_curve since we assume the intrest rate is fixed. If I have more time, I would merge on the deal level so we can model the deal level curve
+
+
 
 
 # Logging:
@@ -152,7 +162,9 @@ Cleaning steps completed
 
 Top 5 value distributions for each text column so when i build this code I know every dataset to clean first before I join them togther
 
-for cash_flow_sign_convert funcation, it will log the sign coverted status
+for cash_flow_sign_convert funcation, it will log the sign coverted status, for _clean_entity_id it log if o is converet to 0q
+
+for mergedb it loggs the shape after every merge
 
 ## 🧠 References
 
@@ -194,16 +206,31 @@ this script will read all the csv to clean the data. A centerliazed clean data f
 
 If the log finds data issue, then I create one clean script for any sepefic data issue that related to that database csv.
 
+One finds is that structure_df.fund is like hbc_private_credit_fund_i but leverage_df fund is like HBC Private Credit Fund I so before merge is data we need to make sure this two data is cleaned. hbc_private_credit_fund_i formate is better than HBC Private Credit Fund I  thus we need to convert fund data formate for leverage_df.fund column
+
+cashflow_deal.csv has its own clean_cash_flow.py that first convert replace o to 0 in the enity id column
+and it convert all the sign convecation
+
 Please note that covenants data is not used in this project
 
 Then merge starts integrates multiple financial datasets into a unified analytical table. Cleaned data from cashflow_df_cleaned, term_df, structure_df, and leverage_df are merged using key relationships between entities. Specifically, cashflow_df_cleaned.entity_id is joined with term_df.facility_id and structure_df.facility_id to align transactional cashflows with facility and deal-level attributes. The resulting dataset is then linked to leverage_df on the fund field
 
-One finds is that structure_df.fund is like hbc_private_credit_fund_i but leverage_df fund is like HBC Private Credit Fund I so before merge is data we need to make sure this two data is cleaned. hbc_private_credit_fund_i formate is better than HBC Private Credit Fund I  thus we need to convert fund data formate for leverage_df.fund column
+I used outer join for my merge 
 
 ## model Assumtions
 No additional base currency conversation is needed; we can report IRR/MOIC in the fund’s currency as defined in the structure.csv.
+
+I assume the reset rate for this model is monthly based. Each cashflow uses the most recent curve on or before the cashflow date for fund level fiancing cost calculation For this exercise, the base-rate curves (e.g., SOFR, EURIBOR) were merged at the fund level using the cost_of_funds_curve field.
+This approach assumes that all facilities within a fund share the same cost of financing, consistent with the instruction that the provided cash flows are fixed and not meant to be recalculated at a deal level.
+
+In a production environment or with more time, I would enhance this by merging the curves at the deal or facility level, allowing each exposure to follow its specific reference curve and tenor. That would enable a more granular and realistic modeling of floating-rate cash flows and sensitivity analysis.
 
 both OID and origination fees wil be treated as day-one adjustments. Added a function to adjust that
 treat the provided cash flows as fixed for this exercise; the curves are intended for optional rate-sensitivity analysis.
 
 
+## future imporvment
+
+1. qulaity contorl for currency data for example, make sure all entity type euro has euro
+
+2. base and local irr, I would like to get the fx rate to convert these cashflow from local to base as USD
