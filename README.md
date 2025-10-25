@@ -1,236 +1,209 @@
-# Private Credit Performance – Tech Assessment
+Private Credit Performance – Technical Assessment
 
-A reproducible Python workflow for ingesting, cleaning, and analyzing private credit cash flow data.  
-The goal is to normalize raw CSV inputs, compute XIRR/MOIC metrics, model leverage impact, and output a clean summary table.
+A reproducible Python workflow for ingesting, cleaning, and analyzing private credit cash flow data.
+The goal is to normalize raw CSV inputs, compute XIRR/MOIC metrics, model leverage impact, and output a unified performance summary.
 
----
-
-## Setup Instructions
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/zhouyichen30/pc_project.git
+Setup Instructions
+1) Clone the repository
+git clone <your-repo-url>
 cd pc_project
-```
 
-### 2. Create and activate a virtual environment
-```bash
-# Create virtual environment
+2) Create and activate a virtual environment
+# Create
 python -m venv venv
 
-# Activate it
+# Activate
 # macOS/Linux
 source venv/bin/activate
-
 # Windows PowerShell
 venv\Scripts\Activate.ps1
-```
 
-### 3. Install dependencies
-```bash
-pip install pandas pathlib
-pip freeze > requirements.txt
-```
+3) Install dependencies
+pip install -r requirements.txt
 
----
+Project Overview
+Current Goal
 
-## ✅ Progress Summary
+Build an end-to-end, reproducible pipeline for analyzing private credit investments as part of a technical assessment.
 
-### 📍 Current Status
-**Goal:** Build an end-to-end pipeline for private credit data analysis as part of a technical assessment.
+Completed Components
+Data Cleaning
 
-**What’s Completed So Far:**
+Centralized clean_data() in src/utils.py:
 
-#### 🧩 Environment & Git Setup
-- Initialized local Git repository and pushed to GitHub (`pc_project`).
-- Structured directories into modular components:
-  ```
-  data/
-  src/
-    ├── clean.py
-    └── utils.py
-  ```
-- Set up virtual environment and dependency management.
-- Verified `.gitignore` excludes `venv/` and nonessential local files.
+Dates via pd.to_datetime(errors="coerce")
 
-#### 🧼 Data Cleaning
-- Implemented `clean_data()` in `src/utils.py`:
-  - Converts date columns → `datetime` (`errors='coerce'`)
-  - Strips and lowercases text columns (`.str.strip().str.lower()`)
-  - Converts numeric columns → `float` (`pd.to_numeric(errors='coerce')`)
-  - Includes validation (`if col in df.columns`) and `.copy()` safety.
-- Verified output dtypes and confirmed clean DataFrame structure.
+Strings via .str.strip().str.lower()
 
-#### 📜 Script Integration
-- `src/clean.py` reads `data/cashflows_deal.csv` via `Path` and calls `clean_data()`.
-- Prints data type summary and head of cleaned dataset for verification.
+Numerics via pd.to_numeric(errors="coerce")
 
-#### 🧭 Git Workflow
-- Confirmed `git add`, `git commit`, and `git push` functionality.
-- Verified synchronization between local and remote repository.
+Logs unique values by text column for anomaly detection
 
----
+Dataset-specific cleaners added for edge cases (e.g., curve label typos).
 
-## 🧭 Next Steps
+Data Integration
 
-**Data & Metrics**
-- Enforce sign conventions:
-  - Contributions = negative cash flows
-  - Distributions/returns = positive cash flows
-- Merge with `structure.csv` to link facilities → deals → funds.
-- Implement and validate Excel-style **XIRR** calculation.
-- Compute facility/deal/fund-level:
-  - Paid-in capital  
-  - Distributions  
-  - Gross & net IRR / MOIC  
+src/merge.py joins cleaned datasets:
 
-**Leverage Modeling**
-- Use `leverage.csv` + `curves.csv` to estimate financing cost.
-- Model gross vs. net performance and produce fund-level results.
+cashflows_deal.csv ↔ terms.csv, structure.csv on facility_id
 
-**Outputs**
-- Export single summary file `performance_summary.csv` with:
-  ```
-  level,id,name,paid_in,distributed,gross_irr,gross_moic,net_irr,net_moic
-  ```
+Linked to leverage.csv on fund
 
-**Stretch Goals**
-- Rate shock (+100 bps parallel shift)
-- PIK / delayed-draw modeling using `terms.csv`
+Uses outer joins to surface mismatches during debugging
 
----
+Quality checks log missing and duplicate keys after each merge.
 
-## ▶️ How to Run the Current Version
+Curve Data
 
-### Clean the dataset
-Key Behaviors
+Fixed label inconsistencies (examples):
 
-Date columns:
-Converted using pd.to_datetime(errors='coerce') — invalid strings become NaT.
-
-Text columns:
-
-Leading/trailing whitespace removed
-
-Converted to lowercase
-
-Multiple spaces or underscores replaced with a single underscore ("exit fee" → "exit_fee")
-
-Numeric columns:
-Converted to float using pd.to_numeric(errors='coerce'), coercing invalid strings to NaN.
-
-Malformed rows:
-For this script I only treat date as malformed role as for example, fixed coupon rate term loan's spread will show na
-
-finds:
-The log finds that in curve data there are sofr and s0dr and euribor and eurib0r so we need to addtional clean these data
-
-curve
 sofr       23
+s0fr        1
 euribor    23
 eurib0r     1
-s0fr        1
-
-strcture data is pretty clean by looking at the cleanning logs. The only finds after clean is that region has some na values
-nan    4
-eu     1
-but since region data will not be used in this project so we will not further clean it. In case we need it in the future, we will add another script called clean_stecture data or we need to contact data vendor to provide better quality of data.
-
-# curve data addiononal clean
-this script is called clean_curve_.py which it clean sepefic clean euribor and data
-
-# merging
-a merge.py script contains all the merging code
-
-The first step merge starts integrates multiple financial datasets into a unified analytical table. Cleaned data from cashflow_df_cleaned, term_df, structure_df, and leverage_df are merged using key relationships between entities. Specifically, cashflow_df_cleaned.entity_id is joined with term_df.facility_id and structure_df.facility_id to align transactional cashflows with facility and deal-level attributes. The resulting dataset is then linked to leverage_df on the fund field
-
-I used outer join for my merger because its easier to debug if we have addtional role that is not cleaned which it will show na
-
-quality check - merger data is most important in this project in my opinion, thus build two quality data checks in the logg which check if the meregd data contain na or duplcaited data.
-
-The second step is merging the curve data. For this excersied I merged the curve data on the fund level cost_of_funds_curve since we assume the intrest rate is fixed. If I have more time, I would merge on the deal level so we can model the deal level curve
 
 
+Curves merged on fund-level cost_of_funds_curve, assuming fixed-rate financing for this exercise.
+
+Cash Flow Adjustments
+
+adjust_fees() applies day-one OID and origination fee adjustments to initial outflows.
+
+_adjust_pik() removes accrued PIK interest (not paid in cash).
+
+adjust_cash_flow() applies both before performance calculations.
+
+Logging
+
+Global logger name: pc_project
+
+Logs include:
+
+Input/output shapes
+
+Cleaning and merge steps
+
+NA/duplicate summaries
+
+Text value distributions
+
+Log file: logs/project.log
+
+Modeling Assumptions
+General
+
+No base-currency conversion; IRR/MOIC reported in fund currency from structure.csv.
+
+Provided cash flows are treated as fixed (per instructions).
+
+Curves and Financing
+
+Rates reset monthly.
+
+Each cash flow uses the most recent curve rate on or before its date.
+
+Curves merged at fund level via cost_of_funds_curve (all facilities in a fund share the same base curve).
+
+With more time, curves would be merged at deal/facility level for granular rate modeling and sensitivity.
+
+Fees and OID
+
+OID and origination fees treated as day-one adjustments to initial outflows.
+
+Implemented via adjust_fees() in cash_flow_adjust.py.
+
+Example: for simplicity, Facility F002 (delayed draw) applies both fees on each contribution.
+
+PIK Interest
+
+PIK interest assumed accrued (capitalized) and removed from cash flow inputs prior to IRR/MOIC.
+
+In production, a QC step should verify PIK classification before exclusion.
+
+Delayed Draw (Facility F002)
+
+Delayed-draw schedule observed:
+
+First draw: 2023-02-15
+
+Second draw: 2025-05-15
+
+Interest appears to accrue on total notional rather than by draw date.
+
+Ideally, interest between the two draw dates would reflect only the first-draw amount, and PIK would be adjusted on the second draw date.
+
+Due to time constraints, this adjustment is not implemented; interest is treated as accruing on total notional.
+
+Other Simplifications
+
+No interest-rate floors modeled.
+
+No currency-level QC or FX normalization.
+
+covenants.csv not used.
+
+Output
+Main Output
+
+performance_summary.csv with the following columns:
+
+level,id,name,paid_in,distributed,gross_irr,gross_moic,net_irr,net_moic
+
+Optional (if extended)
+
+IRR distribution by strategy or fund
+
++100 bps rate-shock sensitivity
+
+Known Limitations and Future Improvements
+
+Currency consistency QC (e.g., ensure EUR loans map to EUR curves).
+
+FX conversion for base vs. local IRR comparisons.
+
+PIK verification QC before exclusion.
+
+Delayed-draw modeling for interest and PIK by draw schedule.
+
+Curve application at deal/facility level instead of fund-level approximation.
+
+Running the Pipeline
+python -m src.main
 
 
-# Logging:
-Uses the shared project logger (pc_project) to record:
+This will:
 
-Input/output shape
+Read and clean all CSVs
 
-Cleaning steps completed
+Log cleaning and merge steps
 
-Top 5 value distributions for each text column so when i build this code I know every dataset to clean first before I join them togther
+Apply fee and PIK adjustments
 
-for cash_flow_sign_convert funcation, it will log the sign coverted status, for _clean_entity_id it log if o is converet to 0q
+Produce performance_summary.csv in the output directory
 
-for mergedb it loggs the shape after every merge
-
-## 🧠 References
-
-### Data Cleaning Function
-```python
-from utils import clean_data
-cash_flow = clean_data(cash_flow, date_cols, text_cols, num_cols)
-```
-
-### Git Workflow
-```bash
-git status
-git add .
-git commit -m "Add clean_data function and setup"
-git push origin main
-```
-
----
-
-**Author:** [Yichen Zhou](https://github.com/zhouyichen30)  
-
-##Logging Setup
-
-The project uses Python’s built-in logging module to track all processing steps, warnings, and errors across scripts.
-A single centralized logger is configured in src/utils.py, and all functions (e.g., clean_data(), merge_structure(), etc.) write to it.
-
-How It Works
-
-When you run any script (e.g. python -m src.clean), the logger automatically:
-
-Writes logs to both the console and a file located in:
-
-logs/project.log
-
-I have one script to handle each csv's cleanning and golbal cleaning funcation are stored in utils
-## process
-
-this script will read all the csv to clean the data. A centerliazed clean data funcation is written in the utils.py which it will clean date, string, and number type of data columns. And it will log the unique values for all the text columns so that when I doing this project I know if there are some data issue by reading the log.
-
-If the log finds data issue, then I create one clean script for any sepefic data issue that related to that database csv.
-
-One finds is that structure_df.fund is like hbc_private_credit_fund_i but leverage_df fund is like HBC Private Credit Fund I so before merge is data we need to make sure this two data is cleaned. hbc_private_credit_fund_i formate is better than HBC Private Credit Fund I  thus we need to convert fund data formate for leverage_df.fund column
-
-cashflow_deal.csv has its own clean_cash_flow.py that first convert replace o to 0 in the enity id column
-and it convert all the sign convecation
-
-Please note that covenants data is not used in this project
-
-Then merge starts integrates multiple financial datasets into a unified analytical table. Cleaned data from cashflow_df_cleaned, term_df, structure_df, and leverage_df are merged using key relationships between entities. Specifically, cashflow_df_cleaned.entity_id is joined with term_df.facility_id and structure_df.facility_id to align transactional cashflows with facility and deal-level attributes. The resulting dataset is then linked to leverage_df on the fund field
-
-I used outer join for my merge 
-
-## model Assumtions
-No additional base currency conversation is needed; we can report IRR/MOIC in the fund’s currency as defined in the structure.csv.
-
-I assume the reset rate for this model is monthly based. Each cashflow uses the most recent curve on or before the cashflow date for fund level fiancing cost calculation For this exercise, the base-rate curves (e.g., SOFR, EURIBOR) were merged at the fund level using the cost_of_funds_curve field.
-This approach assumes that all facilities within a fund share the same cost of financing, consistent with the instruction that the provided cash flows are fixed and not meant to be recalculated at a deal level.
-
-In a production environment or with more time, I would enhance this by merging the curves at the deal or facility level, allowing each exposure to follow its specific reference curve and tenor. That would enable a more granular and realistic modeling of floating-rate cash flows and sensitivity analysis.
-
-both OID and origination fees wil be treated as day-one adjustments. Added a function to adjust that
-treat the provided cash flows as fixed for this exercise; the curves are intended for optional rate-sensitivity analysis.
+Example Project Structure
+pc_project/
+├─ data/
+│  ├─ cashflows_deal.csv
+│  ├─ structure.csv
+│  ├─ terms.csv
+│  ├─ leverage.csv
+│  └─ curves.csv
+├─ logs/
+│  └─ project.log
+├─ outputs/
+│  └─ performance_summary.csv
+├─ src/
+│  ├─ main.py
+│  ├─ utils.py
+│  ├─ merge.py
+│  ├─ cash_flow_adjust.py
+│  ├─ clean_cash_flow.py
+│  ├─ clean_curve.py
+│  └─ clean_structure.py
+├─ requirements.txt
+└─ README.md
 
 
-## future imporvment
-
-1. qulaity contorl for currency data for example, make sure all entity type euro has euro
-
-2. base and local irr, I would like to get the fx rate to convert these cashflow from local to base as USD
+Author: Yichen Zhou
+Contact: yichenzhou6 at gmail dot com

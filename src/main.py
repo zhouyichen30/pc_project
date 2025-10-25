@@ -5,8 +5,7 @@ from utils import clean_data_format   # import the helper function
 from clean_cash_flow import cash_flow_clean
 from clean_curve import clean_curve_df
 from merge import merge_db,merge_curve
-
-
+from cash_flow_adjust import adjust_cash_flow
 
 # Get the project root (one level up from src/)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,5 +65,8 @@ mdb = merge_db(cashflow_df_cleaned,term_df_cleaned,structure_df_cleaned,leverage
 # In a full implementation, we would merge at the deal/facility level
 # to capture distinct base-rate exposures (e.g., SOFR vs. EURIBOR).
 mdbc = merge_curve(mdb, curve_df_cleaned)
-print('s')
+
+mdc_cleanned = adjust_cash_flow(mdbc)
+
+print(mdc_cleanned)
 
