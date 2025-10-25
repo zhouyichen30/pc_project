@@ -122,17 +122,37 @@ Converted to float using pd.to_numeric(errors='coerce'), coercing invalid string
 Malformed rows:
 For this script I only treat date as malformed role as for example, fixed coupon rate term loan's spread will show na
 
+finds:
+The log finds that in curve data there are sofr and s0dr and euribor and eurib0r so we need to addtional clean these data
+
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+
+strcture data is pretty clean by looking at the cleanning logs. The only finds after clean is that region has some na values
+nan    4
+eu     1
+but since region data will not be used in this project so we will not further clean it. In case we need it in the future, we will add another script called clean_stecture data or we need to contact data vendor to provide better quality of data.
+
+# curve data addiononal clean
+this script is called clean_curve_.py which it clean sepefic data for curve data
+
+## leverage data additional clean
+this script is callend clean
 
 
-
-Logging:
+# Logging:
 Uses the shared project logger (pc_project) to record:
 
 Input/output shape
 
 Cleaning steps completed
 
-Top 5 value distributions for each text column
+Top 5 value distributions for each text column so when i build this code I know every dataset to clean first before I join them togther
+
+for cash_flow_sign_convert funcation, it will log the sign coverted status
 
 ## 🧠 References
 
@@ -168,9 +188,22 @@ Writes logs to both the console and a file located in:
 logs/project.log
 
 I have one script to handle each csv's cleanning and golbal cleaning funcation are stored in utils
+## process
 
-## Assumtions
-# No additional base currency conversation is needed; we can report IRR/MOIC in the fund’s currency as defined in the structure.csv.
+this script will read all the csv to clean the data. A centerliazed clean data funcation is written in the utils.py which it will clean date, string, and number type of data columns. And it will log the unique values for all the text columns so that when I doing this project I know if there are some data issue by reading the log.
 
-# both OID and origination fees wil be treated as day-one adjustments. Added a function to adjust that
-# treat the provided cash flows as fixed for this exercise; the curves are intended for optional rate-sensitivity analysis.
+If the log finds data issue, then I create one clean script for any sepefic data issue that related to that database csv.
+
+Please note that covenants data is not used in this project
+
+Then merge starts integrates multiple financial datasets into a unified analytical table. Cleaned data from cashflow_df_cleaned, term_df, structure_df, and leverage_df are merged using key relationships between entities. Specifically, cashflow_df_cleaned.entity_id is joined with term_df.facility_id and structure_df.facility_id to align transactional cashflows with facility and deal-level attributes. The resulting dataset is then linked to leverage_df on the fund field
+
+One finds is that structure_df.fund is like hbc_private_credit_fund_i but leverage_df fund is like HBC Private Credit Fund I so before merge is data we need to make sure this two data is cleaned. hbc_private_credit_fund_i formate is better than HBC Private Credit Fund I  thus we need to convert fund data formate for leverage_df.fund column
+
+## model Assumtions
+No additional base currency conversation is needed; we can report IRR/MOIC in the fund’s currency as defined in the structure.csv.
+
+both OID and origination fees wil be treated as day-one adjustments. Added a function to adjust that
+treat the provided cash flows as fixed for this exercise; the curves are intended for optional rate-sensitivity analysis.
+
+

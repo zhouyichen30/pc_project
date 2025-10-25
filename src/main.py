@@ -4,6 +4,7 @@ import numpy as np
 from utils import clean_data_format   # import the helper function
 from clean_cash_flow import cash_flow_sign_convert
 from clean_curve import clean_curve_df
+from clean_leverage import clean_leverage_df
 
 
 # Get the project root (one level up from src/)
@@ -55,4 +56,7 @@ curve_df_cleaned = clean_curve_df(curve_df)
 
 structure_df = clean_data_format(structure_df,structure_data_date_cols,structure_data_text_cols,structure_data_num_cols)
 
+
 leverage_df = clean_data_format(leverage_df,leverage__data_date_cols,leverage__data_text_cols,leverage_data_num_cols)
+leverage_df_cleaned =clean_leverage_df(leverage_df)
+print(leverage_df_cleaned)

@@ -1,654 +1,2064 @@
-2025-10-25 11:21:01,160 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:21:01,161 [INFO] pc_project: Input shape: (137, 6)
-2025-10-25 11:21:01,184 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:21:01,188 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:21:01,189 [INFO] pc_project: Output shape: (137, 6)
-2025-10-25 11:21:01,192 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,200 [INFO] pc_project: Top values in 'entity_id':
+2025-10-25 12:58:18,540 [INFO] pc_project: Starting data cleaning.
+2025-10-25 12:58:18,541 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 12:58:18,569 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 12:58:18,577 [INFO] pc_project: Data cleaning complete.
+2025-10-25 12:58:18,578 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 12:58:18,579 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,582 [INFO] pc_project: Top values in 'entity_id':
 entity_id
 f001    28
 f002    27
 f003    27
 f004    27
 f005    27
-2025-10-25 11:21:01,200 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,202 [INFO] pc_project: Top values in 'entity_type':
+2025-10-25 12:58:18,583 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,587 [INFO] pc_project: Top values in 'entity_type':
 entity_type
 facility    137
-2025-10-25 11:21:01,203 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,207 [INFO] pc_project: Top values in 'cashflow_type':
+2025-10-25 12:58:18,587 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,588 [INFO] pc_project: Top values in 'cashflow_type':
 cashflow_type
 interest            79
 principal_return    35
 pik_interest        12
 contribution         6
 exit_fee             5
-2025-10-25 11:21:01,212 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,215 [INFO] pc_project: Top values in 'currency':
+2025-10-25 12:58:18,590 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,596 [INFO] pc_project: Top values in 'currency':
 currency
 usd    110
 eur     27
-2025-10-25 11:21:01,216 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,219 [INFO] pc_project: Applied cash flow sign convention.
-2025-10-25 11:21:01,220 [INFO] pc_project:   • Negative cash flow types: ['contribution']
-2025-10-25 11:21:01,220 [INFO] pc_project:   • Rows converted to negative: 6
-2025-10-25 11:21:01,221 [INFO] pc_project:   • Rows converted to positive: 131
-2025-10-25 11:21:01,233 [INFO] pc_project: ----------------------------------------------------------------------
-2025-10-25 11:21:01,234 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:21:01,235 [INFO] pc_project: Input shape: (5, 10)
-2025-10-25 11:21:01,264 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:21:01,268 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:21:01,269 [INFO] pc_project: Output shape: (5, 10)
-2025-10-25 11:21:01,269 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,273 [INFO] pc_project: Top values in 'facility_id':
+2025-10-25 12:58:18,597 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,601 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 12:58:18,601 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 12:58:18,601 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 12:58:18,603 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 12:58:18,611 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 12:58:18,612 [INFO] pc_project: Starting data cleaning.
+2025-10-25 12:58:18,614 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 12:58:18,637 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 12:58:18,641 [INFO] pc_project: Data cleaning complete.
+2025-10-25 12:58:18,642 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 12:58:18,642 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,646 [INFO] pc_project: Top values in 'facility_id':
 facility_id
 f001    1
 f002    1
 f003    1
 f004    1
 f005    1
-2025-10-25 11:21:01,274 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,278 [INFO] pc_project: Top values in 'rate_type':
+2025-10-25 12:58:18,647 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,649 [INFO] pc_project: Top values in 'rate_type':
 rate_type
 sofr+spread       3
 fixed             1
 euribor+spread    1
-2025-10-25 11:21:01,279 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,282 [INFO] pc_project: Top values in 'day_count':
+2025-10-25 12:58:18,650 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,652 [INFO] pc_project: Top values in 'day_count':
 day_count
 act/360    4
 30/360     1
-2025-10-25 11:21:01,283 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,285 [INFO] pc_project: Top values in 'pik':
+2025-10-25 12:58:18,652 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,656 [INFO] pc_project: Top values in 'pik':
 pik
 no     3
 yes    2
-2025-10-25 11:21:01,286 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,290 [INFO] pc_project: Top values in 'delayed_draw':
+2025-10-25 12:58:18,657 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,663 [INFO] pc_project: Top values in 'delayed_draw':
 delayed_draw
 no     4
 yes    1
-2025-10-25 11:21:01,290 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,292 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:21:01,294 [INFO] pc_project: Input shape: (48, 3)
-2025-10-25 11:21:01,304 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:21:01,308 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:21:01,309 [INFO] pc_project: Output shape: (48, 3)
-2025-10-25 11:21:01,310 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,313 [INFO] pc_project: Top values in 'curve':
+2025-10-25 12:58:18,664 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,665 [INFO] pc_project: Starting data cleaning.
+2025-10-25 12:58:18,666 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 12:58:18,677 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 12:58:18,680 [INFO] pc_project: Data cleaning complete.
+2025-10-25 12:58:18,681 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 12:58:18,682 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,683 [INFO] pc_project: Top values in 'curve':
 curve
 sofr       23
 euribor    23
 eurib0r     1
 s0fr        1
-2025-10-25 11:21:01,314 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,314 [INFO] pc_project: Starting curve cleaning process...
-2025-10-25 11:21:01,325 [INFO] pc_project: Curve cleaning completed — 2 values modified.
-2025-10-25 11:21:01,328 [INFO] pc_project: curve data after cleaned curve
+2025-10-25 12:58:18,684 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,684 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 12:58:18,699 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 12:58:18,701 [INFO] pc_project: curve data after cleaned curve
 sofr       24
 euribor    24
 Name: count, dtype: int64
-2025-10-25 11:21:01,329 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:21:01,330 [INFO] pc_project: Input shape: (5, 8)
-2025-10-25 11:21:01,355 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:21:01,360 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:21:01,361 [INFO] pc_project: Output shape: (5, 8)
-2025-10-25 11:21:01,363 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,366 [INFO] pc_project: Top values in 'facility_id':
+2025-10-25 12:58:18,703 [INFO] pc_project: Starting data cleaning.
+2025-10-25 12:58:18,703 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 12:58:18,730 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 12:58:18,733 [INFO] pc_project: Data cleaning complete.
+2025-10-25 12:58:18,734 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 12:58:18,734 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,736 [INFO] pc_project: Top values in 'facility_id':
 facility_id
 f001    1
 f002    1
 f003    1
 f004    1
 f005    1
-2025-10-25 11:21:01,366 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,369 [INFO] pc_project: Top values in 'facility_name':
+2025-10-25 12:58:18,737 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,741 [INFO] pc_project: Top values in 'facility_name':
 facility_name
 term_loan_a          1
 delayed_draw_tl      1
 mezz_loan            1
 refinance_tl         1
 senior_secured_tl    1
-2025-10-25 11:21:01,369 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,372 [INFO] pc_project: Top values in 'deal_id':
+2025-10-25 12:58:18,743 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,749 [INFO] pc_project: Top values in 'deal_id':
 deal_id
 d001    2
 d002    2
 d003    1
-2025-10-25 11:21:01,373 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,376 [INFO] pc_project: Top values in 'deal_name':
+2025-10-25 12:58:18,750 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,752 [INFO] pc_project: Top values in 'deal_name':
 deal_name
 acme_industrials_unitranche     2
 greenleaf_real_estate_mezz      2
 bluewave_software_sr_secured    1
-2025-10-25 11:21:01,377 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,380 [INFO] pc_project: Top values in 'strategy_bucket':
+2025-10-25 12:58:18,753 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,757 [INFO] pc_project: Top values in 'strategy_bucket':
 strategy_bucket
 direct_lending          2
 real_estate_credit      2
 opportunistic_credit    1
-2025-10-25 11:21:01,380 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,383 [INFO] pc_project: Top values in 'region':
+2025-10-25 12:58:18,758 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,761 [INFO] pc_project: Top values in 'region':
 region
 nan    4
 eu     1
-2025-10-25 11:21:01,384 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,386 [INFO] pc_project: Top values in 'sector':
+2025-10-25 12:58:18,761 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,766 [INFO] pc_project: Top values in 'sector':
 sector
 industrials    2
 real_estate    2
 technology     1
-2025-10-25 11:21:01,387 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:21:01,390 [INFO] pc_project: Top values in 'fund':
+2025-10-25 12:58:18,767 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,769 [INFO] pc_project: Top values in 'fund':
 fund
 hbc_private_credit_fund_i     4
 hbc_private_credit_fund_ii    1
-2025-10-25 11:21:01,390 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,695 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:32:23,697 [INFO] pc_project: Input shape: (137, 6)
-2025-10-25 11:32:23,719 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:32:23,726 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:32:23,731 [INFO] pc_project: Output shape: (137, 6)
-2025-10-25 11:32:23,734 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,740 [INFO] pc_project: Top values in 'entity_id':
-entity_id
-f001    28
-f002    27
-f003    27
-f004    27
-f005    27
-2025-10-25 11:32:23,744 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,748 [INFO] pc_project: Top values in 'entity_type':
-entity_type
-facility    137
-2025-10-25 11:32:23,750 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,753 [INFO] pc_project: Top values in 'cashflow_type':
-cashflow_type
-interest            79
-principal_return    35
-pik_interest        12
-contribution         6
-exit_fee             5
-2025-10-25 11:32:23,756 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,760 [INFO] pc_project: Top values in 'currency':
-currency
-usd    110
-eur     27
-2025-10-25 11:32:23,763 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,767 [INFO] pc_project: Applied cash flow sign convention.
-2025-10-25 11:32:23,769 [INFO] pc_project:   • Negative cash flow types: ['contribution']
-2025-10-25 11:32:23,772 [INFO] pc_project:   • Rows converted to negative: 6
-2025-10-25 11:32:23,773 [INFO] pc_project:   • Rows converted to positive: 131
-2025-10-25 11:32:23,785 [INFO] pc_project: ----------------------------------------------------------------------
-2025-10-25 11:32:23,786 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:32:23,787 [INFO] pc_project: Input shape: (5, 10)
-2025-10-25 11:32:23,805 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:32:23,809 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:32:23,810 [INFO] pc_project: Output shape: (5, 10)
-2025-10-25 11:32:23,810 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,814 [INFO] pc_project: Top values in 'facility_id':
-facility_id
-f001    1
-f002    1
-f003    1
-f004    1
-f005    1
-2025-10-25 11:32:23,815 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,818 [INFO] pc_project: Top values in 'rate_type':
-rate_type
-sofr+spread       3
-fixed             1
-euribor+spread    1
-2025-10-25 11:32:23,819 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,822 [INFO] pc_project: Top values in 'day_count':
-day_count
-act/360    4
-30/360     1
-2025-10-25 11:32:23,823 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,825 [INFO] pc_project: Top values in 'pik':
-pik
-no     3
-yes    2
-2025-10-25 11:32:23,825 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,828 [INFO] pc_project: Top values in 'delayed_draw':
-delayed_draw
-no     4
-yes    1
-2025-10-25 11:32:23,829 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,830 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:32:23,831 [INFO] pc_project: Input shape: (48, 3)
-2025-10-25 11:32:23,840 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:32:23,845 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:32:23,846 [INFO] pc_project: Output shape: (48, 3)
-2025-10-25 11:32:23,846 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,849 [INFO] pc_project: Top values in 'curve':
-curve
-sofr       23
-euribor    23
-eurib0r     1
-s0fr        1
-2025-10-25 11:32:23,850 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,851 [INFO] pc_project: Starting curve cleaning process...
-2025-10-25 11:32:23,859 [INFO] pc_project: Curve cleaning completed — 2 values modified.
-2025-10-25 11:32:23,862 [INFO] pc_project: curve data after cleaned curve
-sofr       24
-euribor    24
-Name: count, dtype: int64
-2025-10-25 11:32:23,863 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:32:23,864 [INFO] pc_project: Input shape: (5, 8)
-2025-10-25 11:32:23,888 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:32:23,892 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:32:23,893 [INFO] pc_project: Output shape: (5, 8)
-2025-10-25 11:32:23,893 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,896 [INFO] pc_project: Top values in 'facility_id':
-facility_id
-f001    1
-f002    1
-f003    1
-f004    1
-f005    1
-2025-10-25 11:32:23,897 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,903 [INFO] pc_project: Top values in 'facility_name':
-facility_name
-term_loan_a          1
-delayed_draw_tl      1
-mezz_loan            1
-refinance_tl         1
-senior_secured_tl    1
-2025-10-25 11:32:23,904 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,906 [INFO] pc_project: Top values in 'deal_id':
-deal_id
-d001    2
-d002    2
-d003    1
-2025-10-25 11:32:23,907 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,909 [INFO] pc_project: Top values in 'deal_name':
-deal_name
-acme_industrials_unitranche     2
-greenleaf_real_estate_mezz      2
-bluewave_software_sr_secured    1
-2025-10-25 11:32:23,910 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,915 [INFO] pc_project: Top values in 'strategy_bucket':
-strategy_bucket
-direct_lending          2
-real_estate_credit      2
-opportunistic_credit    1
-2025-10-25 11:32:23,916 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,920 [INFO] pc_project: Top values in 'region':
-region
-nan    4
-eu     1
-2025-10-25 11:32:23,920 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,923 [INFO] pc_project: Top values in 'sector':
-sector
-industrials    2
-real_estate    2
-technology     1
-2025-10-25 11:32:23,924 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,926 [INFO] pc_project: Top values in 'fund':
-fund
-hbc_private_credit_fund_i     4
-hbc_private_credit_fund_ii    1
-2025-10-25 11:32:23,927 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,931 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:32:23,933 [INFO] pc_project: Input shape: (2, 6)
-2025-10-25 11:32:23,935 [WARNING] pc_project: Text column 'facility_id' not found in DataFrame.
-2025-10-25 11:32:23,936 [WARNING] pc_project: Text column 'facility_name' not found in DataFrame.
-2025-10-25 11:32:23,937 [WARNING] pc_project: Text column 'deal_id' not found in DataFrame.
-2025-10-25 11:32:23,937 [WARNING] pc_project: Text column 'deal_name' not found in DataFrame.
-2025-10-25 11:32:23,938 [WARNING] pc_project: Text column 'strategy_bucket' not found in DataFrame.
-2025-10-25 11:32:23,939 [WARNING] pc_project: Text column 'region' not found in DataFrame.
-2025-10-25 11:32:23,939 [WARNING] pc_project: Text column 'sector' not found in DataFrame.
-2025-10-25 11:32:23,947 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:32:23,952 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:32:23,953 [INFO] pc_project: Output shape: (2, 6)
-2025-10-25 11:32:23,953 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:32:23,955 [INFO] pc_project: Top values in 'fund':
+2025-10-25 12:58:18,769 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,771 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 12:58:18,775 [INFO] pc_project: Fund name cleaning completed. 5 rows modified.
+2025-10-25 12:58:18,781 [INFO] pc_project: Starting data cleaning.
+2025-10-25 12:58:18,781 [INFO] pc_project: Input shape: (2, 6)
+2025-10-25 12:58:18,790 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 12:58:18,795 [INFO] pc_project: Data cleaning complete.
+2025-10-25 12:58:18,796 [INFO] pc_project: Output shape: (2, 6)
+2025-10-25 12:58:18,796 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,799 [INFO] pc_project: Top values in 'fund':
 fund
 hbc_private_credit_fund_i     1
 hbc_private_credit_fund_ii    1
-2025-10-25 11:32:23,956 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,232 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:33:49,234 [INFO] pc_project: Input shape: (137, 6)
-2025-10-25 11:33:49,255 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:33:49,263 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:33:49,265 [INFO] pc_project: Output shape: (137, 6)
-2025-10-25 11:33:49,268 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,273 [INFO] pc_project: Top values in 'entity_id':
-entity_id
-f001    28
-f002    27
-f003    27
-f004    27
-f005    27
-2025-10-25 11:33:49,275 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,279 [INFO] pc_project: Top values in 'entity_type':
-entity_type
-facility    137
-2025-10-25 11:33:49,280 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,284 [INFO] pc_project: Top values in 'cashflow_type':
-cashflow_type
-interest            79
-principal_return    35
-pik_interest        12
-contribution         6
-exit_fee             5
-2025-10-25 11:33:49,287 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,291 [INFO] pc_project: Top values in 'currency':
-currency
-usd    110
-eur     27
-2025-10-25 11:33:49,294 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,299 [INFO] pc_project: Applied cash flow sign convention.
-2025-10-25 11:33:49,300 [INFO] pc_project:   • Negative cash flow types: ['contribution']
-2025-10-25 11:33:49,302 [INFO] pc_project:   • Rows converted to negative: 6
-2025-10-25 11:33:49,306 [INFO] pc_project:   • Rows converted to positive: 131
-2025-10-25 11:33:49,315 [INFO] pc_project: ----------------------------------------------------------------------
-2025-10-25 11:33:49,316 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:33:49,317 [INFO] pc_project: Input shape: (5, 10)
-2025-10-25 11:33:49,341 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:33:49,345 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:33:49,345 [INFO] pc_project: Output shape: (5, 10)
-2025-10-25 11:33:49,346 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,348 [INFO] pc_project: Top values in 'facility_id':
-facility_id
-f001    1
-f002    1
-f003    1
-f004    1
-f005    1
-2025-10-25 11:33:49,349 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,356 [INFO] pc_project: Top values in 'rate_type':
-rate_type
-sofr+spread       3
-fixed             1
-euribor+spread    1
-2025-10-25 11:33:49,357 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,360 [INFO] pc_project: Top values in 'day_count':
-day_count
-act/360    4
-30/360     1
-2025-10-25 11:33:49,362 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,364 [INFO] pc_project: Top values in 'pik':
-pik
-no     3
-yes    2
-2025-10-25 11:33:49,365 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,369 [INFO] pc_project: Top values in 'delayed_draw':
-delayed_draw
-no     4
-yes    1
-2025-10-25 11:33:49,371 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,372 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:33:49,373 [INFO] pc_project: Input shape: (48, 3)
-2025-10-25 11:33:49,380 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:33:49,387 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:33:49,388 [INFO] pc_project: Output shape: (48, 3)
-2025-10-25 11:33:49,389 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,393 [INFO] pc_project: Top values in 'curve':
-curve
-sofr       23
-euribor    23
-eurib0r     1
-s0fr        1
-2025-10-25 11:33:49,393 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,394 [INFO] pc_project: Starting curve cleaning process...
-2025-10-25 11:33:49,407 [INFO] pc_project: Curve cleaning completed — 2 values modified.
-2025-10-25 11:33:49,409 [INFO] pc_project: curve data after cleaned curve
-sofr       24
-euribor    24
-Name: count, dtype: int64
-2025-10-25 11:33:49,410 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:33:49,411 [INFO] pc_project: Input shape: (5, 8)
-2025-10-25 11:33:49,435 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:33:49,439 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:33:49,440 [INFO] pc_project: Output shape: (5, 8)
-2025-10-25 11:33:49,440 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,444 [INFO] pc_project: Top values in 'facility_id':
-facility_id
-f001    1
-f002    1
-f003    1
-f004    1
-f005    1
-2025-10-25 11:33:49,445 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,447 [INFO] pc_project: Top values in 'facility_name':
-facility_name
-term_loan_a          1
-delayed_draw_tl      1
-mezz_loan            1
-refinance_tl         1
-senior_secured_tl    1
-2025-10-25 11:33:49,448 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,451 [INFO] pc_project: Top values in 'deal_id':
-deal_id
-d001    2
-d002    2
-d003    1
-2025-10-25 11:33:49,453 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,457 [INFO] pc_project: Top values in 'deal_name':
-deal_name
-acme_industrials_unitranche     2
-greenleaf_real_estate_mezz      2
-bluewave_software_sr_secured    1
-2025-10-25 11:33:49,458 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,463 [INFO] pc_project: Top values in 'strategy_bucket':
-strategy_bucket
-direct_lending          2
-real_estate_credit      2
-opportunistic_credit    1
-2025-10-25 11:33:49,464 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,467 [INFO] pc_project: Top values in 'region':
-region
-nan    4
-eu     1
-2025-10-25 11:33:49,468 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,473 [INFO] pc_project: Top values in 'sector':
-sector
-industrials    2
-real_estate    2
-technology     1
-2025-10-25 11:33:49,474 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,476 [INFO] pc_project: Top values in 'fund':
-fund
-hbc_private_credit_fund_i     4
-hbc_private_credit_fund_ii    1
-2025-10-25 11:33:49,477 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,478 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:33:49,479 [INFO] pc_project: Input shape: (2, 6)
-2025-10-25 11:33:49,500 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:33:49,504 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:33:49,505 [INFO] pc_project: Output shape: (2, 6)
-2025-10-25 11:33:49,506 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,509 [INFO] pc_project: Top values in 'fund':
-fund
-hbc_private_credit_fund_i     1
-hbc_private_credit_fund_ii    1
-2025-10-25 11:33:49,510 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,511 [INFO] pc_project: Top values in 'advance_rate':
-advance_rate
-0.5    1
-0.4    1
-2025-10-25 11:33:49,512 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,515 [INFO] pc_project: Top values in 'cost_of_funds_curve':
+2025-10-25 12:58:18,800 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:58:18,803 [INFO] pc_project: Top values in 'cost_of_funds_curve':
 cost_of_funds_curve
 sofr       1
 euribor    1
-2025-10-25 11:33:49,515 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,520 [INFO] pc_project: Top values in 'spread_bps':
-spread_bps
-150    1
-175    1
-2025-10-25 11:33:49,521 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,525 [INFO] pc_project: Top values in 'undrawn_fee_bps':
-undrawn_fee_bps
-50    1
-35    1
-2025-10-25 11:33:49,526 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:33:49,528 [INFO] pc_project: Top values in 'commitment':
-commitment
-400000000    1
-250000000    1
-2025-10-25 11:33:49,529 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,088 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:35:39,090 [INFO] pc_project: Input shape: (137, 6)
-2025-10-25 11:35:39,109 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:35:39,116 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:35:39,118 [INFO] pc_project: Output shape: (137, 6)
-2025-10-25 11:35:39,121 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,128 [INFO] pc_project: Top values in 'entity_id':
+2025-10-25 12:58:18,804 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,042 [INFO] pc_project: Starting data cleaning.
+2025-10-25 12:59:59,047 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 12:59:59,110 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 12:59:59,126 [INFO] pc_project: Data cleaning complete.
+2025-10-25 12:59:59,128 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 12:59:59,129 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,141 [INFO] pc_project: Top values in 'entity_id':
 entity_id
 f001    28
 f002    27
 f003    27
 f004    27
 f005    27
-2025-10-25 11:35:39,130 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,135 [INFO] pc_project: Top values in 'entity_type':
+2025-10-25 12:59:59,142 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,145 [INFO] pc_project: Top values in 'entity_type':
 entity_type
 facility    137
-2025-10-25 11:35:39,136 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,140 [INFO] pc_project: Top values in 'cashflow_type':
+2025-10-25 12:59:59,146 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,149 [INFO] pc_project: Top values in 'cashflow_type':
 cashflow_type
 interest            79
 principal_return    35
 pik_interest        12
 contribution         6
 exit_fee             5
-2025-10-25 11:35:39,142 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,147 [INFO] pc_project: Top values in 'currency':
+2025-10-25 12:59:59,150 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,159 [INFO] pc_project: Top values in 'currency':
 currency
 usd    110
 eur     27
-2025-10-25 11:35:39,150 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,155 [INFO] pc_project: Applied cash flow sign convention.
-2025-10-25 11:35:39,155 [INFO] pc_project:   • Negative cash flow types: ['contribution']
-2025-10-25 11:35:39,156 [INFO] pc_project:   • Rows converted to negative: 6
-2025-10-25 11:35:39,156 [INFO] pc_project:   • Rows converted to positive: 131
-2025-10-25 11:35:39,166 [INFO] pc_project: ----------------------------------------------------------------------
-2025-10-25 11:35:39,168 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:35:39,169 [INFO] pc_project: Input shape: (5, 10)
-2025-10-25 11:35:39,188 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:35:39,192 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:35:39,192 [INFO] pc_project: Output shape: (5, 10)
-2025-10-25 11:35:39,193 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,196 [INFO] pc_project: Top values in 'facility_id':
+2025-10-25 12:59:59,160 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,173 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 12:59:59,174 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 12:59:59,175 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 12:59:59,175 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 12:59:59,208 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 12:59:59,210 [INFO] pc_project: Starting data cleaning.
+2025-10-25 12:59:59,211 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 12:59:59,243 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 12:59:59,254 [INFO] pc_project: Data cleaning complete.
+2025-10-25 12:59:59,255 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 12:59:59,256 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,260 [INFO] pc_project: Top values in 'facility_id':
 facility_id
 f001    1
 f002    1
 f003    1
 f004    1
 f005    1
-2025-10-25 11:35:39,197 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,199 [INFO] pc_project: Top values in 'rate_type':
+2025-10-25 12:59:59,261 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,264 [INFO] pc_project: Top values in 'rate_type':
 rate_type
 sofr+spread       3
 fixed             1
 euribor+spread    1
-2025-10-25 11:35:39,200 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,202 [INFO] pc_project: Top values in 'day_count':
+2025-10-25 12:59:59,265 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,268 [INFO] pc_project: Top values in 'day_count':
 day_count
 act/360    4
 30/360     1
-2025-10-25 11:35:39,204 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,206 [INFO] pc_project: Top values in 'pik':
+2025-10-25 12:59:59,269 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,273 [INFO] pc_project: Top values in 'pik':
 pik
 no     3
 yes    2
-2025-10-25 11:35:39,207 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,210 [INFO] pc_project: Top values in 'delayed_draw':
+2025-10-25 12:59:59,273 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,277 [INFO] pc_project: Top values in 'delayed_draw':
 delayed_draw
 no     4
 yes    1
-2025-10-25 11:35:39,211 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,213 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:35:39,214 [INFO] pc_project: Input shape: (48, 3)
-2025-10-25 11:35:39,221 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:35:39,225 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:35:39,226 [INFO] pc_project: Output shape: (48, 3)
-2025-10-25 11:35:39,226 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,230 [INFO] pc_project: Top values in 'curve':
+2025-10-25 12:59:59,278 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,278 [INFO] pc_project: Starting data cleaning.
+2025-10-25 12:59:59,279 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 12:59:59,293 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 12:59:59,304 [INFO] pc_project: Data cleaning complete.
+2025-10-25 12:59:59,305 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 12:59:59,306 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,310 [INFO] pc_project: Top values in 'curve':
 curve
 sofr       23
 euribor    23
 eurib0r     1
 s0fr        1
-2025-10-25 11:35:39,230 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,232 [INFO] pc_project: Starting curve cleaning process...
-2025-10-25 11:35:39,242 [INFO] pc_project: Curve cleaning completed — 2 values modified.
-2025-10-25 11:35:39,245 [INFO] pc_project: curve data after cleaned curve
+2025-10-25 12:59:59,310 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,311 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 12:59:59,330 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 12:59:59,336 [INFO] pc_project: curve data after cleaned curve
 sofr       24
 euribor    24
 Name: count, dtype: int64
-2025-10-25 11:35:39,246 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:35:39,247 [INFO] pc_project: Input shape: (5, 8)
-2025-10-25 11:35:39,272 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:35:39,276 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:35:39,276 [INFO] pc_project: Output shape: (5, 8)
-2025-10-25 11:35:39,277 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,279 [INFO] pc_project: Top values in 'facility_id':
+2025-10-25 12:59:59,338 [INFO] pc_project: Starting data cleaning.
+2025-10-25 12:59:59,339 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 12:59:59,371 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 12:59:59,381 [INFO] pc_project: Data cleaning complete.
+2025-10-25 12:59:59,382 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 12:59:59,382 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,386 [INFO] pc_project: Top values in 'facility_id':
 facility_id
 f001    1
 f002    1
 f003    1
 f004    1
 f005    1
-2025-10-25 11:35:39,280 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,283 [INFO] pc_project: Top values in 'facility_name':
+2025-10-25 12:59:59,387 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,390 [INFO] pc_project: Top values in 'facility_name':
 facility_name
 term_loan_a          1
 delayed_draw_tl      1
 mezz_loan            1
 refinance_tl         1
 senior_secured_tl    1
-2025-10-25 11:35:39,284 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,287 [INFO] pc_project: Top values in 'deal_id':
+2025-10-25 12:59:59,391 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,395 [INFO] pc_project: Top values in 'deal_id':
 deal_id
 d001    2
 d002    2
 d003    1
-2025-10-25 11:35:39,288 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,291 [INFO] pc_project: Top values in 'deal_name':
+2025-10-25 12:59:59,396 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,401 [INFO] pc_project: Top values in 'deal_name':
 deal_name
 acme_industrials_unitranche     2
 greenleaf_real_estate_mezz      2
 bluewave_software_sr_secured    1
-2025-10-25 11:35:39,292 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,296 [INFO] pc_project: Top values in 'strategy_bucket':
+2025-10-25 12:59:59,402 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,405 [INFO] pc_project: Top values in 'strategy_bucket':
 strategy_bucket
 direct_lending          2
 real_estate_credit      2
 opportunistic_credit    1
-2025-10-25 11:35:39,297 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,300 [INFO] pc_project: Top values in 'region':
+2025-10-25 12:59:59,406 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,409 [INFO] pc_project: Top values in 'region':
 region
 nan    4
 eu     1
-2025-10-25 11:35:39,301 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,304 [INFO] pc_project: Top values in 'sector':
+2025-10-25 12:59:59,410 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,414 [INFO] pc_project: Top values in 'sector':
 sector
 industrials    2
 real_estate    2
 technology     1
-2025-10-25 11:35:39,306 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,309 [INFO] pc_project: Top values in 'fund':
+2025-10-25 12:59:59,416 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,419 [INFO] pc_project: Top values in 'fund':
 fund
 hbc_private_credit_fund_i     4
 hbc_private_credit_fund_ii    1
-2025-10-25 11:35:39,310 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,312 [INFO] pc_project: Starting data cleaning.
-2025-10-25 11:35:39,313 [INFO] pc_project: Input shape: (2, 6)
-2025-10-25 11:35:39,322 [INFO] pc_project: No NaN values detected in the dataset.
-2025-10-25 11:35:39,326 [INFO] pc_project: Data cleaning complete.
-2025-10-25 11:35:39,327 [INFO] pc_project: Output shape: (2, 6)
-2025-10-25 11:35:39,328 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,330 [INFO] pc_project: Top values in 'fund':
+2025-10-25 12:59:59,420 [INFO] pc_project: --------------------------------------------------
+2025-10-25 12:59:59,421 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 12:59:59,425 [INFO] pc_project: Fund name cleaning completed. 5 rows modified.
+2025-10-25 13:01:00,085 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:01:00,088 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:01:00,129 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:01:00,143 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:01:00,144 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:01:00,144 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,151 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:01:00,151 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,154 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:01:00,155 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,159 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:01:00,160 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,163 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:01:00,163 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,169 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:01:00,170 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:01:00,172 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:01:00,173 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:01:00,185 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:01:00,186 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:01:00,186 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:01:00,199 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:01:00,208 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:01:00,209 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:01:00,209 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,211 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:01:00,211 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,214 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:01:00,214 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,216 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:01:00,216 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,218 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:01:00,219 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,221 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:01:00,221 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,222 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:01:00,222 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:01:00,234 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:01:00,243 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:01:00,243 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:01:00,243 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,246 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:01:00,247 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,247 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:01:00,258 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:01:00,260 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:01:00,261 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:01:00,261 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:01:00,276 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:01:00,285 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:01:00,285 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:01:00,286 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,288 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:01:00,289 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,291 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:01:00,291 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,292 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:01:00,293 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,295 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:01:00,295 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,297 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:01:00,298 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,299 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:01:00,300 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,301 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:01:00,302 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,304 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:01:00,304 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:01:00,304 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 13:01:00,308 [INFO] pc_project: Fund name cleaning completed. 5 rows modified.
+2025-10-25 13:02:42,676 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:02:42,678 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:02:42,710 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:02:42,728 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:02:42,729 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:02:42,730 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,737 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:02:42,738 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,740 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:02:42,741 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,745 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:02:42,746 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,749 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:02:42,750 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,754 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:02:42,755 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:02:42,756 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:02:42,757 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:02:42,778 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:02:42,778 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:02:42,779 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:02:42,799 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:02:42,807 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:02:42,809 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:02:42,810 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,814 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:02:42,814 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,818 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:02:42,819 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,821 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:02:42,822 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,826 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:02:42,827 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,828 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:02:42,829 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,829 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:02:42,830 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:02:42,836 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:02:42,846 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:02:42,846 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:02:42,847 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,849 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:02:42,849 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,849 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:02:42,861 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:02:42,863 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:02:42,864 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:02:42,864 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:02:42,881 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:02:42,889 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:02:42,889 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:02:42,890 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,893 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:02:42,894 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,896 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:02:42,897 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,899 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:02:42,899 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,901 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:02:42,901 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,903 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:02:42,905 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,907 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:02:42,907 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,910 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:02:42,910 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,912 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:02:42,913 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:02:42,913 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 13:02:42,915 [INFO] pc_project: Fund name cleaning completed. 0 rows modified.
+2025-10-25 13:03:45,726 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:03:45,729 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:03:45,771 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:03:45,788 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:03:45,788 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:03:45,789 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,803 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:03:45,804 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,807 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:03:45,808 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,810 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:03:45,810 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,811 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:03:45,812 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,823 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:03:45,825 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:03:45,825 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:03:45,826 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:03:45,851 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:03:45,854 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:03:45,858 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:03:45,894 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:03:45,907 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:03:45,908 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:03:45,909 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,913 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:03:45,913 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,916 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:03:45,918 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,921 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:03:45,921 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,924 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:03:45,925 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,927 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:03:45,928 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,929 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:03:45,929 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:03:45,940 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:03:45,950 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:03:45,950 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:03:45,951 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,954 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:03:45,955 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:45,956 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:03:45,975 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:03:45,978 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:03:45,978 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:03:45,979 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:03:46,004 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:03:46,012 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:03:46,012 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:03:46,013 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:46,016 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:03:46,017 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:46,022 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:03:46,023 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:46,025 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:03:46,026 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:46,028 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:03:46,029 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:46,031 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:03:46,032 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:46,035 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:03:46,035 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:46,037 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:03:46,038 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:03:46,040 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:03:46,040 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:32,910 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:04:32,913 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:04:32,951 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:04:32,966 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:04:32,967 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:04:32,967 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:32,974 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:04:32,975 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:32,978 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:04:32,979 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:32,982 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:04:32,983 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:32,986 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:04:32,987 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:32,993 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:04:32,994 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:04:32,995 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:04:32,996 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:04:33,011 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:04:33,012 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:04:33,013 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:04:33,027 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:04:33,034 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:04:33,035 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:04:33,035 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,037 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:04:33,037 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,039 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:04:33,040 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,041 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:04:33,041 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,044 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:04:33,044 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,046 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:04:33,046 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,047 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:04:33,047 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:04:33,054 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:04:33,062 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:04:33,062 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:04:33,063 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,065 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:04:33,065 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,066 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:04:33,079 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:04:33,081 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:04:33,082 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:04:33,082 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:04:33,095 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:04:33,102 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:04:33,103 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:04:33,103 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,105 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:04:33,106 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,108 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:04:33,108 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,110 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:04:33,110 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,111 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:04:33,112 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,113 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:04:33,113 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,116 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:04:33,117 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,118 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:04:33,119 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,121 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:04:33,121 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,123 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:04:33,123 [INFO] pc_project: Input shape: (2, 6)
+2025-10-25 13:04:33,129 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:04:33,138 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:04:33,139 [INFO] pc_project: Output shape: (2, 6)
+2025-10-25 13:04:33,139 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,141 [INFO] pc_project: Top values in 'fund':
 fund
 hbc_private_credit_fund_i     1
 hbc_private_credit_fund_ii    1
-2025-10-25 11:35:39,331 [INFO] pc_project: --------------------------------------------------
-2025-10-25 11:35:39,335 [INFO] pc_project: Top values in 'cost_of_funds_curve':
+2025-10-25 13:04:33,142 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,143 [INFO] pc_project: Top values in 'cost_of_funds_curve':
 cost_of_funds_curve
 sofr       1
 euribor    1
-2025-10-25 11:35:39,336 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:04:33,143 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,893 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:04,893 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:05:04,903 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:04,906 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:04,907 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:05:04,907 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,909 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:05:04,910 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,911 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:05:04,911 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,913 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:05:04,915 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,916 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:05:04,917 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,918 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:05:04,919 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:05:04,919 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:05:04,919 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:05:04,925 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:05:04,926 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:04,926 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:05:04,934 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:04,937 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:04,937 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:05:04,937 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,939 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:05:04,940 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,942 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:05:04,943 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,945 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:05:04,946 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,948 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:05:04,948 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,950 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:05:04,950 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,951 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:04,951 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:05:04,959 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:04,961 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:04,962 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:05:04,962 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,964 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:05:04,965 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,965 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:05:04,970 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:05:04,971 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:05:04,971 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:04,972 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:05:04,982 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:04,986 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:04,986 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:05:04,986 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,988 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:05:04,988 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,990 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:05:04,991 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,993 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:05:04,993 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,995 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:05:04,996 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:04,997 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:05:04,998 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:05,000 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:05:05,000 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:05,002 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:05:05,002 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:05,004 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:05:05,004 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:05,005 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:05,005 [INFO] pc_project: Input shape: (2, 6)
+2025-10-25 13:05:05,011 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:05,013 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:05,014 [INFO] pc_project: Output shape: (2, 6)
+2025-10-25 13:05:05,014 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:05,016 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-25 13:05:05,017 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:05,019 [INFO] pc_project: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-25 13:05:05,019 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:05,020 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 13:05:05,022 [INFO] pc_project: Fund name cleaning completed. 0 rows modified.
+2025-10-25 13:05:18,731 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:18,733 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:05:18,765 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:18,774 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:18,775 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:05:18,776 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,779 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:05:18,780 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,784 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:05:18,785 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,787 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:05:18,788 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,790 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:05:18,791 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,794 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:05:18,795 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:05:18,796 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:05:18,797 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:05:18,805 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:05:18,806 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:18,807 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:05:18,820 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:18,826 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:18,827 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:05:18,828 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,831 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:05:18,832 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,835 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:05:18,837 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,838 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:05:18,839 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,840 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:05:18,841 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,842 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:05:18,843 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,843 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:18,843 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:05:18,851 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:18,857 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:18,857 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:05:18,857 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,859 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:05:18,860 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,860 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:05:18,870 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:05:18,873 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:05:18,873 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:18,873 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:05:18,891 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:18,899 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:18,899 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:05:18,899 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,901 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:05:18,901 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,903 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:05:18,903 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,905 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:05:18,905 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,907 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:05:18,907 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,910 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:05:18,910 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,913 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:05:18,913 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,915 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:05:18,915 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,917 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:05:18,917 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,917 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:18,918 [INFO] pc_project: Input shape: (2, 6)
+2025-10-25 13:05:18,923 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:18,931 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:18,931 [INFO] pc_project: Output shape: (2, 6)
+2025-10-25 13:05:18,932 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,934 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-25 13:05:18,935 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,936 [INFO] pc_project: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-25 13:05:18,937 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:18,937 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 13:05:18,939 [INFO] pc_project: Fund name cleaning completed. 0 rows modified.
+2025-10-25 13:05:45,274 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:45,275 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:05:45,296 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:45,303 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:45,304 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:05:45,305 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,309 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:05:45,311 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,314 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:05:45,315 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,317 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:05:45,318 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,321 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:05:45,323 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,326 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:05:45,327 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:05:45,328 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:05:45,329 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:05:45,338 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:05:45,339 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:45,340 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:05:45,358 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:45,365 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:45,366 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:05:45,367 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,369 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:05:45,370 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,373 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:05:45,374 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,376 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:05:45,377 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,378 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:05:45,379 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,381 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:05:45,381 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,381 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:45,381 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:05:45,391 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:45,396 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:45,397 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:05:45,397 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,398 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:05:45,399 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,399 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:05:45,409 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:05:45,410 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:05:45,411 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:45,411 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:05:45,427 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:45,434 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:45,434 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:05:45,435 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,437 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:05:45,437 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,440 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:05:45,440 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,444 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:05:45,444 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,446 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:05:45,447 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,448 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:05:45,449 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,451 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:05:45,451 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,453 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:05:45,454 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,455 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:05:45,456 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,456 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:45,457 [INFO] pc_project: Input shape: (2, 6)
+2025-10-25 13:05:45,466 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:45,472 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:45,473 [INFO] pc_project: Output shape: (2, 6)
+2025-10-25 13:05:45,473 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,476 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-25 13:05:45,476 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,477 [INFO] pc_project: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-25 13:05:45,478 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:45,478 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 13:05:45,481 [INFO] pc_project: Fund name cleaning completed. 0 rows modified.
+2025-10-25 13:05:57,468 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:57,469 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:05:57,487 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:57,494 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:57,495 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:05:57,495 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,498 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:05:57,499 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,501 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:05:57,502 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,505 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:05:57,506 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,508 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:05:57,509 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,512 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:05:57,513 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:05:57,514 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:05:57,515 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:05:57,524 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:05:57,525 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:57,526 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:05:57,538 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:57,545 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:57,546 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:05:57,547 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,549 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:05:57,550 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,551 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:05:57,552 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,555 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:05:57,556 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,558 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:05:57,559 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,561 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:05:57,563 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,563 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:57,564 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:05:57,571 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:57,579 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:57,580 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:05:57,580 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,581 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:05:57,581 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,582 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:05:57,589 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:05:57,591 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:05:57,591 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:57,592 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:05:57,603 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:57,610 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:57,610 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:05:57,610 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,613 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:05:57,613 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,614 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:05:57,615 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,616 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:05:57,616 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,617 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:05:57,618 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,619 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:05:57,619 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,621 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:05:57,621 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,624 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:05:57,624 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,626 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:05:57,626 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,627 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:05:57,627 [INFO] pc_project: Input shape: (2, 6)
+2025-10-25 13:05:57,633 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:05:57,638 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:05:57,639 [INFO] pc_project: Output shape: (2, 6)
+2025-10-25 13:05:57,640 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,642 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-25 13:05:57,642 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,643 [INFO] pc_project: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-25 13:05:57,644 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:05:57,644 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 13:05:57,647 [INFO] pc_project: Fund name cleaning completed. 0 rows modified.
+2025-10-25 13:06:09,893 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:09,894 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:06:09,920 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:09,932 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:09,932 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:06:09,932 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:09,936 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:06:09,936 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:09,938 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:06:09,939 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:09,941 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:06:09,942 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:09,944 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:06:09,945 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:09,949 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:06:09,950 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:06:09,950 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:06:09,950 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:06:09,960 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:06:09,961 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:09,961 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:06:09,981 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:09,990 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:09,991 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:06:09,991 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:09,992 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:06:09,993 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:09,995 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:06:09,995 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:09,998 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:06:09,998 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,001 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:06:10,001 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,003 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:06:10,004 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,004 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:10,004 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:06:10,010 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:10,018 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:10,018 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:06:10,018 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,020 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:06:10,021 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,021 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:06:10,031 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:06:10,033 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:06:10,033 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:10,034 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:06:10,051 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:10,060 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:10,061 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:06:10,061 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,066 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:06:10,066 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,068 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:06:10,069 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,071 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:06:10,071 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,073 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:06:10,073 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,075 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:06:10,075 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,077 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:06:10,079 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,081 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:06:10,081 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,084 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:06:10,084 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,085 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:10,085 [INFO] pc_project: Input shape: (2, 6)
+2025-10-25 13:06:10,091 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:10,098 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:10,098 [INFO] pc_project: Output shape: (2, 6)
+2025-10-25 13:06:10,099 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,101 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-25 13:06:10,101 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,104 [INFO] pc_project: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-25 13:06:10,104 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:10,105 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 13:06:10,108 [INFO] pc_project: Fund name cleaning completed. 0 rows modified.
+2025-10-25 13:06:24,609 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:24,610 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:06:24,632 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:24,642 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:24,642 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:06:24,642 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,645 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:06:24,646 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,647 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:06:24,648 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,650 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:06:24,651 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,653 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:06:24,653 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,656 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:06:24,656 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:06:24,656 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:06:24,657 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:06:24,666 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:06:24,667 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:24,668 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:06:24,680 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:24,687 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:24,688 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:06:24,688 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,690 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:06:24,690 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,693 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:06:24,693 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,695 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:06:24,695 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,697 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:06:24,697 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,699 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:06:24,700 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,701 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:24,701 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:06:24,708 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:24,714 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:24,715 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:06:24,715 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,718 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:06:24,718 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,719 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:06:24,725 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:06:24,727 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:06:24,727 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:24,728 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:06:24,742 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:24,749 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:24,749 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:06:24,750 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,752 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:06:24,752 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,754 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:06:24,754 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,755 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:06:24,756 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,757 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:06:24,758 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,759 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:06:24,759 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,760 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:06:24,761 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,763 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:06:24,763 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,766 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:06:24,767 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,768 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:24,768 [INFO] pc_project: Input shape: (2, 6)
+2025-10-25 13:06:24,776 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:24,782 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:24,783 [INFO] pc_project: Output shape: (2, 6)
+2025-10-25 13:06:24,783 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,786 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-25 13:06:24,786 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,788 [INFO] pc_project: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-25 13:06:24,789 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:24,789 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 13:06:24,792 [INFO] pc_project: Fund name cleaning completed. 0 rows modified.
+2025-10-25 13:06:43,692 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:43,693 [INFO] pc_project: Input shape: (137, 6)
+2025-10-25 13:06:43,720 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:43,731 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:43,731 [INFO] pc_project: Output shape: (137, 6)
+2025-10-25 13:06:43,733 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,736 [INFO] pc_project: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+2025-10-25 13:06:43,737 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,739 [INFO] pc_project: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-25 13:06:43,740 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,741 [INFO] pc_project: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-25 13:06:43,742 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,744 [INFO] pc_project: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-25 13:06:43,744 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,749 [INFO] pc_project: Applied cash flow sign convention.
+2025-10-25 13:06:43,749 [INFO] pc_project:   • Negative cash flow types: ['contribution']
+2025-10-25 13:06:43,750 [INFO] pc_project:   • Rows converted to negative: 6
+2025-10-25 13:06:43,751 [INFO] pc_project:   • Rows converted to positive: 131
+2025-10-25 13:06:43,761 [INFO] pc_project: ----------------------------------------------------------------------
+2025-10-25 13:06:43,762 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:43,763 [INFO] pc_project: Input shape: (5, 10)
+2025-10-25 13:06:43,782 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:43,791 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:43,791 [INFO] pc_project: Output shape: (5, 10)
+2025-10-25 13:06:43,791 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,794 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:06:43,794 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,796 [INFO] pc_project: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-25 13:06:43,797 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,800 [INFO] pc_project: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-25 13:06:43,801 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,802 [INFO] pc_project: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-25 13:06:43,803 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,805 [INFO] pc_project: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-25 13:06:43,806 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,806 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:43,806 [INFO] pc_project: Input shape: (48, 3)
+2025-10-25 13:06:43,812 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:43,821 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:43,821 [INFO] pc_project: Output shape: (48, 3)
+2025-10-25 13:06:43,822 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,823 [INFO] pc_project: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-25 13:06:43,824 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,824 [INFO] pc_project: Starting curve cleaning process...
+2025-10-25 13:06:43,835 [INFO] pc_project: Curve cleaning completed — 2 values modified.
+2025-10-25 13:06:43,837 [INFO] pc_project: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-25 13:06:43,837 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:43,838 [INFO] pc_project: Input shape: (5, 8)
+2025-10-25 13:06:43,853 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:43,860 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:43,860 [INFO] pc_project: Output shape: (5, 8)
+2025-10-25 13:06:43,860 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,862 [INFO] pc_project: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-25 13:06:43,863 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,866 [INFO] pc_project: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-25 13:06:43,867 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,868 [INFO] pc_project: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-25 13:06:43,869 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,870 [INFO] pc_project: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-25 13:06:43,871 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,873 [INFO] pc_project: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-25 13:06:43,873 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,875 [INFO] pc_project: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-25 13:06:43,875 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,877 [INFO] pc_project: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-25 13:06:43,877 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,879 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-25 13:06:43,879 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,880 [INFO] pc_project: Starting data cleaning.
+2025-10-25 13:06:43,881 [INFO] pc_project: Input shape: (2, 6)
+2025-10-25 13:06:43,889 [INFO] pc_project: No NaN values detected in the dataset.
+2025-10-25 13:06:43,897 [INFO] pc_project: Data cleaning complete.
+2025-10-25 13:06:43,898 [INFO] pc_project: Output shape: (2, 6)
+2025-10-25 13:06:43,898 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,900 [INFO] pc_project: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-25 13:06:43,901 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,902 [INFO] pc_project: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-25 13:06:43,903 [INFO] pc_project: --------------------------------------------------
+2025-10-25 13:06:43,903 [INFO] pc_project: Starting leverage_df fund name cleaning...
+2025-10-25 13:06:43,906 [INFO] pc_project: Fund name cleaning completed. 0 rows modified.
