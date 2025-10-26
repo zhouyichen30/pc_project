@@ -125,3 +125,44 @@ def clean_data_format(data : pd.DataFrame, date_cols : list, text_cols :list, nu
             logger.info(f"Top values in '{col}':\n{top_values.to_string()}")
             logger.info("-" * 50)
     return df
+
+def stack_fund_fees_into_master(fees: pd.DataFrame, master_cashflow: pd.DataFrame) -> pd.DataFrame:
+    """
+    Align and append fund-level fee cashflows to the master cashflow table.
+
+    Parameters
+    ----------
+    fees : pd.DataFrame
+        Fund-level fees with columns:
+        ['payment_date', 'cashflow_type', 'fund', 'amount'].
+    master_cashflow : pd.DataFrame
+        Existing master cashflow table with schema like:
+        ['asof','entity_id','entity_type','cashflow_type','amount','currency',...,'fund',...].
+
+    Returns
+    -------
+    pd.DataFrame
+        Combined table with master schema; fund rows appended with
+        non-applicable fields left as NaN.
+    """
+    # Rename to match master schema
+    fees_aligned = fees.rename(columns={'payment_date': 'asof'}).copy()
+
+    # Add any missing columns dynamically (no manual listing)
+    for col in master_cashflow.columns:
+        if col not in fees_aligned.columns:
+            fees_aligned[col] = pd.NA
+
+    # Reorder columns to match master
+    fees_aligned = fees_aligned[master_cashflow.columns]
+
+    # Stack together
+    combined = pd.concat([master_cashflow, fees_aligned], ignore_index=True)
+
+    # Logging
+    logger.info(
+        "stack_fund_fees_into_master: appended %d fund rows to %d master rows (total=%d).",
+        len(fees_aligned), len(master_cashflow), len(combined)
+    )
+
+    return combined

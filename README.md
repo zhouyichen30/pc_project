@@ -295,13 +295,21 @@ Computes the Internal Rate of Return (IRR) for irregularly spaced cashflows usin
 ## Output
 
 ### Main Outputs
+in cash_master folder
 - `cleanned_cashflow_master.csv` – fully cleaned and merged data prior to modeling  
+-'cleanned_cashflow_master_fund_added.csv' - cleanned data with fund level expense added to calculate net irr
+
 - `cleanned_net_irr_all_level.csv` - output from second steps before fund irr calc -used for qc
-- `fund_info.csv` - this is cleaned fund level data before calculate monthly drawn and undrawn fee
 - `performance_summary.csv` – unified metrics summary  
-  ```
-  level,id,name,paid_in,distributed,gross_irr,gross_moic,net_irr,net_moic
-  ```
+  in fund level folder
+  `fund_info.csv` — cleaned fund-level dataset aggregated from raw cashflows before joining with curve data.
+  Contains each fund’s contribution, financing portion, undrawn balance, and commitment structure.
+
+  `fund_curve.csv` — fund-level data joined with monthly curve rates (e.g., SOFR, EURIBOR).
+  Includes calculated fields such as all_in_rate and undrawn_fee_rate, along with the corresponding month-end and payment dates.
+
+  `fee_calc.csv` — monthly output showing each fund’s interest and undrawn fee cashflows.
+  Generated using the drawn (finance_portion) and undrawn amounts with their respective annualized rates (divided by 12 for monthly accrual).
 
 
 ## Known Limitations and Future Improvements
@@ -312,6 +320,7 @@ Computes the Internal Rate of Return (IRR) for irregularly spaced cashflows usin
 - Curve application at deal/facility level instead of fund approximation
 - End-market value analysis
 - Fund level net irr calc is limited due to no credit line payment data
+- mangement fee, tax, accured carry need to be inculded in net irr
 
 ---
 

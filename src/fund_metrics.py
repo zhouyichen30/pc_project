@@ -303,3 +303,4 @@ def run_fund_level_pipeline(mdc_cleanned: pd.DataFrame,
     logger.info("Step 4: calc_monthly_fee complete — %d rows", len(fees))
 
     logger.info("Pipeline finished successfully. Outputs saved in: %s", out_dir)
+    return fees

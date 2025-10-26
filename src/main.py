@@ -1,13 +1,13 @@
 import pandas as pd
 from pathlib import Path
 import numpy as np
-from utils import clean_data_format   # import the helper function
+from utils import clean_data_format,stack_fund_fees_into_master   
 from clean_cash_flow import cash_flow_clean
 from clean_curve import clean_curve_df
 from merge import merge_db,merge_curve
 from cash_flow_adjust import adjust_cash_flow
 from metrics import metrics
-from level_merge import merge_deal_level
+from level_merge import merge_deal_level,assign_fund_net_metrics
 from fund_metrics import run_fund_level_pipeline
 
 # Get the project root (one level up from src/)
@@ -72,28 +72,39 @@ mdbc = merge_curve(mdb, curve_df_cleaned)
 mdc_cleanned = adjust_cash_flow(mdbc)
 
 #write the cleanned data to a csv files
-mdc_cleanned.to_csv(OUT_path / 'cleanned_cashflow_master.csv' , index=False)
+mdc_cleanned.to_csv(OUT_path / 'cash_master'/ 'cleanned_cashflow_master.csv' , index=False)
 
 #now calcaulte the metrics
 #calculate for each levels
 #please make sure the lower level is the first entry in the list for irr calc purpose
-level_3 = ['entity_id','deal_id','fund']
+level_3 = ['entity_id','facility_name','deal_id','fund']
+
 level_3_metrics_db = metrics(level_3,mdc_cleanned)
 
+
 #level 2 is on deal level
-level_2 = ['deal_id','fund']
+level_2 = ['deal_id','deal_name','fund']
 level_2_metrics_db = metrics(level_2,mdc_cleanned)
 
 #level 1 is on fund level
 level_1 = ['fund']
 level_1_metrics_db = metrics(level_1,mdc_cleanned)
-print(level_2_metrics_db)
 
 #merge all levels
 mldb = merge_deal_level(level_3_metrics_db,level_2_metrics_db,level_1_metrics_db)
-print(mldb)
 #write mdb as csv so we can quality contorl this data before goes to next step
-mldb.to_csv(OUT_path / 'cleanned_net_irr_all_levels.csv', index=False)
+mldb.to_csv(OUT_path / 'cleanned_gross_irr_all_levels.csv', index=False)
 
-#next we calculate fund level expense so we can use to calculate net irr...
+#next we calculate fund level expense so we can use to calculate net irr
 fund_fee_db = run_fund_level_pipeline(mdc_cleanned,curve_df_cleaned , OUT_path)
+
+#stack with master cash flow
+cash_flow_master_fund = stack_fund_fees_into_master(fund_fee_db,mdc_cleanned)
+cash_flow_master_fund.to_csv(OUT_path / 'cash_master'/ 'cleanned_cashflow_master_fund_added.csv' , index=False)
+
+#recompute net irr, if I want to recompute gross irr I will just change cash_flow_master_fund to mdc_cleanned
+#for effiency, i only compute the net irr since its gonna be the same code for gross irr that I calculate above
+level_1_metrics_db_net = metrics(level_1,cash_flow_master_fund)
+#merge the net irr
+perf_db = assign_fund_net_metrics(mldb,level_1_metrics_db_net)
+perf_db.to_csv(OUT_path / 'performance_summary.csv', index=False)
