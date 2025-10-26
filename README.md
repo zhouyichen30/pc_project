@@ -122,32 +122,6 @@ example cmd: python -m irr_calc --shock 0.01
 - `covenants.csv` not used.
 
 ---
-
-## Key Function
-
-### How Data Is Cleaned (Pipeline Overview)
-Implemented in `src/irr_calc/clean_cash_flow.py`, `src/irr_calc/clean_curve.py`, and `src/irr_calc/utils.py`.
-
-**Common cleaning steps in (`src/irr_calc/utils.py`):**
-- Dates converted using `pd.to_datetime(errors="coerce")`.
-- Text normalized with `.str.strip().str.lower()`.
-- Numerics coerced using `pd.to_numeric(errors="coerce")`.
-- Duplicates removed; top-5 NA summaries logged.
-- File-specific cleaners for cashflow, curve, and structure files.
-
-**Cashflow cleaning (`clean_cash_flow.py`):**
-- Normalize key columns (`entity_id`, `deal_id`, `fund`, `date`, `amount`, `type`).
-- Enforce sign conventions (contributions negative, distributions positive).
-- Apply OID/origination adjustments via `adjust_fees()`.
-- Remove accrued PIK via `_adjust_pik()`.
-- Drop malformed date type rows and log shape/NA counts.
-
-**Curve cleaning (`clean_curve.py`):**
-- Normalize columns: `asof`, `curve`, `rate`.
-- Fix label typos (`s0fr` → `sofr`, `eurib0r` → `euribor`).
-- Clip negative rates after shock.
-- Join to master by `(cost_of_funds_curve, month_end_asof)`.
-
 ## Model Workflow
 1. **Clean and standardize all input datasets**
    - Read all raw CSVs from `/data/`: `cashflows_deal.csv`, `terms.csv`, `structure.csv`, `leverage.csv`, and `curves.csv`.
@@ -187,11 +161,37 @@ Implemented in `src/irr_calc/clean_cash_flow.py`, `src/irr_calc/clean_curve.py`,
    - Generate IRR comparison chart (`plot_irr_highlighted()`) visualizing gross vs. net IRR by hierarchy level.
    - Log all steps and validation info in `logs/project.log`.
 
+---
+## Key Function
 
-## `xirr(cashflows, dates)` in src/irr_calc/metrics.py
+### How Data Is Cleaned (Pipeline Overview)
+Implemented in `src/irr_calc/clean_cash_flow.py`, `src/irr_calc/clean_curve.py`, and `src/irr_calc/utils.py`.
+
+**Common cleaning steps in (`src/irr_calc/utils.py`):**
+- Dates converted using `pd.to_datetime(errors="coerce")`.
+- Text normalized with `.str.strip().str.lower()`.
+- Numerics coerced using `pd.to_numeric(errors="coerce")`.
+- Duplicates removed; top-5 NA summaries logged.
+- File-specific cleaners for cashflow, curve, and structure files.
+
+**Cashflow cleaning (`clean_cash_flow.py`):**
+- Normalize key columns (`entity_id`, `deal_id`, `fund`, `date`, `amount`, `type`).
+- Enforce sign conventions (contributions negative, distributions positive).
+- Apply OID/origination adjustments via `adjust_fees()`.
+- Remove accrued PIK via `_adjust_pik()`.
+- Drop malformed date type rows and log shape/NA counts.
+
+**Curve cleaning (`clean_curve.py`):**
+- Normalize columns: `asof`, `curve`, `rate`.
+- Fix label typos (`s0fr` → `sofr`, `eurib0r` → `euribor`).
+- Clip negative rates after shock.
+- Join to master by `(cost_of_funds_curve, month_end_asof)`.
+
+## IRR Calc
+**`xirr(cashflows, dates)` in src/irr_calc/metrics.py**
 Computes the Internal Rate of Return (IRR) for irregularly spaced cashflows using Newton’s method on `_xnpv()`.
 
-### `_xnpv(rate, cashflows, dates)` in src/irr_calc/metrics.py
+**`_xnpv(rate, cashflows, dates)` in src/irr_calc/metrics.py**
 Computes the Net Present Value (NPV) for irregularly spaced cashflows, consistent with Excel’s XNPV.
 
 **Formula**
