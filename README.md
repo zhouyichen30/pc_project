@@ -32,9 +32,7 @@ venv\Scripts\Activate.ps1
 
 ### 3. Install dependencies
 ```bash
-pip install -U pip
 pip install -r requirements.txt
-pip install -e .
 ```
 
 ### 4. Run the project
