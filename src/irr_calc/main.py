@@ -1,19 +1,19 @@
 import pandas as pd
 from pathlib import Path
 import numpy as np
+import logging
 
 #import all the local functions
-from utils import clean_data_format,stack_fund_fees_into_master   
-from clean_cash_flow import cash_flow_clean
-from clean_curve import clean_curve_df
-from merge import merge_db,merge_curve
-from cash_flow_adjust import adjust_cash_flow
-from metrics import metrics
-from level_merge import merge_deal_level,assign_fund_net_metrics
-from fund_metrics import run_fund_level_pipeline
-from charts import plot_irr_highlighted
-import logging
-from cli_utils import get_shock_from_cli
+from .utils import clean_data_format,stack_fund_fees_into_master   
+from .clean_cash_flow import cash_flow_clean
+from .clean_curve import clean_curve_df
+from .merge import merge_db,merge_curve
+from .cash_flow_adjust import adjust_cash_flow
+from .metrics import metrics
+from .level_merge import merge_deal_level,assign_fund_net_metrics
+from .fund_metrics import run_fund_level_pipeline
+from .charts import plot_irr_highlighted
+from .cli_utils import get_shock_from_cli
 
 
 
@@ -22,8 +22,9 @@ logger = logging.getLogger(__name__)
 
 
 def main() -> None:
-    # Get the project root (one level up from src/)
-    BASE_DIR = Path(__file__).resolve().parent.parent
+    # Get the project root (one level up from src/irr_calc)
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    logger.info(f'Base Dir is {BASE_DIR}')
 
     # Define the data folder path
     data_path = BASE_DIR / "data"
