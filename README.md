@@ -5,64 +5,42 @@ The goal is to normalize raw CSV inputs, compute XIRR/MOIC metrics, model levera
 
 ---
 
-## Setup Instructions
+1.Clone the repository
 
-### 1) Clone the repository
-```bash
 git clone <your-repo-url>
 cd pc_project
-```
 
-### 2) Create and activate a virtual environment
-```bash
+2. Create and activate a virtual environment
+
 # Create
-python -m venv venv
+python -m venv .venv
 
 # Activate
 # macOS/Linux
-source venv/bin/activate
+source .venv/bin/activate
 # Windows PowerShell
-venv\Scripts\Activate.ps1
-```
+.\.venv\Scripts\Activate.ps1
 
-### 3) Install dependencies
-```bash
+3.Install dependencies
+
+pip install -U pip
 pip install -r requirements.txt
-```
+pip install -e .
 
----
-#
-From your project root (pc_project/):
 
-# Windows PowerShell
-.\venv\Scripts\activate
+From the project root (pc_project/), navigate into the src directory first:
+cd src
 
-# macOS / Linux
-Execute the pipeline directly with no rate shock:
+excuate python -m irr_calc
 
-python src/main.py
+#intrest rate shock
+You can “shock” the base-rate curve by an absolute decimal amount before metrics are computed.
 
-### how to apply shock
-## Interest Rate Shock (Optional)
 
-You can optionally “shock” the base rate curve by an absolute **decimal** amount before metrics are computed.  
-This is applied **after** curve cleaning (`clean_curve_df`) and **before** merging curves into the master dataset.
-
-- **Unit:** absolute decimal (e.g., `0.01` = **+100 bps**, `-0.0025` = **–25 bps**)  
-- **Scope:** applied uniformly to every row in `curve_df_cleaned['rate']`  
-- **Effect:** downstream fees/IRR reflect the shocked rates; outputs and the IRR chart will incorporate the shock  
-- **Logging:** the chosen shock is recorded in `logs/project.log`
-
-### How to run with a shock
-
-You can shift all base rates in curves.csv by an absolute decimal value to test IRR sensitivity.
-
-| Command                              | Description                            |
-| ------------------------------------ | -------------------------------------- |
-| `python src/main.py --shock 0.01`    | Apply a **+100 bps** (1%) upward shock |
-| `python src/main.py --shock -0.0025` | Apply a **–25 bps** downward shock     |
-| `python src/main.py`                 | Run baseline (no shock)                |
-
+| Parameter | Unit    | Example   | Meaning                    |
+| --------- | ------- | --------- | -------------------------- |
+| `--shock` | decimal | `0.01`    | **+100 bps** upward shock  |
+|           |         | `-0.0025` | **–25 bps** downward shock |
 
 
 ## Project Overview
