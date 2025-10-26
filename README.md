@@ -187,7 +187,7 @@ Implemented in `src/irr_calc/clean_cash_flow.py`, `src/irr_calc/clean_curve.py`,
 - Clip negative rates after shock.
 - Join to master by `(cost_of_funds_curve, month_end_asof)`.
 
-## IRR Calc
+**IRR Calc:**
 **`xirr(cashflows, dates)` in src/irr_calc/metrics.py**
 Computes the Internal Rate of Return (IRR) for irregularly spaced cashflows using Newton’s method on `_xnpv()`.
 
@@ -215,7 +215,7 @@ NPV(r) = Σ [ CF_i / (1 + r)^((t_i - t_0)/365) ]
 - Returns IRR as decimal (e.g., 0.1523 = 15.23%).
 
 ---
-Logging and Validation
+## Logging and Validation
 
 All functions include integrated logging using the global project logger.
 
