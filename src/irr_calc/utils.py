@@ -6,7 +6,7 @@ from pathlib import Path
 # Global logger setup — shared across all utility functions
 #logger will write to logs folder under PC_PROJECT
 # -------------------------------------------------------------------
-LOG_DIR = Path(__file__).resolve().parent.parent / "logs"
+LOG_DIR = Path(__file__).resolve().parent.parent.parent / "logs"
 LOG_DIR.mkdir(exist_ok=True)
 LOG_FILE = LOG_DIR / "project.log"  # single file for all logs
 

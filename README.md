@@ -124,7 +124,7 @@ example cmd: python -m irr_calc --shock 0.01
 ### How Data Is Cleaned (Pipeline Overview)
 Implemented in `src/irr_calc/clean_cash_flow.py`, `src/irr_calc/clean_curve.py`, and `src/irr_calc/utils.py`.
 
-**Common cleaning steps:**
+**Common cleaning steps in utilis:**
 - Dates converted using `pd.to_datetime(errors="coerce")`.
 - Text normalized with `.str.strip().str.lower()`.
 - Numerics coerced using `pd.to_numeric(errors="coerce")`.
@@ -144,23 +144,50 @@ Implemented in `src/irr_calc/clean_cash_flow.py`, `src/irr_calc/clean_curve.py`,
 - Clip negative rates after shock.
 - Join to master by `(cost_of_funds_curve, month_end_asof)`.
 
-**Structure cleaning (`clean_structure.py`):**
-- Validate facility/deal/fund keys.
-- Use outer joins for debugging and left joins for production merge.
-- Log mismatched or missing keys.
+## Model Workflow
+1. **Clean and standardize all input datasets**
+   - Read all raw CSVs from `/data/`: `cashflows_deal.csv`, `terms.csv`, `structure.csv`, `leverage.csv`, and `curves.csv`.
+   - Normalize date, text, and numeric columns using `clean_data_format()`.
+   - Apply specialized cleaners:
+     - `cash_flow_clean()` — fixes sign conventions and filters malformed rows.
+     - `clean_curve_df()` — fixes curve labels, enforces non-negative rates, applies optional rate shocks.
 
-**Merge order:**
-1. Clean and standardize individual datasets.
-2. Merge cashflows → structure/terms → curves.
-3. Output master dataset to `/outputs/cash_master/`.
-4. Compute fund-level financing and fee accruals.
-5. Output anther master dataset to `/outputs/cash_master/`
-4
+2. **Merge standardized datasets**
+   - Merge cleaned cashflow, term, structure, and leverage data with `merge_db()`.
+   - Merge fund-level curve data with `merge_curve()` using `cost_of_funds_curve` and prior month-end anchors.
+   - Output intermediate dataset → `/outputs/cash_master/cleanned_cashflow_master.csv`.
 
-### `xirr(cashflows, dates)` in metrics.py
+3. **Adjust cashflows for fees and PIK**
+   - Apply origination, OID, and non-cash PIK adjustments via `adjust_cash_flow()`.
+   - Save cleaned and adjusted master dataset.
+
+4. **Compute multi-level metrics**
+   - Use `metrics()` to compute Paid-In, Distributed, MOIC, and IRR at:
+     - Facility level (`['entity_id','facility_name','deal_id','fund']`)
+     - Deal level (`['deal_id','deal_name','fund']`)
+     - Fund level (`['fund']`)
+   - Merge metrics across hierarchy levels with `merge_deal_level()`.
+   - Output gross-level metrics → `/outputs/cleanned_gross_irr_all_levels.csv`.
+
+5. **Compute fund-level financing and fee accruals**
+   - Run `run_fund_level_pipeline()` to calculate interest expense and undrawn fees using monthly curves.
+   - Append fee and financing data to master cashflow using `stack_fund_fees_into_master()`.
+   - Output → `/outputs/cash_master/cleanned_cashflow_master_fund_added.csv`.
+
+6. **Compute and merge net IRR/MOIC metrics**
+   - Recalculate net metrics at fund level using `metrics()`.
+   - Merge with gross metrics using `assign_fund_net_metrics()`.
+   - Output consolidated summary → `/outputs/performance_summary.csv`.
+
+7. **Visualization and quality control**
+   - Generate IRR comparison chart (`plot_irr_highlighted()`) visualizing gross vs. net IRR by hierarchy level.
+   - Log all steps and validation info in `logs/project.log`.
+
+
+## `xirr(cashflows, dates)` in src/irr_calc/metrics.py
 Computes the Internal Rate of Return (IRR) for irregularly spaced cashflows using Newton’s method on `_xnpv()`.
 
-### `_xnpv(rate, cashflows, dates)`
+### `_xnpv(rate, cashflows, dates)` in src/irr_calc/metrics.py
 Computes the Net Present Value (NPV) for irregularly spaced cashflows, consistent with Excel’s XNPV.
 
 **Formula**
