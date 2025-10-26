@@ -1,9 +1,13 @@
 # Private Credit Performance
 
 A reproducible Python workflow for ingesting, cleaning, and analyzing private credit cash flow data.  
-The goal is to normalize raw CSV inputs, compute XIRR/MOIC metrics, model leverage impact, and output a unified performance summary.
+The goal is to normalize raw CSV inputs, compute metrics such as XIRR/MOIC, model leverage impact (net), and output a unified performance summary and chart.
 
 ---
+> This project was developed and tested on **Python 3.12.10**.  
+> Please use Python 3.11 or later to ensure compatibility.
+
+
 
 ## How to Run
 
@@ -124,7 +128,7 @@ example cmd: python -m irr_calc --shock 0.01
 ### How Data Is Cleaned (Pipeline Overview)
 Implemented in `src/irr_calc/clean_cash_flow.py`, `src/irr_calc/clean_curve.py`, and `src/irr_calc/utils.py`.
 
-**Common cleaning steps in utilis:**
+**Common cleaning steps in (`src/irr_calc/utils.py`):**
 - Dates converted using `pd.to_datetime(errors="coerce")`.
 - Text normalized with `.str.strip().str.lower()`.
 - Numerics coerced using `pd.to_numeric(errors="coerce")`.
@@ -194,11 +198,6 @@ Computes the Net Present Value (NPV) for irregularly spaced cashflows, consisten
 ```
 NPV(r) = Σ [ CF_i / (1 + r)^((t_i - t_0)/365) ]
 ```
-
-**Inputs**
-- `rate`: discount rate in decimal form (e.g., 0.10 for 10%)
-- `cashflows`: list of cash amounts (negative = outflows, positive = inflows)
-- `dates`: matching list of cashflow dates
 
 **Notes**
 - Uses ACT/365 day count.
