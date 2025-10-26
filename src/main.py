@@ -8,6 +8,7 @@ from merge import merge_db,merge_curve
 from cash_flow_adjust import adjust_cash_flow
 from metrics import metrics
 from level_merge import merge_deal_level
+from fund_metrics import run_fund_level_pipeline
 
 # Get the project root (one level up from src/)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -91,5 +92,8 @@ print(level_2_metrics_db)
 #merge all levels
 mldb = merge_deal_level(level_3_metrics_db,level_2_metrics_db,level_1_metrics_db)
 print(mldb)
-#write mdb as csv
+#write mdb as csv so we can quality contorl this data before goes to next step
 mldb.to_csv(OUT_path / 'cleanned_net_irr_all_levels.csv', index=False)
+
+#next we calculate fund level expense so we can use to calculate net irr...
+fund_fee_db = run_fund_level_pipeline(mdc_cleanned,curve_df_cleaned , OUT_path)

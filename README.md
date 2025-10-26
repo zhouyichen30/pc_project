@@ -247,6 +247,44 @@ Computes the Internal Rate of Return (IRR) for irregularly spaced cashflows usin
 - Interest currently assumed on total notional.  
 - In a full model, interest and PIK would adjust per draw schedule.
 
+### fundlevel financing assume
+ - Drawn Amount — Each capital contribution is treated as a draw on the fund’s credit facility:
+   - drawn = contribution_amount × advance_rate
+ - Credit Line Size — Each fund’s total credit line is set at 20% of total committed capital:
+   - credit_line = commitment × 0.20
+ - Undrawn Balance Logic
+
+    For the first draw per fund, the undrawn balance is reduced by the amount drawn:
+    undrawn = credit_line + finance_portion
+    (e.g., if credit_line = 80M and first draw = –60.95M → undrawn = 19.05M)
+
+    For subsequent draws or repayments, the undrawn reflects the period’s net movement only:
+    undrawn = finance_portion
+    (e.g., a second draw of –2.96M represents a further use of the credit line.)
+
+ - Repayment Timing — The credit line is assumed to be fully repaid at the fund’s exit_date.
+   All facilities in this exercise have exit events, so repayment is aligned with that timing.
+
+ - Cost of Funds Spread (bps) and Undrawn Fee (bps) are modeled as annualized rates.
+
+ - Both are accrued monthly, based on the outstanding drawn and undrawn balances at each period.
+
+ - These parameters will later be merged with the relevant curve data (e.g., SOFR, EURIBOR) to compute:
+
+ - fund level Interest Expense: drawn × (curve_rate + spread_bps/10,000) × days/360
+
+ - Undrawn Fee Expense: undrawn × (undrawn_fee_bps/10,000) × days/360
+ - Payment date rule: cash interest/fees are paid on the 15th of the following month (e.g., 2023-02-28 → 2023-03-15).
+ 
+ - Month-end expansion window: only include month-ends ≥ con_date and ≤ exit_date; anything outside is dropped.
+ 
+ - First period anchor: the first period starts from the prior month-end of con_date for rate alignment; curve is joined on month-end dates.
+
+### net irr
+# paid in capital are treat as negtive
+# dirtubution are reate as postive
+# expense 
+
 ### Other Simplifications
 - No interest-rate floors.
 - No currency-level QC or FX normalization.
@@ -257,7 +295,9 @@ Computes the Internal Rate of Return (IRR) for irregularly spaced cashflows usin
 ## Output
 
 ### Main Outputs
-- `cleanned_cashflow_master.csv` – fully cleaned data prior to modeling  
+- `cleanned_cashflow_master.csv` – fully cleaned and merged data prior to modeling  
+- `cleanned_net_irr_all_level.csv` - output from second steps before fund irr calc -used for qc
+- `fund_info.csv` - this is cleaned fund level data before calculate monthly drawn and undrawn fee
 - `performance_summary.csv` – unified metrics summary  
   ```
   level,id,name,paid_in,distributed,gross_irr,gross_moic,net_irr,net_moic
@@ -271,6 +311,7 @@ Computes the Internal Rate of Return (IRR) for irregularly spaced cashflows usin
 - Delayed-draw modeling for interest and PIK by schedule
 - Curve application at deal/facility level instead of fund approximation
 - End-market value analysis
+- Fund level net irr calc is limited due to no credit line payment data
 
 ---
 

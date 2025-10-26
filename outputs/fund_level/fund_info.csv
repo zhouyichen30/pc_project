@@ -1,0 +1,4 @@
+fund,con_date,exit_date,finance_portion,undrawn,credit_line,cost_of_funds_curve,fund_spread_bps_lev,fund_undrawn_fee_bps,advance_rate
+hbc_private_credit_fund_i,2023-02-15,2024-10-15,-60950000.0,19050000.0,80000000.0,sofr,150,50,0.5
+hbc_private_credit_fund_i,2023-05-15,2024-10-15,-2962500.0,-2962500.0,80000000.0,sofr,150,50,0.5
+hbc_private_credit_fund_ii,2023-02-15,2024-10-15,-15720000.0,34280000.0,50000000.0,euribor,175,35,0.4
