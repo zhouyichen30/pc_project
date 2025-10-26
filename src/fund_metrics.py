@@ -1,7 +1,9 @@
 import pandas as pd
 import logging
 import numpy as np
-logger = logging.getLogger("pc_project")
+
+#import logger
+logger = logging.getLogger(__name__)
 
 def clean_data_fund(mdc_cleanned: pd.DataFrame) -> pd.DataFrame:
     """

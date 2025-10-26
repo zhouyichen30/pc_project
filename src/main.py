@@ -1,6 +1,8 @@
 import pandas as pd
 from pathlib import Path
 import numpy as np
+
+#import all the local functions
 from utils import clean_data_format,stack_fund_fees_into_master   
 from clean_cash_flow import cash_flow_clean
 from clean_curve import clean_curve_df
@@ -9,102 +11,146 @@ from cash_flow_adjust import adjust_cash_flow
 from metrics import metrics
 from level_merge import merge_deal_level,assign_fund_net_metrics
 from fund_metrics import run_fund_level_pipeline
-
-# Get the project root (one level up from src/)
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Define the data folder path
-data_path = BASE_DIR / "data"
-OUT_path = BASE_DIR / "outputs"
-
-# Read the CSV
-cash_flow = pd.read_csv(data_path/ "cashflows_deal.csv")
-term_df = pd.read_csv(data_path/ "terms.csv")
-curve_df = pd.read_csv(data_path/ "curves.csv")
-structure_df = pd.read_csv(data_path/ "structure.csv")
-leverage_df = pd.read_csv(data_path/ "leverage.csv")
-
-#clean date, text, and number columns for all dataframe for this project
-cash_flow_date_cols = ['asof']
-cash_flow_text_cols = ['entity_id','entity_type','cashflow_type','currency']
-cash_flow_num_cols = ['amount']
-
-term_data_date_cols = []
-term_data_text_cols = ['facility_id','rate_type','day_count','pik','delayed_draw']
-term_data_num_cols = ['spread_bps','origination_fee_bps','OID_bps','amort_pct_per_qtr','fixed_rate_bps']
-
-curve_data_date_cols = ['asof']
-curve_data_text_cols = ['curve']
-curve_data_num_cols = ['rate']
-
-structure_data_date_cols=[]
-structure_data_text_cols=['facility_id','facility_name','deal_id','deal_name','strategy_bucket','region','sector','fund']
-structure_data_num_cols = []
-
-leverage__data_date_cols=[]
-leverage__data_text_cols=['fund','cost_of_funds_curve']
-leverage_data_num_cols = ['advance_rate','spread_bps','undrawn_fee_bps','commitment']
-#asof,curve,rate
-
-# ---- CLEANING ----
-cashflow_df = clean_data_format(cash_flow,cash_flow_date_cols,cash_flow_text_cols,cash_flow_num_cols)
-#further clean cashflow data
-cashflow_df_cleaned = cash_flow_clean(cashflow_df)
-
-term_df_cleaned = clean_data_format(term_df,term_data_date_cols,term_data_text_cols,term_data_num_cols)
-
-curve_df = clean_data_format(curve_df,curve_data_date_cols,curve_data_text_cols,curve_data_num_cols)
-#futher clean curve data
-curve_df_cleaned = clean_curve_df(curve_df)
-
-structure_df_cleaned = clean_data_format(structure_df,structure_data_date_cols,structure_data_text_cols,structure_data_num_cols)
+from charts import plot_irr_highlighted
+import logging
+from cli_utils import get_shock_from_cli
 
 
-leverage_df_cleaned = clean_data_format(leverage_df,leverage__data_date_cols,leverage__data_text_cols,leverage_data_num_cols)
-#merge the term data, cashflow data, structure data and leverage data together
-mdb = merge_db(cashflow_df_cleaned,term_df_cleaned,structure_df_cleaned,leverage_df_cleaned)
-# Merge curves at the fund level using cost_of_funds_curve.
-# Assumption: For this assessment, interest rates are treated as fixed.
-# In a full implementation, we would merge at the deal/facility level
-# to capture distinct base-rate exposures (e.g., SOFR vs. EURIBOR).
-mdbc = merge_curve(mdb, curve_df_cleaned)
 
-mdc_cleanned = adjust_cash_flow(mdbc)
-
-#write the cleanned data to a csv files
-mdc_cleanned.to_csv(OUT_path / 'cash_master'/ 'cleanned_cashflow_master.csv' , index=False)
-
-#now calcaulte the metrics
-#calculate for each levels
-#please make sure the lower level is the first entry in the list for irr calc purpose
-level_3 = ['entity_id','facility_name','deal_id','fund']
-
-level_3_metrics_db = metrics(level_3,mdc_cleanned)
+#logger 
+logger = logging.getLogger(__name__)
 
 
-#level 2 is on deal level
-level_2 = ['deal_id','deal_name','fund']
-level_2_metrics_db = metrics(level_2,mdc_cleanned)
+def main() -> None:
+    # Get the project root (one level up from src/)
+    BASE_DIR = Path(__file__).resolve().parent.parent
 
-#level 1 is on fund level
-level_1 = ['fund']
-level_1_metrics_db = metrics(level_1,mdc_cleanned)
+    # Define the data folder path
+    data_path = BASE_DIR / "data"
+    OUT_path = BASE_DIR / "outputs"
+    OUT_cash_master = OUT_path / "cash_master"
+    OUT_fund_level = OUT_path / "fund_level"
 
-#merge all levels
-mldb = merge_deal_level(level_3_metrics_db,level_2_metrics_db,level_1_metrics_db)
-#write mdb as csv so we can quality contorl this data before goes to next step
-mldb.to_csv(OUT_path / 'cleanned_gross_irr_all_levels.csv', index=False)
+    # make sure output folders exist before writing any csv or charts
+    OUT_path.mkdir(parents=True, exist_ok=True)
+    OUT_cash_master.mkdir(parents=True, exist_ok=True)
+    OUT_fund_level.mkdir(parents=True, exist_ok=True)
 
-#next we calculate fund level expense so we can use to calculate net irr
-fund_fee_db = run_fund_level_pipeline(mdc_cleanned,curve_df_cleaned , OUT_path)
+    logger.info(f"Data folder: {data_path}")
+    logger.info(f"Output folders ready: {OUT_path}, {OUT_cash_master}, {OUT_fund_level}")
 
-#stack with master cash flow
-cash_flow_master_fund = stack_fund_fees_into_master(fund_fee_db,mdc_cleanned)
-cash_flow_master_fund.to_csv(OUT_path / 'cash_master'/ 'cleanned_cashflow_master_fund_added.csv' , index=False)
 
-#recompute net irr, if I want to recompute gross irr I will just change cash_flow_master_fund to mdc_cleanned
-#for effiency, i only compute the net irr since its gonna be the same code for gross irr that I calculate above
-level_1_metrics_db_net = metrics(level_1,cash_flow_master_fund)
-#merge the net irr
-perf_db = assign_fund_net_metrics(mldb,level_1_metrics_db_net)
-perf_db.to_csv(OUT_path / 'performance_summary.csv', index=False)
+    # Read the CSV
+    cash_flow = pd.read_csv(data_path/ "cashflows_deal.csv")
+    term_df = pd.read_csv(data_path/ "terms.csv")
+    curve_df = pd.read_csv(data_path/ "curves.csv")
+    structure_df = pd.read_csv(data_path/ "structure.csv")
+    leverage_df = pd.read_csv(data_path/ "leverage.csv")
+
+    #clean date, text, and number columns for all dataframe for this project
+    cash_flow_date_cols = ['asof']
+    cash_flow_text_cols = ['entity_id','entity_type','cashflow_type','currency']
+    cash_flow_num_cols = ['amount']
+
+    term_data_date_cols = []
+    term_data_text_cols = ['facility_id','rate_type','day_count','pik','delayed_draw']
+    term_data_num_cols = ['spread_bps','origination_fee_bps','OID_bps','amort_pct_per_qtr','fixed_rate_bps']
+
+    curve_data_date_cols = ['asof']
+    curve_data_text_cols = ['curve']
+    curve_data_num_cols = ['rate']
+
+    structure_data_date_cols=[]
+    structure_data_text_cols=['facility_id','facility_name','deal_id','deal_name','strategy_bucket','region','sector','fund']
+    structure_data_num_cols = []
+
+    leverage__data_date_cols=[]
+    leverage__data_text_cols=['fund','cost_of_funds_curve']
+    leverage_data_num_cols = ['advance_rate','spread_bps','undrawn_fee_bps','commitment']
+    #asof,curve,rate
+
+    # ---- CLEANING ----
+    cashflow_df = clean_data_format(cash_flow,cash_flow_date_cols,cash_flow_text_cols,cash_flow_num_cols)
+    #further clean cashflow data
+    cashflow_df_cleaned = cash_flow_clean(cashflow_df)
+
+    term_df_cleaned = clean_data_format(term_df,term_data_date_cols,term_data_text_cols,term_data_num_cols)
+
+    curve_df = clean_data_format(curve_df,curve_data_date_cols,curve_data_text_cols,curve_data_num_cols)
+    #futher clean curve data
+    curve_df_cleaned = clean_curve_df(curve_df)
+
+    #apply shock
+    shock = get_shock_from_cli()
+    if shock != 0:
+        logger.info("Applying interest rate shock...")
+        curve_df_cleaned['rate'] = curve_df_cleaned['rate'] + shock
+        logger.info(f"curve data shocked for {shock}")
+    # ensure no negative rates
+    neg_count = (curve_df_cleaned['rate'] < 0).sum()
+    if neg_count > 0:
+        logger.warning(f"{neg_count} rate(s) fell below 0 after shock. Clipping to 0.0.")
+        curve_df_cleaned.loc[curve_df_cleaned['rate'] < 0, 'rate'] = 0.0
+
+
+
+    structure_df_cleaned = clean_data_format(structure_df,structure_data_date_cols,structure_data_text_cols,structure_data_num_cols)
+
+
+    leverage_df_cleaned = clean_data_format(leverage_df,leverage__data_date_cols,leverage__data_text_cols,leverage_data_num_cols)
+    #merge the term data, cashflow data, structure data and leverage data together
+    mdb = merge_db(cashflow_df_cleaned,term_df_cleaned,structure_df_cleaned,leverage_df_cleaned)
+    # Merge curves at the fund level using cost_of_funds_curve.
+    # Assumption: For this assessment, interest rates are treated as fixed.
+    # In a full implementation, we would merge at the deal/facility level
+    # to capture distinct base-rate exposures (e.g., SOFR vs. EURIBOR).
+    mdbc = merge_curve(mdb, curve_df_cleaned)
+
+    mdc_cleanned = adjust_cash_flow(mdbc)
+
+    #write the cleanned data to a csv files
+    mdc_cleanned.to_csv(OUT_path / 'cash_master'/ 'cleanned_cashflow_master.csv' , index=False)
+
+    #now calcaulte the metrics
+    #calculate for each levels
+    #please make sure the lower level is the first entry in the list for irr calc purpose
+    level_3 = ['entity_id','facility_name','deal_id','fund']
+
+    level_3_metrics_db = metrics(level_3,mdc_cleanned)
+
+
+    #level 2 is on deal level
+    level_2 = ['deal_id','deal_name','fund']
+    level_2_metrics_db = metrics(level_2,mdc_cleanned)
+
+    #level 1 is on fund level
+    level_1 = ['fund']
+    level_1_metrics_db = metrics(level_1,mdc_cleanned)
+
+    #merge all levels
+    mldb = merge_deal_level(level_3_metrics_db,level_2_metrics_db,level_1_metrics_db)
+    #write mdb as csv so we can quality contorl this data before goes to next step
+    mldb.to_csv(OUT_path / 'cleanned_gross_irr_all_levels.csv', index=False)
+
+    #next we calculate fund level expense so we can use to calculate net irr
+    fund_fee_db = run_fund_level_pipeline(mdc_cleanned,curve_df_cleaned , OUT_path)
+
+    #stack with master cash flow
+    cash_flow_master_fund = stack_fund_fees_into_master(fund_fee_db,mdc_cleanned)
+    cash_flow_master_fund.to_csv(OUT_path / 'cash_master'/ 'cleanned_cashflow_master_fund_added.csv' , index=False)
+
+    #recompute net irr, if I want to recompute gross irr I will just change cash_flow_master_fund to mdc_cleanned
+    #for effiency, i only compute the net irr since its gonna be the same code for gross irr that I calculate above
+    level_1_metrics_db_net = metrics(level_1,cash_flow_master_fund)
+    #merge the net irr
+    perf_db = assign_fund_net_metrics(mldb,level_1_metrics_db_net)
+    perf_db.to_csv(OUT_path / 'performance_summary.csv', index=False)
+    #plot a chart to irr show distributions
+    plot_irr_highlighted(perf_db,OUT_path)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        logger.exception(f"Pipeline failed: {e}")
+        raise

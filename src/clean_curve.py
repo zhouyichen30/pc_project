@@ -1,7 +1,7 @@
 import pandas as pd
 import logging
 
-logger = logging.getLogger("pc_project")
+logger = logging.getLogger(__name__)
 
 def clean_curve_df(curve_df: pd.DataFrame) -> pd.DataFrame:
     """

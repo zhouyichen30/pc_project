@@ -1,7 +1,8 @@
 import pandas as pd
 import logging
 
-logger = logging.getLogger("pc_project")
+#import logger
+logger = logging.getLogger(__name__)
 
 def merge_deal_level(l3, l2, l1):
     """

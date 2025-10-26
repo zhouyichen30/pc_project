@@ -31,6 +31,39 @@ pip install -r requirements.txt
 ```
 
 ---
+#
+From your project root (pc_project/):
+
+# Windows PowerShell
+.\venv\Scripts\activate
+
+# macOS / Linux
+Execute the pipeline directly with no rate shock:
+
+python src/main.py
+
+### how to apply shock
+## Interest Rate Shock (Optional)
+
+You can optionally “shock” the base rate curve by an absolute **decimal** amount before metrics are computed.  
+This is applied **after** curve cleaning (`clean_curve_df`) and **before** merging curves into the master dataset.
+
+- **Unit:** absolute decimal (e.g., `0.01` = **+100 bps**, `-0.0025` = **–25 bps**)  
+- **Scope:** applied uniformly to every row in `curve_df_cleaned['rate']`  
+- **Effect:** downstream fees/IRR reflect the shocked rates; outputs and the IRR chart will incorporate the shock  
+- **Logging:** the chosen shock is recorded in `logs/project.log`
+
+### How to run with a shock
+
+You can shift all base rates in curves.csv by an absolute decimal value to test IRR sensitivity.
+
+| Command                              | Description                            |
+| ------------------------------------ | -------------------------------------- |
+| `python src/main.py --shock 0.01`    | Apply a **+100 bps** (1%) upward shock |
+| `python src/main.py --shock -0.0025` | Apply a **–25 bps** downward shock     |
+| `python src/main.py`                 | Run baseline (no shock)                |
+
+
 
 ## Project Overview
 
@@ -271,14 +304,21 @@ Computes the Internal Rate of Return (IRR) for irregularly spaced cashflows usin
 
  - These parameters will later be merged with the relevant curve data (e.g., SOFR, EURIBOR) to compute:
 
- - fund level Interest Expense: drawn × (curve_rate + spread_bps/10,000) × days/360
+ - fund level Interest Expense: drawn × ((curve_rate + spread_bps)/10,000) × days/360
 
  - Undrawn Fee Expense: undrawn × (undrawn_fee_bps/10,000) × days/360
+
  - Payment date rule: cash interest/fees are paid on the 15th of the following month (e.g., 2023-02-28 → 2023-03-15).
  
  - Month-end expansion window: only include month-ends ≥ con_date and ≤ exit_date; anything outside is dropped.
  
  - First period anchor: the first period starts from the prior month-end of con_date for rate alignment; curve is joined on month-end dates.
+ - no working days are considered in this model
+ - no floor on the credit line rates
+
+ # Apply shock
+
+ -when shock the interest rate, intrest rate cannot goes to negtive 
 
 ### net irr
 # paid in capital are treat as negtive
@@ -300,8 +340,7 @@ in cash_master folder
 -'cleanned_cashflow_master_fund_added.csv' - cleanned data with fund level expense added to calculate net irr
 
 - `cleanned_net_irr_all_level.csv` - output from second steps before fund irr calc -used for qc
-- `performance_summary.csv` – unified metrics summary  
-  in fund level folder
+- `performance_summary.csv` – the output contrains level (Facility/Deal/Fund), id, name, paid_in, distributed, gross_irr, gross_moic, net_irr, net_moic.
   `fund_info.csv` — cleaned fund-level dataset aggregated from raw cashflows before joining with curve data.
   Contains each fund’s contribution, financing portion, undrawn balance, and commitment structure.
 
@@ -310,6 +349,7 @@ in cash_master folder
 
   `fee_calc.csv` — monthly output showing each fund’s interest and undrawn fee cashflows.
   Generated using the drawn (finance_portion) and undrawn amounts with their respective annualized rates (divided by 12 for monthly accrual).
+- 'irr_plot.png' - This chart visualizes Gross vs. Net IRR across Facility, Deal, and Fund levels, with percentage labels on each bar and black dashed rectangles highlighting each hierarchy level.
 
 
 ## Known Limitations and Future Improvements
@@ -367,3 +407,29 @@ pc_project/
 
 **Author:** Yichen Zhou  
 **Contact:** yichenzhou6 at gmail dot com
+##
+Running main.py executes the full data-processing pipeline:
+
+Data ingestion — reads raw CSV files from data/
+
+Cleaning & formatting — applies standardized date, text, and numeric conversions
+
+Merging & adjustments — joins term, structure, leverage, and curve data; adjusts cashflows
+
+Metric computation — calculates Paid-In, Distributions, Gross IRR/MOIC, and Net IRR/MOIC across Facility → Deal → Fund levels
+
+Visualization — produces irr_plot.png comparing Gross vs. Net IRR by level
+
+All processing steps, shapes, and intermediate validations are recorded in a unified log file:
+
+logs/project.log
+
+
+Each entry includes timestamp, log level, and module source, for example:
+
+2025-10-26 16:57:23,083 [INFO] pc_project.metrics: Computing metrics at level: ['entity_id', 'facility_name', 'deal_id', 'fund']
+2025-10-26 16:57:23,476 [INFO] pc_project.fund_metrics: Pipeline finished successfully. Outputs saved in: outputs/fund_level
+2025-10-26 16:57:24,683 [INFO] pc_project.charts: Chart saved to: outputs/irr_plot.png
+
+
+This makes it easy to trace every operation—from initial data cleaning through final IRR chart generation—directly in the log file.

@@ -21,7 +21,7 @@ logging.basicConfig(
 )
 
 # This logger will be used by all functions in utils.py
-logger = logging.getLogger("pc_project")
+logger = logging.getLogger(__name__)
 
 # -------------------------------------------------------------------
 # function 1: clean_data

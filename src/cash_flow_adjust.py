@@ -3,7 +3,7 @@ import pandas as pd
 
 #this script contains all the funcations to clean the cashflows_deal.csv 
 
-logger = logging.getLogger("pc_project")
+logger = logging.getLogger(__name__)
 
 def _adjust_fees(merged_db: pd.DataFrame) -> pd.DataFrame:
     """

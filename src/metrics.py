@@ -2,8 +2,8 @@ import pandas as pd
 import logging
 from scipy.optimize import newton
 
-
-logger = logging.getLogger("pc_project")
+#import logger
+logger = logging.getLogger(__name__)
 
 
 def _pic_calc(level: str, mdb: pd.DataFrame) -> pd.DataFrame:
