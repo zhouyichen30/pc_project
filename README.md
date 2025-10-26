@@ -19,7 +19,7 @@ git clone https://github.com/zhouyichen30/pc_project.git
 cd pc_project
 ```
 
-### 2. Create and activate a virtual environment if no env activated
+### 2. If no env activated, create and activate a virtual environment 
 ```bash
 python -m venv .venv
 
@@ -40,19 +40,45 @@ pip install -e .
 ### 4. Run the project
 From the project root (pc_project/), navigate into the src directory first:
 ```bash
+# CD into SRC
 cd src
+#run model
 python -m irr_calc
 ```
 
 ### 5. (Optional) Apply an interest rate shock
 You can “shock” the base-rate curve by an absolute decimal amount before metrics are computed.
 
-example cmd: python -m irr_calc --shock 0.01
+```bash
+#example command
+python -m irr_calc --shock 0.01
+```
 
 | Parameter | Unit    | Example   | Meaning                    |
 | --------- | ------- | --------- | -------------------------- |
 | `--shock` | decimal | `0.01`    | **+100 bps** upward shock  |
 |           |         | `-0.0025` | **–25 bps** downward shock |
+
+---
+## Output
+
+### Main Outputs 
+
+**Outputs/**
+- `cleanned_gross_irr_all_level.csv` – gross IRR only, indicate QC output before fund-level aggregation
+- `performance_summary.csv` – Final deliverables inculdes net irr/moic on fund level
+- `irr_plot.png` – visualization comparing Gross vs. Net IRR breakdown by facility ,deal, and fund
+
+
+**Outputs/cash_master/**
+- `cleanned_cashflow_master.csv` – fully cleaned and merged data prior to modeling
+- `cleanned_cashflow_master_fund_added.csv` – cleaned data with fund-level expense added for net IRR
+
+
+**Outputs/fund_level/**
+- `fund_info.csv` – aggregated from raw cashflows
+- `fund_curve.csv` – joined with monthly curve rates
+- `fee_calc.csv` – monthly interest and undrawn fee cashflows
 
 ---
 
@@ -224,25 +250,6 @@ Key events recorded: invalid input lengths, sign convention issues, convergence 
 Exceptions and warnings are automatically captured with full stack traces.
 
 Log outputs are saved to the /logs/ directory for review (logs/project.log).
-
----
-
-## Output
-
-### Main Outputs 
-**cash_master/**
-- `cleanned_cashflow_master.csv` – fully cleaned and merged data prior to modeling  
-- `cleanned_cashflow_master_fund_added.csv` – cleaned data with fund-level expense added for net IRR
-
-**root/**
-- `cleanned_net_irr_all_level.csv` – intermediate QC output before fund-level aggregation
-- `performance_summary.csv` – Facility/Deal/Fund summary with gross/net metrics
-- `irr_plot.png` – visualization comparing Gross vs. Net IRR
-
-**fund_level/**
-- `fund_info.csv` – aggregated from raw cashflows
-- `fund_curve.csv` – joined with monthly curve rates
-- `fee_calc.csv` – monthly interest and undrawn fee cashflows
 
 ---
 
