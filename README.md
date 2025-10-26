@@ -135,29 +135,7 @@ The IRR and MOIC are calculated in a **hierarchical roll-up** approach:
 Each level uses identical logic — the difference is only in the grouping keys passed to `metrics()`.
 ## Merging All Levels and Exporting Results
 
-After computing metrics separately for each level (facility, deal, and fund),  
-the final step merges them into a single, unified dataset for reporting and export.
-
-### `merge_deal_level(level_3_metrics_db, level_2_metrics_db, level_1_metrics_db)`
-
-This function combines the calculated metrics across all hierarchy levels:
-
-- **Facility Level (Level 3)** — individual entity/facility metrics  
-- **Deal Level (Level 2)** — aggregated performance by deal  
-- **Fund Level (Level 1)** — rolled-up portfolio performance
-
-Each DataFrame contains the same metric columns (`paid_in`, `distr`, `MOIC`, `xirr`)  
-and a consistent set of identifiers (`entity_id`, `deal_id`, `fund`).
-
-The function:
-1. Adds a **prefix** to each metric column to preserve clarity after merging:
-   - `facility_level_paid_in`
-   - `deal_level_xirr`
-   - `fund_level_MOIC`
-2. Merges hierarchically:
-   - Facility → Deal (on `deal_id`, `fund`)
-   - Then → Fund (on `fund`)
-3. Logs the final DataFrame shape using the global `pc_project` logger.
+The merge_deal_level(level_3_metrics_db, level_2_metrics_db, level_1_metrics_db) function combines and standardizes performance data across all hierarchy levels—Facility, Deal, and Fund—into a single, structured DataFrame. It first renames the distr column to distributed for consistency, then labels each input with its respective level (Facility, Deal, or Fund) and identifier (entity_id, deal_id, or fund). The function stacks all three levels vertically in the order Facility → Deal → Fund, ensuring that lower-level records appear first, which is essential for accurate IRR aggregation and waterfall-style calculations. During this process, it converts key numeric fields (paid_in, distributed, MOIC, and xirr) to numeric types to prevent type errors. Since only net metrics are available, it maps xirr to gross_irr and MOIC to gross_moic, leaving the net_irr and net_moic columns blank for potential future expansion. Finally, the function logs the total number of merged rows, the count of entries at each level, and a summary of any missing values using the project’s global pc_project logger.
 
 ### Example Usage
 ```python

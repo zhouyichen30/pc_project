@@ -3,33 +3,72 @@ import logging
 
 logger = logging.getLogger("pc_project")
 
-def merge_deal_level(level_3_metrics_db: pd.DataFrame,
-                     level_2_metrics_db: pd.DataFrame,
-                     level_1_metrics_db: pd.DataFrame) -> pd.DataFrame:
+def merge_deal_level(l3, l2, l1):
     """
-    Merge metrics across facility (level 3), deal (level 2), and fund (level 1).
+    Combine and standardize Facility-, Deal-, and Fund-level performance metrics.
 
-    Each DataFrame should contain:
-      ['fund', 'deal_id', 'entity_id', 'paid_in', 'distr', 'MOIC', 'xirr']
+    This function vertically stacks all three data levels in order:
+    Facility → Deal → Fund.
+    The order is important to ensure lower-level data appears first for
+    IRR aggregation or waterfall-style calculations.
 
-    The function prefixes columns by level for clarity and merges hierarchically.
+    Parameters
+    ----------
+    l3 : pd.DataFrame
+        Facility-level metrics. Must include:
+        ['entity_id', 'deal_id', 'fund', 'paid_in', 'distr' or 'distributed', 'MOIC', 'xirr']
+    l2 : pd.DataFrame
+        Deal-level metrics. Must include:
+        ['deal_id', 'fund', 'paid_in', 'distr' or 'distributed', 'MOIC', 'xirr']
+    l1 : pd.DataFrame
+        Fund-level metrics. Must include:
+        ['fund', 'paid_in', 'distr' or 'distributed', 'MOIC', 'xirr']
+
+    Returns
+    -------
+    pd.DataFrame
+        A single stacked DataFrame with the following columns:
+        ['level', 'id', 'name', 'paid_in', 'distributed',
+         'gross_irr', 'gross_moic', 'net_irr', 'net_moic']
+
+        - 'level' marks whether the row is Facility, Deal, or Fund.
+        - 'id' corresponds to the entity/deal/fund identifier.
+        - 'name' carries the fund name (Fund level only).
+        - 'gross_irr' and 'gross_moic' mirror the input xirr/MOIC (net metrics).
+        - 'net_irr' and 'net_moic' are left blank for now.
+
+    Notes
+    -----
+    The function converts numeric fields safely and logs:
+      • total row count
+      • per-level counts
+      • missing value summary
     """
-    # Prefix metric columns for clarity
-    level_3_prefixed = level_3_metrics_db.rename(
-        columns={c: f"facility_level_{c}" for c in ['paid_in', 'distr', 'MOIC', 'xirr']}
-    )
+    # Standardize and label each level
+    l3_ = l3.rename(columns={'distr': 'distributed'}).assign(level='Facility', id=l3['entity_id'], name=pd.NA)
+    l2_ = l2.rename(columns={'distr': 'distributed'}).assign(level='Deal',     id=l2['deal_id'],   name=pd.NA)
+    l1_ = l1.rename(columns={'distr': 'distributed'}).assign(level='Fund',     id=l1['fund'],      name=l1['fund'])
 
-    level_2_prefixed = level_2_metrics_db.rename(
-        columns={c: f"deal_level_{c}" for c in ['paid_in', 'distr', 'MOIC', 'xirr']}
-    )
+    # Stack all levels (lower → higher)
+    df = pd.concat([l3_, l2_, l1_], ignore_index=True)
 
-    level_1_prefixed = level_1_metrics_db.rename(
-        columns={c: f"fund_level_{c}" for c in ['paid_in', 'distr', 'MOIC', 'xirr']}
-    )
+    # Convert numeric and map columns
+    for c in ['paid_in', 'distributed', 'MOIC', 'xirr']:
+        df[c] = pd.to_numeric(df.get(c), errors='coerce')
 
-    # Merge hierarchically
-    merged = pd.merge(level_3_prefixed, level_2_prefixed, on=['deal_id', 'fund'], how='left')
-    merged = pd.merge(merged, level_1_prefixed, on='fund', how='left')
+    df['gross_irr'] = df['xirr']
+    df['gross_moic'] = df['MOIC']
+    df['net_irr'] = pd.NA
+    df['net_moic'] = pd.NA
 
-    logger.info(f"Merged all levels — final shape: {merged.shape}")
-    return merged
+    out = df[['level', 'id', 'name', 'paid_in', 'distributed',
+              'gross_irr', 'gross_moic', 'net_irr', 'net_moic']]
+
+    # Simple logging
+    logger.info(f"Merged all levels — total rows: {len(out)}")
+    logger.info(f"Facility: {len(l3_)}, Deal: {len(l2_)}, Fund: {len(l1_)}")
+
+    na_summary = out.isna().sum().to_dict()
+    logger.info(f"Missing values summary: {na_summary}")
+
+    return out

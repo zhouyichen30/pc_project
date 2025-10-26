@@ -71,7 +71,7 @@ mdbc = merge_curve(mdb, curve_df_cleaned)
 mdc_cleanned = adjust_cash_flow(mdbc)
 
 #write the cleanned data to a csv files
-mdc_cleanned.to_csv(OUT_path / 'cleanned_cashflow_master_3.csv')
+mdc_cleanned.to_csv(OUT_path / 'cleanned_cashflow_master.csv' , index=False)
 
 #now calcaulte the metrics
 #calculate for each levels
@@ -86,9 +86,10 @@ level_2_metrics_db = metrics(level_2,mdc_cleanned)
 #level 1 is on fund level
 level_1 = ['fund']
 level_1_metrics_db = metrics(level_1,mdc_cleanned)
-
+print(level_2_metrics_db)
 
 #merge all levels
 mldb = merge_deal_level(level_3_metrics_db,level_2_metrics_db,level_1_metrics_db)
+print(mldb)
 #write mdb as csv
-mldb.to_csv(OUT_path / 'cleanned_net_irr_all_levels.csv')
+mldb.to_csv(OUT_path / 'cleanned_net_irr_all_levels.csv', index=False)
