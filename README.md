@@ -214,11 +214,16 @@ NPV(r) = Σ [ CF_i / (1 + r)^((t_i - t_0)/365) ]
   - 0.1 otherwise
 - Returns IRR as decimal (e.g., 0.1523 = 15.23%).
 
-**Logging and Validation**
-- Logs invalid input lengths and sign issues.
-- Logs convergence success/failure.
-- Returns `None` if Newton fails.
-- Saved the logs in logs folder
+---
+Logging and Validation
+
+All functions include integrated logging using the global project logger.
+
+Key events recorded: invalid input lengths, sign convention issues, convergence results, and processing status.
+
+Exceptions and warnings are automatically captured with full stack traces.
+
+Log outputs are saved to the /logs/ directory for review (logs/project.log).
 
 ---
 
