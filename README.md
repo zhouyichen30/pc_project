@@ -1,4 +1,4 @@
-# Private Credit Performance
+# Private Credit Performance Analysis
 
 A reproducible Python workflow for ingesting, cleaning, and analyzing private credit cash flow data.  
 The goal is to normalize raw CSV inputs, compute metrics such as XIRR/MOIC, model leverage impact (net), and output a unified performance summary and chart.
@@ -164,7 +164,7 @@ example cmd: python -m irr_calc --shock 0.01
 ---
 ## Key Function
 
-### How Data Is Cleaned (Pipeline Overview)
+**How Data Is Cleaned (Pipeline Overview)**
 Implemented in `src/irr_calc/clean_cash_flow.py`, `src/irr_calc/clean_curve.py`, and `src/irr_calc/utils.py`.
 
 **Common cleaning steps in (`src/irr_calc/utils.py`):**
