@@ -6,6 +6,8 @@ from clean_cash_flow import cash_flow_clean
 from clean_curve import clean_curve_df
 from merge import merge_db,merge_curve
 from cash_flow_adjust import adjust_cash_flow
+from metrics import metrics
+from level_merge import merge_deal_level
 
 # Get the project root (one level up from src/)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -68,5 +70,25 @@ mdbc = merge_curve(mdb, curve_df_cleaned)
 
 mdc_cleanned = adjust_cash_flow(mdbc)
 
-print(mdc_cleanned)
+#write the cleanned data to a csv files
+mdc_cleanned.to_csv(OUT_path / 'cleanned_cashflow_master_3.csv')
 
+#now calcaulte the metrics
+#calculate for each levels
+#please make sure the lower level is the first entry in the list for irr calc purpose
+level_3 = ['entity_id','deal_id','fund']
+level_3_metrics_db = metrics(level_3,mdc_cleanned)
+
+#level 2 is on deal level
+level_2 = ['deal_id','fund']
+level_2_metrics_db = metrics(level_2,mdc_cleanned)
+
+#level 1 is on fund level
+level_1 = ['fund']
+level_1_metrics_db = metrics(level_1,mdc_cleanned)
+
+
+#merge all levels
+mldb = merge_deal_level(level_3_metrics_db,level_2_metrics_db,level_1_metrics_db)
+#write mdb as csv
+mldb.to_csv(OUT_path / 'cleanned_net_irr_all_levels.csv')

@@ -1,14 +1,20 @@
-Private Credit Performance – Technical Assessment
+# Private Credit Performance – Technical Assessment
 
-A reproducible Python workflow for ingesting, cleaning, and analyzing private credit cash flow data.
+A reproducible Python workflow for ingesting, cleaning, and analyzing private credit cash flow data.  
 The goal is to normalize raw CSV inputs, compute XIRR/MOIC metrics, model leverage impact, and output a unified performance summary.
 
-Setup Instructions
-1) Clone the repository
+---
+
+## Setup Instructions
+
+### 1) Clone the repository
+```bash
 git clone <your-repo-url>
 cd pc_project
+```
 
-2) Create and activate a virtual environment
+### 2) Create and activate a virtual environment
+```bash
 # Create
 python -m venv venv
 
@@ -17,171 +23,295 @@ python -m venv venv
 source venv/bin/activate
 # Windows PowerShell
 venv\Scripts\Activate.ps1
+```
 
-3) Install dependencies
+### 3) Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-Project Overview
-Current Goal
+---
 
+## Project Overview
+
+### Current Goal
 Build an end-to-end, reproducible pipeline for analyzing private credit investments as part of a technical assessment.
 
-Completed Components
-Data Cleaning
+---
 
-Centralized clean_data() in src/utils.py:
+## Completed Components
 
-Dates via pd.to_datetime(errors="coerce")
+### Data Cleaning
+- Centralized `clean_data()` in `src/utils.py`:
+  - Converts date columns using `pd.to_datetime(errors="coerce")`
+  - Normalizes text via `.str.strip().str.lower()`
+  - Converts numeric fields using `pd.to_numeric(errors="coerce")`
+  - Logs unique values for anomaly detection
+- Dataset-specific cleaners added for edge cases (e.g., curve label typos).
 
-Strings via .str.strip().str.lower()
+### Data Integration
+- `src/merge.py` joins cleaned datasets:
+  - `cashflows_deal.csv` ↔ `terms.csv`, `structure.csv` on `facility_id`
+  - Linked to `leverage.csv` on `fund`
+  - Uses **outer joins** to surface mismatches during debugging
+- Quality checks log missing and duplicate keys after each merge.
 
-Numerics via pd.to_numeric(errors="coerce")
+### Curve Data
+Fixed label inconsistencies before merging:
 
-Logs unique values by text column for anomaly detection
-
-Dataset-specific cleaners added for edge cases (e.g., curve label typos).
-
-Data Integration
-
-src/merge.py joins cleaned datasets:
-
-cashflows_deal.csv ↔ terms.csv, structure.csv on facility_id
-
-Linked to leverage.csv on fund
-
-Uses outer joins to surface mismatches during debugging
-
-Quality checks log missing and duplicate keys after each merge.
-
-Curve Data
-
-Fixed label inconsistencies (examples):
-
+```
 sofr       23
 s0fr        1
 euribor    23
 eurib0r     1
+```
+
+Curves are merged at the **fund-level** via `cost_of_funds_curve`, assuming fixed-rate financing for this exercise.
+
+### Cash Flow Adjustments
+- `adjust_fees()` applies day-one OID and origination fee adjustments to initial outflows.  
+- `_adjust_pik()` removes accrued PIK interest (not paid in cash).  
+- `adjust_cash_flow()` applies both before metrics calculations.
+
+### Logging
+- Global logger: `pc_project`
+- Logs include:
+  - Input/output shapes
+  - Cleaning and merge steps
+  - NA/duplicate summaries
+  - Value distributions for text fields
+- Log file: `logs/project.log`
+
+---
+
+## Metrics Helpers
+
+### `_pic_calc(level, mdb)`
+Computes **Paid-In Capital (PIC)** as the sum of negative cashflows (capital contributions).
+
+**Inputs**
+- `level`: column or list of columns to group by (e.g., "facility_id", "deal_id", "fund").
+- `mdb`: merged dataset with at least `["amount", level]`.
+
+**Output**
+- DataFrame with `[level, "paid_in"]`, where `paid_in` remains negative (outflow).
+
+**Notes**
+- Uses `groupby(..., as_index=False)` so keys stay as columns.
+- Returns join-ready output.
+- Logs missing columns or empty results.
+
+---
+
+### `_dis_calc(level, mdb)`
+Computes **Distributions** as the sum of positive cashflows (returns/inflows).
+
+**Output**
+- DataFrame `[level, "distr"]`, with `distr` positive.
+- Same validation and logging pattern as `_pic_calc`.
+
+---
+
+## Metrics Aggregation
+
+### `metrics(level, mdb)`
+Aggregates all key performance metrics at the given level.
+
+**Calculations**
+- `paid_in`: total contributed capital (negative)
+- `distr`: total distributed (positive)
+- `MOIC`: `distr / abs(paid_in)`
+- `xirr`: computed per unique entity using dated cashflows
+
+**Rolling IRR Calculation Across Levels**
+The IRR and MOIC are calculated in a **hierarchical roll-up** approach:
+- **Level 3 (Entity Level):**  
+  IRR is calculated for each facility or entity (`entity_id`, `deal_id`, `fund`) based on raw, dated cashflows.
+- **Level 2 (Deal Level):**  
+  Aggregates all facilities within a deal to measure deal-level performance by summing cashflows.
+- **Level 1 (Fund Level):**  
+  Rolls up all deal-level data to compute fund-level IRR and MOIC, representing the total portfolio return.
+
+Each level uses identical logic — the difference is only in the grouping keys passed to `metrics()`.
+## Merging All Levels and Exporting Results
+
+After computing metrics separately for each level (facility, deal, and fund),  
+the final step merges them into a single, unified dataset for reporting and export.
+
+### `merge_deal_level(level_3_metrics_db, level_2_metrics_db, level_1_metrics_db)`
+
+This function combines the calculated metrics across all hierarchy levels:
+
+- **Facility Level (Level 3)** — individual entity/facility metrics  
+- **Deal Level (Level 2)** — aggregated performance by deal  
+- **Fund Level (Level 1)** — rolled-up portfolio performance
+
+Each DataFrame contains the same metric columns (`paid_in`, `distr`, `MOIC`, `xirr`)  
+and a consistent set of identifiers (`entity_id`, `deal_id`, `fund`).
+
+The function:
+1. Adds a **prefix** to each metric column to preserve clarity after merging:
+   - `facility_level_paid_in`
+   - `deal_level_xirr`
+   - `fund_level_MOIC`
+2. Merges hierarchically:
+   - Facility → Deal (on `deal_id`, `fund`)
+   - Then → Fund (on `fund`)
+3. Logs the final DataFrame shape using the global `pc_project` logger.
+
+### Example Usage
+```python
+# Merge all levels together
+mldb = merge_deal_level(level_3_metrics_db, level_2_metrics_db, level_1_metrics_db)
+
+# Write final merged dataset to CSV
+mldb.to_csv(OUT_path / 'cleanned_net_irr_all_levels.csv', index=False)
 
 
-Curves merged on fund-level cost_of_funds_curve, assuming fixed-rate financing for this exercise.
+**Example**
+```python
+# Level 3: Entity-level metrics
+level_3 = ['entity_id', 'deal_id', 'fund']
+level_3_metrics_db = metrics(level_3, mdc_cleanned)
 
-Cash Flow Adjustments
+# Level 2: Deal-level metrics
+level_2 = ['deal_id', 'fund']
+level_2_metrics_db = metrics(level_2, mdc_cleanned)
 
-adjust_fees() applies day-one OID and origination fee adjustments to initial outflows.
+# Level 1: Fund-level metrics
+level_1 = ['fund']
+level_1_metrics_db = metrics(level_1, mdc_cleanned)
 
-_adjust_pik() removes accrued PIK interest (not paid in cash).
+print(level_1_metrics_db)
+```
 
-adjust_cash_flow() applies both before performance calculations.
+**Sign Conventions**
+- Contributions (outflows): negative  
+- Distributions (returns): positive  
+- Keep `paid_in` negative for IRR accuracy  
+- Convert to positive only when exporting final results
 
-Logging
+---
 
-Global logger name: pc_project
+## XNPV / XIRR Functions
 
-Logs include:
+### `_xnpv(rate, cashflows, dates)`
+Computes the Net Present Value (NPV) for irregularly spaced cashflows, consistent with Excel’s XNPV.
 
-Input/output shapes
+**Formula**
+```
+NPV(r) = Σ [ CF_i / (1 + r)^((t_i - t_0)/365) ]
+```
 
-Cleaning and merge steps
+**Inputs**
+- `rate`: discount rate in decimal form (e.g., 0.10 for 10%)
+- `cashflows`: list of cash amounts (negative = outflows, positive = inflows)
+- `dates`: matching list of cashflow dates
 
-NA/duplicate summaries
+**Notes**
+- Uses ACT/365 day count.
+- `t_0` = earliest date in the cashflow series.
+- Raises a ValueError if input lengths mismatch.
 
-Text value distributions
+**Purpose**
+- Used as f(r) in Newton’s method for `xirr()`.
 
-Log file: logs/project.log
+---
 
-Modeling Assumptions
-General
+### `xirr(cashflows, dates)`
+Computes the Internal Rate of Return (IRR) for irregularly spaced cashflows using Newton’s method on `_xnpv()`.
 
-No base-currency conversion; IRR/MOIC reported in fund currency from structure.csv.
+**Implementation**
+- Solver: `scipy.optimize.newton`
+- Initial guess:
+  - `-0.1` if total cashflows < 0
+  - `0.1` otherwise
+- Returns IRR as a decimal (e.g., 0.1523 = 15.23%)
 
-Provided cash flows are treated as fixed (per instructions).
+**Logging and Validation**
+- Logs warnings for invalid inputs:
+  - Unequal lengths of cashflows and dates
+  - All cashflows of same sign
+- Logs info when convergence succeeds, warning when it fails
+- Returns `None` if Newton fails to converge
 
-Curves and Financing
+**Sign Convention**
+- Contributions: negative  
+- Distributions: positive  
+- Day count: ACT/365
 
-Rates reset monthly.
+---
 
-Each cash flow uses the most recent curve rate on or before its date.
+## Modeling Assumptions
 
-Curves merged at fund level via cost_of_funds_curve (all facilities in a fund share the same base curve).
+### General
+- No base-currency conversion; IRR/MOIC in fund currency from `structure.csv`.
+- Provided cashflows are treated as fixed (per instructions).
 
-With more time, curves would be merged at deal/facility level for granular rate modeling and sensitivity.
+### Curves and Financing
+- Rates reset monthly.
+- Each cashflow uses the most recent curve rate on or before its date.
+- Curves merged at fund level (`cost_of_funds_curve`).
+- With more time, curves would be merged at deal/facility level for more granular rate modeling.
 
-Fees and OID
+### Fees and OID
+- Both treated as day-one adjustments.
+- Implemented via `adjust_fees()` in `cash_flow_adjust.py`.
+- Facility F002 (delayed draw) applies both on each contribution.
 
-OID and origination fees treated as day-one adjustments to initial outflows.
+### PIK Interest
+- All PIK interest found accrued and removed.
+- In production, a QC step would verify PIK classification before removal.
 
-Implemented via adjust_fees() in cash_flow_adjust.py.
+### Delayed Draw (Facility F002)
+- Draw 1: 2023-02-15  
+- Draw 2: 2025-05-15  
+- Interest currently assumed on total notional.  
+- In a full model, interest and PIK would adjust per draw schedule.
 
-Example: for simplicity, Facility F002 (delayed draw) applies both fees on each contribution.
+### Other Simplifications
+- No interest-rate floors.
+- No currency-level QC or FX normalization.
+- `covenants.csv` not used.
 
-PIK Interest
+---
 
-PIK interest assumed accrued (capitalized) and removed from cash flow inputs prior to IRR/MOIC.
+## Output
 
-In production, a QC step should verify PIK classification before exclusion.
+### Main Outputs
+- `cleanned_cashflow_master.csv` – fully cleaned data prior to modeling  
+- `performance_summary.csv` – unified metrics summary  
+  ```
+  level,id,name,paid_in,distributed,gross_irr,gross_moic,net_irr,net_moic
+  ```
 
-Delayed Draw (Facility F002)
 
-Delayed-draw schedule observed:
+## Known Limitations and Future Improvements
+- Currency consistency QC (e.g., ensure EUR loans map to EUR curves)
+- FX conversion for base vs. local IRR
+- PIK verification QC before exclusion
+- Delayed-draw modeling for interest and PIK by schedule
+- Curve application at deal/facility level instead of fund approximation
+- End-market value analysis
 
-First draw: 2023-02-15
+---
 
-Second draw: 2025-05-15
-
-Interest appears to accrue on total notional rather than by draw date.
-
-Ideally, interest between the two draw dates would reflect only the first-draw amount, and PIK would be adjusted on the second draw date.
-
-Due to time constraints, this adjustment is not implemented; interest is treated as accruing on total notional.
-
-Other Simplifications
-
-No interest-rate floors modeled.
-
-No currency-level QC or FX normalization.
-
-covenants.csv not used.
-
-Output
-Main Output
-
-performance_summary.csv with the following columns:
-
-level,id,name,paid_in,distributed,gross_irr,gross_moic,net_irr,net_moic
-
-Optional (if extended)
-
-IRR distribution by strategy or fund
-
-+100 bps rate-shock sensitivity
-
-Known Limitations and Future Improvements
-
-Currency consistency QC (e.g., ensure EUR loans map to EUR curves).
-
-FX conversion for base vs. local IRR comparisons.
-
-PIK verification QC before exclusion.
-
-Delayed-draw modeling for interest and PIK by draw schedule.
-
-Curve application at deal/facility level instead of fund-level approximation.
-
-Running the Pipeline
+## Running the Pipeline
+```bash
 python -m src.main
-
+```
 
 This will:
+- Read and clean all CSVs  
+- Log all steps  
+- Apply OID and PIK adjustments  
+- Compute metrics and IRR  
+- Output `performance_summary.csv` in `outputs/`
 
-Read and clean all CSVs
+---
 
-Log cleaning and merge steps
-
-Apply fee and PIK adjustments
-
-Produce performance_summary.csv in the output directory
-
-Example Project Structure
+## Example Project Structure
+```
 pc_project/
 ├─ data/
 │  ├─ cashflows_deal.csv
@@ -203,7 +333,9 @@ pc_project/
 │  └─ clean_structure.py
 ├─ requirements.txt
 └─ README.md
+```
 
+---
 
-Author: Yichen Zhou
-Contact: yichenzhou6 at gmail dot com
+**Author:** Yichen Zhou  
+**Contact:** yichenzhou6 at gmail dot com
