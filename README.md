@@ -66,7 +66,7 @@ python -m irr_calc --shock 0.01
 
 **Outputs/**
 - `cleanned_gross_irr_all_level.csv` – gross IRR only, indicate QC output before fund-level aggregation
-- `performance_summary.csv` – Final deliverables inculdes net irr/moic on fund level
+- `performance_summary.csv` – Final deliverables inculdes: level, id, name, paid_in, distributed, gross_irr, gross_moic, net_irr, net_moic on facility,deal, and fund level. Note that Paid-in and Distributed are reported as postive for reporting purpose.
 - `irr_plot.png` – visualization comparing Gross vs. Net IRR breakdown by facility ,deal, and fund
 
 
@@ -170,6 +170,7 @@ python -m irr_calc --shock 0.01
 
 4. **Compute multi-level metrics**
    - Use `metrics()` to compute Paid-In, Distributed, MOIC, and IRR at:
+   - Paid-in and Distributed are reported as postive for reporting purpose
      - Facility level (`['entity_id','facility_name','deal_id','fund']`)
      - Deal level (`['deal_id','deal_name','fund']`)
      - Fund level (`['fund']`)
