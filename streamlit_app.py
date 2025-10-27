@@ -17,9 +17,10 @@ st.set_page_config(page_title="Private Credit IRR Runner", layout="centered")
 st.title("Private Credit Performance")
 
 st.write(
-    "Note: The applied shock is a **parallel shift** to the monthly interest rate data. "
-    "It is implemented only at the **fund level**, affecting **net IRR** and **net MOIC** results."
-    "Please read the model detail: https://github.com/zhouyichen30/pc_project?tab=readme-ov-file"
+    "Note: The applied shock is a **parallel shift** that adds the specified value "
+    "to all monthly interest rates in the curve (e.g., 0.01 = +100 bps). "
+    "It is applied only at the **fund level**, impacting **net IRR** and **net MOIC** results. "
+    "For full model details, see: https://github.com/zhouyichen30/pc_project?tab=readme-ov-file"
 )
 
 st.write(
