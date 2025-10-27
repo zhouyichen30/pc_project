@@ -3614,3 +3614,975 @@ euribor    1
 2025-10-26 19:28:22,720 [INFO] irr_calc.charts: plot_irr_highlighted: counts by level {'Facility': 5, 'Deal': 3, 'Fund': 2}
 2025-10-26 19:28:23,147 [INFO] irr_calc.charts: plot_irr_highlighted: rendering chart to screen.
 2025-10-26 19:28:23,581 [INFO] irr_calc.charts: Chart saved to: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\irr_plot.png
+2025-10-26 20:19:15,292 [INFO] irr_calc.main: Base Dir is C:\Users\zhouy\OneDrive\Documents\pc_project
+2025-10-26 20:19:15,294 [INFO] irr_calc.main: Data folder: C:\Users\zhouy\OneDrive\Documents\pc_project\data
+2025-10-26 20:19:15,294 [INFO] irr_calc.main: Output folders ready: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs, C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\cash_master, C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\fund_level
+2025-10-26 20:19:15,323 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:19:15,323 [INFO] irr_calc.utils: Input shape: (137, 6)
+2025-10-26 20:19:15,353 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:19:15,357 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:19:15,357 [INFO] irr_calc.utils: Output shape: (137, 6)
+2025-10-26 20:19:15,357 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,361 [INFO] irr_calc.utils: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+fo02     1
+2025-10-26 20:19:15,362 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,363 [INFO] irr_calc.utils: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-26 20:19:15,363 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,365 [INFO] irr_calc.utils: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-26 20:19:15,365 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,366 [INFO] irr_calc.utils: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-26 20:19:15,366 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,367 [INFO] irr_calc.clean_cash_flow: entity_id clean complete - cleaned db: entity_id
+f001    28
+f002    28
+f003    27
+f004    27
+f005    27
+Name: count, dtype: int64
+2025-10-26 20:19:15,371 [INFO] irr_calc.clean_cash_flow: Applied cash flow sign convention.
+2025-10-26 20:19:15,371 [INFO] irr_calc.clean_cash_flow:   • Negative cash flow types: ['contribution']
+2025-10-26 20:19:15,371 [INFO] irr_calc.clean_cash_flow:   • Rows converted to negative: 6
+2025-10-26 20:19:15,371 [INFO] irr_calc.clean_cash_flow:   • Rows converted to positive: 131
+2025-10-26 20:19:15,377 [INFO] irr_calc.clean_cash_flow: ----------------------------------------------------------------------
+2025-10-26 20:19:15,377 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:19:15,378 [INFO] irr_calc.utils: Input shape: (5, 10)
+2025-10-26 20:19:15,384 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:19:15,385 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:19:15,385 [INFO] irr_calc.utils: Output shape: (5, 10)
+2025-10-26 20:19:15,385 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,387 [INFO] irr_calc.utils: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-26 20:19:15,387 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,388 [INFO] irr_calc.utils: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-26 20:19:15,388 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,388 [INFO] irr_calc.utils: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-26 20:19:15,388 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,389 [INFO] irr_calc.utils: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-26 20:19:15,389 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,390 [INFO] irr_calc.utils: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-26 20:19:15,390 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,390 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:19:15,390 [INFO] irr_calc.utils: Input shape: (48, 3)
+2025-10-26 20:19:15,394 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:19:15,396 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:19:15,396 [INFO] irr_calc.utils: Output shape: (48, 3)
+2025-10-26 20:19:15,396 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,397 [INFO] irr_calc.utils: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-26 20:19:15,397 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,397 [INFO] irr_calc.clean_curve: Starting curve cleaning process...
+2025-10-26 20:19:15,404 [INFO] irr_calc.clean_curve: Curve cleaning completed — 2 values modified.
+2025-10-26 20:19:15,405 [INFO] irr_calc.clean_curve: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-26 20:19:15,407 [INFO] irr_calc.cli_utils: CLI argument parsed — curve shock: 0.05
+2025-10-26 20:19:15,407 [INFO] irr_calc.main: Applying interest rate shock...
+2025-10-26 20:19:15,408 [INFO] irr_calc.main: curve data shocked for 0.05
+2025-10-26 20:19:15,408 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:19:15,408 [INFO] irr_calc.utils: Input shape: (5, 8)
+2025-10-26 20:19:15,419 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:19:15,420 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:19:15,421 [INFO] irr_calc.utils: Output shape: (5, 8)
+2025-10-26 20:19:15,421 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,421 [INFO] irr_calc.utils: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-26 20:19:15,422 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,422 [INFO] irr_calc.utils: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-26 20:19:15,422 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,423 [INFO] irr_calc.utils: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-26 20:19:15,423 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,424 [INFO] irr_calc.utils: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-26 20:19:15,424 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,425 [INFO] irr_calc.utils: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-26 20:19:15,425 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,426 [INFO] irr_calc.utils: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-26 20:19:15,427 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,428 [INFO] irr_calc.utils: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-26 20:19:15,428 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,429 [INFO] irr_calc.utils: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-26 20:19:15,429 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,429 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:19:15,430 [INFO] irr_calc.utils: Input shape: (2, 6)
+2025-10-26 20:19:15,434 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:19:15,436 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:19:15,436 [INFO] irr_calc.utils: Output shape: (2, 6)
+2025-10-26 20:19:15,436 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,437 [INFO] irr_calc.utils: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-26 20:19:15,437 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,438 [INFO] irr_calc.utils: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-26 20:19:15,438 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:19:15,438 [INFO] irr_calc.merge: Starting merge pipeline...
+2025-10-26 20:19:15,438 [INFO] irr_calc.merge: Before structure merge: (137, 6)
+2025-10-26 20:19:15,446 [INFO] irr_calc.merge: After structure merge: (137, 14)
+2025-10-26 20:19:15,449 [INFO] irr_calc.merge: After terms merge: (137, 24)
+2025-10-26 20:19:15,452 [INFO] irr_calc.merge: After leverage merge: (137, 29)
+2025-10-26 20:19:15,453 [INFO] irr_calc.merge: No missing values detected in merged dataset.
+2025-10-26 20:19:15,459 [INFO] irr_calc.merge: No duplicate rows detected in merged dataset.
+2025-10-26 20:19:15,459 [INFO] irr_calc.merge: Merge pipeline completed. Final shape: (137, 29)
+2025-10-26 20:19:15,466 [INFO] irr_calc.merge: Curve merge successful: all rows matched a curve rate.
+2025-10-26 20:19:15,468 [INFO] irr_calc.cash_flow_adjust: Removed 12 PIK interest cashflows (accrued).
+2025-10-26 20:19:15,473 [INFO] irr_calc.cash_flow_adjust: Adjusted OID/origination fees for 6 cashflows.
+2025-10-26 20:19:15,473 [INFO] irr_calc.cash_flow_adjust: Total invested before: -171,000,000.00 | after adjustment: -167,125,000.00
+2025-10-26 20:19:15,484 [INFO] irr_calc.metrics: Computing metrics at level: ['entity_id', 'facility_name', 'deal_id', 'fund']
+2025-10-26 20:19:15,493 [INFO] irr_calc.metrics: Calculated paid-in capital for 5 grouped records at level ['entity_id', 'facility_name', 'deal_id', 'fund'].
+2025-10-26 20:19:15,497 [INFO] irr_calc.metrics: Calculated distributions for 5 grouped records at level ['entity_id', 'facility_name', 'deal_id', 'fund'].
+2025-10-26 20:19:15,501 [INFO] irr_calc.metrics: IRR calculation starts on the entity_id level
+2025-10-26 20:19:15,510 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.140130
+2025-10-26 20:19:15,513 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.128055
+2025-10-26 20:19:15,516 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.149952
+2025-10-26 20:19:15,518 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.113139
+2025-10-26 20:19:15,520 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:19:15,524 [INFO] irr_calc.metrics: Metrics calculated and merged for 5 ['entity_id', 'facility_name', 'deal_id', 'fund'] records.
+2025-10-26 20:19:15,525 [INFO] irr_calc.metrics: Computing metrics at level: ['deal_id', 'deal_name', 'fund']
+2025-10-26 20:19:15,530 [INFO] irr_calc.metrics: Calculated paid-in capital for 3 grouped records at level ['deal_id', 'deal_name', 'fund'].
+2025-10-26 20:19:15,534 [INFO] irr_calc.metrics: Calculated distributions for 3 grouped records at level ['deal_id', 'deal_name', 'fund'].
+2025-10-26 20:19:15,540 [INFO] irr_calc.metrics: IRR calculation starts on the deal_id level
+2025-10-26 20:19:15,544 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.136003
+2025-10-26 20:19:15,548 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.133075
+2025-10-26 20:19:15,550 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:19:15,552 [INFO] irr_calc.metrics: Metrics calculated and merged for 3 ['deal_id', 'deal_name', 'fund'] records.
+2025-10-26 20:19:15,552 [INFO] irr_calc.metrics: Computing metrics at level: ['fund']
+2025-10-26 20:19:15,555 [INFO] irr_calc.metrics: Calculated paid-in capital for 2 grouped records at level ['fund'].
+2025-10-26 20:19:15,557 [INFO] irr_calc.metrics: Calculated distributions for 2 grouped records at level ['fund'].
+2025-10-26 20:19:15,560 [INFO] irr_calc.metrics: IRR calculation starts on the fund level
+2025-10-26 20:19:15,564 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.134758
+2025-10-26 20:19:15,566 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:19:15,569 [INFO] irr_calc.metrics: Metrics calculated and merged for 2 ['fund'] records.
+2025-10-26 20:19:15,580 [INFO] irr_calc.level_merge: Merged all levels — total rows: 10
+2025-10-26 20:19:15,580 [INFO] irr_calc.level_merge: Facility: 5, Deal: 3, Fund: 2
+2025-10-26 20:19:15,581 [INFO] irr_calc.level_merge: Missing values summary: {'level': 0, 'id': 0, 'name': 0, 'paid_in': 0, 'distributed': 0, 'gross_irr': 0, 'gross_moic': 0, 'net_irr': 10, 'net_moic': 10}
+2025-10-26 20:19:15,584 [INFO] irr_calc.fund_metrics: Starting full fund-level financing pipeline...
+2025-10-26 20:19:15,594 [INFO] irr_calc.fund_metrics: clean_data_fund: processed 6 records.
+2025-10-26 20:19:15,595 [INFO] irr_calc.fund_metrics: Columns: ['entity_id', 'con_date', 'con_amount', 'fund_commitment', 'cost_of_funds_curve', 'fund_spread_bps_lev', 'fund_undrawn_fee_bps', 'advance_rate', 'fund', 'finance_portion', 'credit_line', 'exit_date']
+2025-10-26 20:19:15,596 [INFO] irr_calc.fund_metrics: Missing values summary: {'entity_id': 0, 'con_date': 0, 'con_amount': 0, 'fund_commitment': 0, 'cost_of_funds_curve': 0, 'fund_spread_bps_lev': 0, 'fund_undrawn_fee_bps': 0, 'advance_rate': 0, 'fund': 0, 'finance_portion': 0, 'credit_line': 0, 'exit_date': 0}
+2025-10-26 20:19:15,596 [INFO] irr_calc.fund_metrics: Step 1: clean_data_fund complete — 6 rows
+2025-10-26 20:19:15,611 [INFO] irr_calc.fund_metrics: return_fund_info: aggregated 3 rows for 2 funds.
+2025-10-26 20:19:15,614 [INFO] irr_calc.fund_metrics: Step 2: return_fund_info complete — 3 rows
+2025-10-26 20:19:15,640 [INFO] irr_calc.fund_metrics: expand_and_join_curve: produced 57 fund×month rows across 2 funds.
+2025-10-26 20:19:15,640 [INFO] irr_calc.fund_metrics: expand_and_join_curve: missing curve rates on 0 rows.
+2025-10-26 20:19:15,643 [INFO] irr_calc.fund_metrics: Step 3: expand_and_join_curve complete — 57 rows
+2025-10-26 20:19:15,647 [INFO] irr_calc.fund_metrics: calc_monthly_fee: generated 114 fee rows across 2 funds.
+2025-10-26 20:19:15,649 [INFO] irr_calc.fund_metrics: calc_monthly_fee: interest rows=57, undrawn_fee rows=57
+2025-10-26 20:19:15,652 [INFO] irr_calc.fund_metrics: Step 4: calc_monthly_fee complete — 114 rows
+2025-10-26 20:19:15,652 [INFO] irr_calc.fund_metrics: Pipeline finished successfully. Outputs saved in: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\fund_level
+2025-10-26 20:19:15,675 [INFO] irr_calc.utils: stack_fund_fees_into_master: appended 114 fund rows to 125 master rows (total=239).
+2025-10-26 20:19:15,682 [INFO] irr_calc.metrics: Computing metrics at level: ['fund']
+2025-10-26 20:19:15,687 [INFO] irr_calc.metrics: Calculated paid-in capital for 2 grouped records at level ['fund'].
+2025-10-26 20:19:15,691 [INFO] irr_calc.metrics: Calculated distributions for 2 grouped records at level ['fund'].
+2025-10-26 20:19:15,694 [INFO] irr_calc.metrics: IRR calculation starts on the fund level
+2025-10-26 20:19:15,703 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.076314
+2025-10-26 20:19:15,709 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.078781
+2025-10-26 20:19:15,712 [INFO] irr_calc.metrics: Metrics calculated and merged for 2 ['fund'] records.
+2025-10-26 20:19:15,717 [INFO] irr_calc.level_merge: assign_fund_net_metrics: updated fund-level net_irr and net_moic for %d funds.
+2025-10-26 20:19:15,719 [INFO] irr_calc.charts: plot_irr_highlighted: starting chart build.
+2025-10-26 20:19:15,727 [INFO] irr_calc.charts: plot_irr_highlighted: counts by level {'Facility': 5, 'Deal': 3, 'Fund': 2}
+2025-10-26 20:19:15,942 [INFO] irr_calc.charts: plot_irr_highlighted: rendering chart to screen.
+2025-10-26 20:19:16,769 [INFO] irr_calc.charts: Chart saved to: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\irr_plot.png
+2025-10-26 20:21:49,544 [INFO] irr_calc.main: Base Dir is C:\Users\zhouy\OneDrive\Documents\pc_project
+2025-10-26 20:21:49,545 [INFO] irr_calc.main: Data folder: C:\Users\zhouy\OneDrive\Documents\pc_project\data
+2025-10-26 20:21:49,546 [INFO] irr_calc.main: Output folders ready: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs, C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\cash_master, C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\fund_level
+2025-10-26 20:21:49,559 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:21:49,559 [INFO] irr_calc.utils: Input shape: (137, 6)
+2025-10-26 20:21:49,573 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:21:49,575 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:21:49,575 [INFO] irr_calc.utils: Output shape: (137, 6)
+2025-10-26 20:21:49,575 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,576 [INFO] irr_calc.utils: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+fo02     1
+2025-10-26 20:21:49,576 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,578 [INFO] irr_calc.utils: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-26 20:21:49,578 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,580 [INFO] irr_calc.utils: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-26 20:21:49,580 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,581 [INFO] irr_calc.utils: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-26 20:21:49,581 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,583 [INFO] irr_calc.clean_cash_flow: entity_id clean complete - cleaned db: entity_id
+f001    28
+f002    28
+f003    27
+f004    27
+f005    27
+Name: count, dtype: int64
+2025-10-26 20:21:49,584 [INFO] irr_calc.clean_cash_flow: Applied cash flow sign convention.
+2025-10-26 20:21:49,584 [INFO] irr_calc.clean_cash_flow:   • Negative cash flow types: ['contribution']
+2025-10-26 20:21:49,584 [INFO] irr_calc.clean_cash_flow:   • Rows converted to negative: 6
+2025-10-26 20:21:49,584 [INFO] irr_calc.clean_cash_flow:   • Rows converted to positive: 131
+2025-10-26 20:21:49,588 [INFO] irr_calc.clean_cash_flow: ----------------------------------------------------------------------
+2025-10-26 20:21:49,589 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:21:49,589 [INFO] irr_calc.utils: Input shape: (5, 10)
+2025-10-26 20:21:49,597 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:21:49,600 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:21:49,600 [INFO] irr_calc.utils: Output shape: (5, 10)
+2025-10-26 20:21:49,600 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,601 [INFO] irr_calc.utils: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-26 20:21:49,601 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,602 [INFO] irr_calc.utils: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-26 20:21:49,602 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,603 [INFO] irr_calc.utils: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-26 20:21:49,603 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,604 [INFO] irr_calc.utils: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-26 20:21:49,604 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,604 [INFO] irr_calc.utils: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-26 20:21:49,604 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,605 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:21:49,605 [INFO] irr_calc.utils: Input shape: (48, 3)
+2025-10-26 20:21:49,608 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:21:49,609 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:21:49,609 [INFO] irr_calc.utils: Output shape: (48, 3)
+2025-10-26 20:21:49,610 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,610 [INFO] irr_calc.utils: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-26 20:21:49,611 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,611 [INFO] irr_calc.clean_curve: Starting curve cleaning process...
+2025-10-26 20:21:49,614 [INFO] irr_calc.clean_curve: Curve cleaning completed — 2 values modified.
+2025-10-26 20:21:49,614 [INFO] irr_calc.clean_curve: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-26 20:21:49,616 [INFO] irr_calc.cli_utils: CLI argument parsed — curve shock: 0.01
+2025-10-26 20:21:49,616 [INFO] irr_calc.main: Applying interest rate shock...
+2025-10-26 20:21:49,616 [INFO] irr_calc.main: curve data shocked for 0.01
+2025-10-26 20:21:49,617 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:21:49,617 [INFO] irr_calc.utils: Input shape: (5, 8)
+2025-10-26 20:21:49,623 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:21:49,624 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:21:49,624 [INFO] irr_calc.utils: Output shape: (5, 8)
+2025-10-26 20:21:49,624 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,625 [INFO] irr_calc.utils: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-26 20:21:49,626 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,626 [INFO] irr_calc.utils: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-26 20:21:49,626 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,627 [INFO] irr_calc.utils: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-26 20:21:49,627 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,628 [INFO] irr_calc.utils: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-26 20:21:49,628 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,628 [INFO] irr_calc.utils: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-26 20:21:49,628 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,629 [INFO] irr_calc.utils: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-26 20:21:49,629 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,630 [INFO] irr_calc.utils: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-26 20:21:49,630 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,631 [INFO] irr_calc.utils: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-26 20:21:49,631 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,631 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:21:49,631 [INFO] irr_calc.utils: Input shape: (2, 6)
+2025-10-26 20:21:49,634 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:21:49,635 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:21:49,635 [INFO] irr_calc.utils: Output shape: (2, 6)
+2025-10-26 20:21:49,635 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,636 [INFO] irr_calc.utils: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-26 20:21:49,636 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,637 [INFO] irr_calc.utils: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-26 20:21:49,637 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:21:49,637 [INFO] irr_calc.merge: Starting merge pipeline...
+2025-10-26 20:21:49,637 [INFO] irr_calc.merge: Before structure merge: (137, 6)
+2025-10-26 20:21:49,639 [INFO] irr_calc.merge: After structure merge: (137, 14)
+2025-10-26 20:21:49,642 [INFO] irr_calc.merge: After terms merge: (137, 24)
+2025-10-26 20:21:49,644 [INFO] irr_calc.merge: After leverage merge: (137, 29)
+2025-10-26 20:21:49,645 [INFO] irr_calc.merge: No missing values detected in merged dataset.
+2025-10-26 20:21:49,648 [INFO] irr_calc.merge: No duplicate rows detected in merged dataset.
+2025-10-26 20:21:49,649 [INFO] irr_calc.merge: Merge pipeline completed. Final shape: (137, 29)
+2025-10-26 20:21:49,652 [INFO] irr_calc.merge: Curve merge successful: all rows matched a curve rate.
+2025-10-26 20:21:49,654 [INFO] irr_calc.cash_flow_adjust: Removed 12 PIK interest cashflows (accrued).
+2025-10-26 20:21:49,658 [INFO] irr_calc.cash_flow_adjust: Adjusted OID/origination fees for 6 cashflows.
+2025-10-26 20:21:49,658 [INFO] irr_calc.cash_flow_adjust: Total invested before: -171,000,000.00 | after adjustment: -167,125,000.00
+2025-10-26 20:21:49,664 [INFO] irr_calc.metrics: Computing metrics at level: ['entity_id', 'facility_name', 'deal_id', 'fund']
+2025-10-26 20:21:49,670 [INFO] irr_calc.metrics: Calculated paid-in capital for 5 grouped records at level ['entity_id', 'facility_name', 'deal_id', 'fund'].
+2025-10-26 20:21:49,675 [INFO] irr_calc.metrics: Calculated distributions for 5 grouped records at level ['entity_id', 'facility_name', 'deal_id', 'fund'].
+2025-10-26 20:21:49,678 [INFO] irr_calc.metrics: IRR calculation starts on the entity_id level
+2025-10-26 20:21:49,681 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.140130
+2025-10-26 20:21:49,683 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.128055
+2025-10-26 20:21:49,685 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.149952
+2025-10-26 20:21:49,687 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.113139
+2025-10-26 20:21:49,689 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:21:49,691 [INFO] irr_calc.metrics: Metrics calculated and merged for 5 ['entity_id', 'facility_name', 'deal_id', 'fund'] records.
+2025-10-26 20:21:49,691 [INFO] irr_calc.metrics: Computing metrics at level: ['deal_id', 'deal_name', 'fund']
+2025-10-26 20:21:49,695 [INFO] irr_calc.metrics: Calculated paid-in capital for 3 grouped records at level ['deal_id', 'deal_name', 'fund'].
+2025-10-26 20:21:49,699 [INFO] irr_calc.metrics: Calculated distributions for 3 grouped records at level ['deal_id', 'deal_name', 'fund'].
+2025-10-26 20:21:49,702 [INFO] irr_calc.metrics: IRR calculation starts on the deal_id level
+2025-10-26 20:21:49,705 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.136003
+2025-10-26 20:21:49,708 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.133075
+2025-10-26 20:21:49,710 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:21:49,712 [INFO] irr_calc.metrics: Metrics calculated and merged for 3 ['deal_id', 'deal_name', 'fund'] records.
+2025-10-26 20:21:49,712 [INFO] irr_calc.metrics: Computing metrics at level: ['fund']
+2025-10-26 20:21:49,715 [INFO] irr_calc.metrics: Calculated paid-in capital for 2 grouped records at level ['fund'].
+2025-10-26 20:21:49,717 [INFO] irr_calc.metrics: Calculated distributions for 2 grouped records at level ['fund'].
+2025-10-26 20:21:49,719 [INFO] irr_calc.metrics: IRR calculation starts on the fund level
+2025-10-26 20:21:49,723 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.134758
+2025-10-26 20:21:49,725 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:21:49,727 [INFO] irr_calc.metrics: Metrics calculated and merged for 2 ['fund'] records.
+2025-10-26 20:21:49,735 [INFO] irr_calc.level_merge: Merged all levels — total rows: 10
+2025-10-26 20:21:49,735 [INFO] irr_calc.level_merge: Facility: 5, Deal: 3, Fund: 2
+2025-10-26 20:21:49,736 [INFO] irr_calc.level_merge: Missing values summary: {'level': 0, 'id': 0, 'name': 0, 'paid_in': 0, 'distributed': 0, 'gross_irr': 0, 'gross_moic': 0, 'net_irr': 10, 'net_moic': 10}
+2025-10-26 20:21:49,738 [INFO] irr_calc.fund_metrics: Starting full fund-level financing pipeline...
+2025-10-26 20:21:49,750 [INFO] irr_calc.fund_metrics: clean_data_fund: processed 6 records.
+2025-10-26 20:21:49,750 [INFO] irr_calc.fund_metrics: Columns: ['entity_id', 'con_date', 'con_amount', 'fund_commitment', 'cost_of_funds_curve', 'fund_spread_bps_lev', 'fund_undrawn_fee_bps', 'advance_rate', 'fund', 'finance_portion', 'credit_line', 'exit_date']
+2025-10-26 20:21:49,751 [INFO] irr_calc.fund_metrics: Missing values summary: {'entity_id': 0, 'con_date': 0, 'con_amount': 0, 'fund_commitment': 0, 'cost_of_funds_curve': 0, 'fund_spread_bps_lev': 0, 'fund_undrawn_fee_bps': 0, 'advance_rate': 0, 'fund': 0, 'finance_portion': 0, 'credit_line': 0, 'exit_date': 0}
+2025-10-26 20:21:49,751 [INFO] irr_calc.fund_metrics: Step 1: clean_data_fund complete — 6 rows
+2025-10-26 20:21:49,782 [INFO] irr_calc.fund_metrics: return_fund_info: aggregated 3 rows for 2 funds.
+2025-10-26 20:21:49,791 [INFO] irr_calc.fund_metrics: Step 2: return_fund_info complete — 3 rows
+2025-10-26 20:21:49,820 [INFO] irr_calc.fund_metrics: expand_and_join_curve: produced 57 fund×month rows across 2 funds.
+2025-10-26 20:21:49,820 [INFO] irr_calc.fund_metrics: expand_and_join_curve: missing curve rates on 0 rows.
+2025-10-26 20:21:49,824 [INFO] irr_calc.fund_metrics: Step 3: expand_and_join_curve complete — 57 rows
+2025-10-26 20:21:49,837 [INFO] irr_calc.fund_metrics: calc_monthly_fee: generated 114 fee rows across 2 funds.
+2025-10-26 20:21:49,838 [INFO] irr_calc.fund_metrics: calc_monthly_fee: interest rows=57, undrawn_fee rows=57
+2025-10-26 20:21:49,841 [INFO] irr_calc.fund_metrics: Step 4: calc_monthly_fee complete — 114 rows
+2025-10-26 20:21:49,842 [INFO] irr_calc.fund_metrics: Pipeline finished successfully. Outputs saved in: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\fund_level
+2025-10-26 20:21:49,860 [INFO] irr_calc.utils: stack_fund_fees_into_master: appended 114 fund rows to 125 master rows (total=239).
+2025-10-26 20:21:49,867 [INFO] irr_calc.metrics: Computing metrics at level: ['fund']
+2025-10-26 20:21:49,871 [INFO] irr_calc.metrics: Calculated paid-in capital for 2 grouped records at level ['fund'].
+2025-10-26 20:21:49,874 [INFO] irr_calc.metrics: Calculated distributions for 2 grouped records at level ['fund'].
+2025-10-26 20:21:49,876 [INFO] irr_calc.metrics: IRR calculation starts on the fund level
+2025-10-26 20:21:49,882 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.100246
+2025-10-26 20:21:49,886 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.098175
+2025-10-26 20:21:49,888 [INFO] irr_calc.metrics: Metrics calculated and merged for 2 ['fund'] records.
+2025-10-26 20:21:49,892 [INFO] irr_calc.level_merge: assign_fund_net_metrics: updated fund-level net_irr and net_moic for %d funds.
+2025-10-26 20:21:49,895 [INFO] irr_calc.charts: plot_irr_highlighted: starting chart build.
+2025-10-26 20:21:49,901 [INFO] irr_calc.charts: plot_irr_highlighted: counts by level {'Facility': 5, 'Deal': 3, 'Fund': 2}
+2025-10-26 20:21:50,062 [INFO] irr_calc.charts: plot_irr_highlighted: rendering chart to screen.
+2025-10-26 20:21:50,680 [INFO] irr_calc.charts: Chart saved to: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\irr_plot.png
+2025-10-26 20:22:05,249 [INFO] irr_calc.main: Base Dir is C:\Users\zhouy\OneDrive\Documents\pc_project
+2025-10-26 20:22:05,250 [INFO] irr_calc.main: Data folder: C:\Users\zhouy\OneDrive\Documents\pc_project\data
+2025-10-26 20:22:05,250 [INFO] irr_calc.main: Output folders ready: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs, C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\cash_master, C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\fund_level
+2025-10-26 20:22:05,268 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:22:05,268 [INFO] irr_calc.utils: Input shape: (137, 6)
+2025-10-26 20:22:05,279 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:22:05,280 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:22:05,280 [INFO] irr_calc.utils: Output shape: (137, 6)
+2025-10-26 20:22:05,281 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,282 [INFO] irr_calc.utils: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+fo02     1
+2025-10-26 20:22:05,282 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,283 [INFO] irr_calc.utils: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-26 20:22:05,283 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,283 [INFO] irr_calc.utils: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-26 20:22:05,283 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,284 [INFO] irr_calc.utils: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-26 20:22:05,284 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,285 [INFO] irr_calc.clean_cash_flow: entity_id clean complete - cleaned db: entity_id
+f001    28
+f002    28
+f003    27
+f004    27
+f005    27
+Name: count, dtype: int64
+2025-10-26 20:22:05,286 [INFO] irr_calc.clean_cash_flow: Applied cash flow sign convention.
+2025-10-26 20:22:05,287 [INFO] irr_calc.clean_cash_flow:   • Negative cash flow types: ['contribution']
+2025-10-26 20:22:05,287 [INFO] irr_calc.clean_cash_flow:   • Rows converted to negative: 6
+2025-10-26 20:22:05,287 [INFO] irr_calc.clean_cash_flow:   • Rows converted to positive: 131
+2025-10-26 20:22:05,293 [INFO] irr_calc.clean_cash_flow: ----------------------------------------------------------------------
+2025-10-26 20:22:05,293 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:22:05,293 [INFO] irr_calc.utils: Input shape: (5, 10)
+2025-10-26 20:22:05,300 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:22:05,302 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:22:05,302 [INFO] irr_calc.utils: Output shape: (5, 10)
+2025-10-26 20:22:05,302 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,303 [INFO] irr_calc.utils: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-26 20:22:05,304 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,305 [INFO] irr_calc.utils: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-26 20:22:05,306 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,307 [INFO] irr_calc.utils: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-26 20:22:05,307 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,309 [INFO] irr_calc.utils: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-26 20:22:05,309 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,310 [INFO] irr_calc.utils: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-26 20:22:05,311 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,311 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:22:05,311 [INFO] irr_calc.utils: Input shape: (48, 3)
+2025-10-26 20:22:05,316 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:22:05,318 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:22:05,318 [INFO] irr_calc.utils: Output shape: (48, 3)
+2025-10-26 20:22:05,318 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,320 [INFO] irr_calc.utils: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-26 20:22:05,320 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,320 [INFO] irr_calc.clean_curve: Starting curve cleaning process...
+2025-10-26 20:22:05,325 [INFO] irr_calc.clean_curve: Curve cleaning completed — 2 values modified.
+2025-10-26 20:22:05,326 [INFO] irr_calc.clean_curve: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-26 20:22:05,328 [INFO] irr_calc.cli_utils: CLI argument parsed — curve shock: 0.5
+2025-10-26 20:22:05,328 [INFO] irr_calc.main: Applying interest rate shock...
+2025-10-26 20:22:05,328 [INFO] irr_calc.main: curve data shocked for 0.5
+2025-10-26 20:22:05,329 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:22:05,329 [INFO] irr_calc.utils: Input shape: (5, 8)
+2025-10-26 20:22:05,336 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:22:05,337 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:22:05,337 [INFO] irr_calc.utils: Output shape: (5, 8)
+2025-10-26 20:22:05,337 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,338 [INFO] irr_calc.utils: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-26 20:22:05,338 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,339 [INFO] irr_calc.utils: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-26 20:22:05,339 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,340 [INFO] irr_calc.utils: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-26 20:22:05,340 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,340 [INFO] irr_calc.utils: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-26 20:22:05,340 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,341 [INFO] irr_calc.utils: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-26 20:22:05,341 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,342 [INFO] irr_calc.utils: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-26 20:22:05,342 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,343 [INFO] irr_calc.utils: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-26 20:22:05,343 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,343 [INFO] irr_calc.utils: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-26 20:22:05,343 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,344 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:22:05,344 [INFO] irr_calc.utils: Input shape: (2, 6)
+2025-10-26 20:22:05,347 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:22:05,348 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:22:05,348 [INFO] irr_calc.utils: Output shape: (2, 6)
+2025-10-26 20:22:05,348 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,349 [INFO] irr_calc.utils: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-26 20:22:05,349 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,350 [INFO] irr_calc.utils: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-26 20:22:05,350 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:05,350 [INFO] irr_calc.merge: Starting merge pipeline...
+2025-10-26 20:22:05,350 [INFO] irr_calc.merge: Before structure merge: (137, 6)
+2025-10-26 20:22:05,353 [INFO] irr_calc.merge: After structure merge: (137, 14)
+2025-10-26 20:22:05,355 [INFO] irr_calc.merge: After terms merge: (137, 24)
+2025-10-26 20:22:05,358 [INFO] irr_calc.merge: After leverage merge: (137, 29)
+2025-10-26 20:22:05,359 [INFO] irr_calc.merge: No missing values detected in merged dataset.
+2025-10-26 20:22:05,362 [INFO] irr_calc.merge: No duplicate rows detected in merged dataset.
+2025-10-26 20:22:05,362 [INFO] irr_calc.merge: Merge pipeline completed. Final shape: (137, 29)
+2025-10-26 20:22:05,366 [INFO] irr_calc.merge: Curve merge successful: all rows matched a curve rate.
+2025-10-26 20:22:05,367 [INFO] irr_calc.cash_flow_adjust: Removed 12 PIK interest cashflows (accrued).
+2025-10-26 20:22:05,373 [INFO] irr_calc.cash_flow_adjust: Adjusted OID/origination fees for 6 cashflows.
+2025-10-26 20:22:05,374 [INFO] irr_calc.cash_flow_adjust: Total invested before: -171,000,000.00 | after adjustment: -167,125,000.00
+2025-10-26 20:22:05,379 [INFO] irr_calc.metrics: Computing metrics at level: ['entity_id', 'facility_name', 'deal_id', 'fund']
+2025-10-26 20:22:05,387 [INFO] irr_calc.metrics: Calculated paid-in capital for 5 grouped records at level ['entity_id', 'facility_name', 'deal_id', 'fund'].
+2025-10-26 20:22:05,392 [INFO] irr_calc.metrics: Calculated distributions for 5 grouped records at level ['entity_id', 'facility_name', 'deal_id', 'fund'].
+2025-10-26 20:22:05,395 [INFO] irr_calc.metrics: IRR calculation starts on the entity_id level
+2025-10-26 20:22:05,398 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.140130
+2025-10-26 20:22:05,400 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.128055
+2025-10-26 20:22:05,402 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.149952
+2025-10-26 20:22:05,404 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.113139
+2025-10-26 20:22:05,406 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:22:05,408 [INFO] irr_calc.metrics: Metrics calculated and merged for 5 ['entity_id', 'facility_name', 'deal_id', 'fund'] records.
+2025-10-26 20:22:05,408 [INFO] irr_calc.metrics: Computing metrics at level: ['deal_id', 'deal_name', 'fund']
+2025-10-26 20:22:05,412 [INFO] irr_calc.metrics: Calculated paid-in capital for 3 grouped records at level ['deal_id', 'deal_name', 'fund'].
+2025-10-26 20:22:05,415 [INFO] irr_calc.metrics: Calculated distributions for 3 grouped records at level ['deal_id', 'deal_name', 'fund'].
+2025-10-26 20:22:05,419 [INFO] irr_calc.metrics: IRR calculation starts on the deal_id level
+2025-10-26 20:22:05,421 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.136003
+2025-10-26 20:22:05,424 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.133075
+2025-10-26 20:22:05,426 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:22:05,428 [INFO] irr_calc.metrics: Metrics calculated and merged for 3 ['deal_id', 'deal_name', 'fund'] records.
+2025-10-26 20:22:05,428 [INFO] irr_calc.metrics: Computing metrics at level: ['fund']
+2025-10-26 20:22:05,431 [INFO] irr_calc.metrics: Calculated paid-in capital for 2 grouped records at level ['fund'].
+2025-10-26 20:22:05,435 [INFO] irr_calc.metrics: Calculated distributions for 2 grouped records at level ['fund'].
+2025-10-26 20:22:05,438 [INFO] irr_calc.metrics: IRR calculation starts on the fund level
+2025-10-26 20:22:05,442 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.134758
+2025-10-26 20:22:05,444 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:22:05,446 [INFO] irr_calc.metrics: Metrics calculated and merged for 2 ['fund'] records.
+2025-10-26 20:22:05,453 [INFO] irr_calc.level_merge: Merged all levels — total rows: 10
+2025-10-26 20:22:05,454 [INFO] irr_calc.level_merge: Facility: 5, Deal: 3, Fund: 2
+2025-10-26 20:22:05,455 [INFO] irr_calc.level_merge: Missing values summary: {'level': 0, 'id': 0, 'name': 0, 'paid_in': 0, 'distributed': 0, 'gross_irr': 0, 'gross_moic': 0, 'net_irr': 10, 'net_moic': 10}
+2025-10-26 20:22:05,457 [INFO] irr_calc.fund_metrics: Starting full fund-level financing pipeline...
+2025-10-26 20:22:05,469 [INFO] irr_calc.fund_metrics: clean_data_fund: processed 6 records.
+2025-10-26 20:22:05,469 [INFO] irr_calc.fund_metrics: Columns: ['entity_id', 'con_date', 'con_amount', 'fund_commitment', 'cost_of_funds_curve', 'fund_spread_bps_lev', 'fund_undrawn_fee_bps', 'advance_rate', 'fund', 'finance_portion', 'credit_line', 'exit_date']
+2025-10-26 20:22:05,470 [INFO] irr_calc.fund_metrics: Missing values summary: {'entity_id': 0, 'con_date': 0, 'con_amount': 0, 'fund_commitment': 0, 'cost_of_funds_curve': 0, 'fund_spread_bps_lev': 0, 'fund_undrawn_fee_bps': 0, 'advance_rate': 0, 'fund': 0, 'finance_portion': 0, 'credit_line': 0, 'exit_date': 0}
+2025-10-26 20:22:05,470 [INFO] irr_calc.fund_metrics: Step 1: clean_data_fund complete — 6 rows
+2025-10-26 20:22:05,479 [INFO] irr_calc.fund_metrics: return_fund_info: aggregated 3 rows for 2 funds.
+2025-10-26 20:22:05,482 [INFO] irr_calc.fund_metrics: Step 2: return_fund_info complete — 3 rows
+2025-10-26 20:22:05,497 [INFO] irr_calc.fund_metrics: expand_and_join_curve: produced 57 fund×month rows across 2 funds.
+2025-10-26 20:22:05,497 [INFO] irr_calc.fund_metrics: expand_and_join_curve: missing curve rates on 0 rows.
+2025-10-26 20:22:05,501 [INFO] irr_calc.fund_metrics: Step 3: expand_and_join_curve complete — 57 rows
+2025-10-26 20:22:05,506 [INFO] irr_calc.fund_metrics: calc_monthly_fee: generated 114 fee rows across 2 funds.
+2025-10-26 20:22:05,507 [INFO] irr_calc.fund_metrics: calc_monthly_fee: interest rows=57, undrawn_fee rows=57
+2025-10-26 20:22:05,510 [INFO] irr_calc.fund_metrics: Step 4: calc_monthly_fee complete — 114 rows
+2025-10-26 20:22:05,510 [INFO] irr_calc.fund_metrics: Pipeline finished successfully. Outputs saved in: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\fund_level
+2025-10-26 20:22:05,533 [INFO] irr_calc.utils: stack_fund_fees_into_master: appended 114 fund rows to 125 master rows (total=239).
+2025-10-26 20:22:05,540 [INFO] irr_calc.metrics: Computing metrics at level: ['fund']
+2025-10-26 20:22:05,544 [INFO] irr_calc.metrics: Calculated paid-in capital for 2 grouped records at level ['fund'].
+2025-10-26 20:22:05,546 [INFO] irr_calc.metrics: Calculated distributions for 2 grouped records at level ['fund'].
+2025-10-26 20:22:05,549 [INFO] irr_calc.metrics: IRR calculation starts on the fund level
+2025-10-26 20:22:05,556 [INFO] irr_calc.metrics: xirr(): Converged successfully at -0.163794
+2025-10-26 20:22:05,560 [INFO] irr_calc.metrics: xirr(): Converged successfully at -0.120277
+2025-10-26 20:22:05,562 [INFO] irr_calc.metrics: Metrics calculated and merged for 2 ['fund'] records.
+2025-10-26 20:22:05,566 [INFO] irr_calc.level_merge: assign_fund_net_metrics: updated fund-level net_irr and net_moic for %d funds.
+2025-10-26 20:22:05,569 [INFO] irr_calc.charts: plot_irr_highlighted: starting chart build.
+2025-10-26 20:22:05,576 [INFO] irr_calc.charts: plot_irr_highlighted: counts by level {'Facility': 5, 'Deal': 3, 'Fund': 2}
+2025-10-26 20:22:05,720 [INFO] irr_calc.charts: plot_irr_highlighted: rendering chart to screen.
+2025-10-26 20:22:06,329 [INFO] irr_calc.charts: Chart saved to: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\irr_plot.png
+2025-10-26 20:22:25,524 [INFO] irr_calc.main: Base Dir is C:\Users\zhouy\OneDrive\Documents\pc_project
+2025-10-26 20:22:25,525 [INFO] irr_calc.main: Data folder: C:\Users\zhouy\OneDrive\Documents\pc_project\data
+2025-10-26 20:22:25,525 [INFO] irr_calc.main: Output folders ready: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs, C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\cash_master, C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\fund_level
+2025-10-26 20:22:25,539 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:22:25,539 [INFO] irr_calc.utils: Input shape: (137, 6)
+2025-10-26 20:22:25,550 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:22:25,552 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:22:25,552 [INFO] irr_calc.utils: Output shape: (137, 6)
+2025-10-26 20:22:25,552 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,553 [INFO] irr_calc.utils: Top values in 'entity_id':
+entity_id
+f001    28
+f002    27
+f003    27
+f004    27
+f005    27
+fo02     1
+2025-10-26 20:22:25,553 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,554 [INFO] irr_calc.utils: Top values in 'entity_type':
+entity_type
+facility    137
+2025-10-26 20:22:25,554 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,555 [INFO] irr_calc.utils: Top values in 'cashflow_type':
+cashflow_type
+interest            79
+principal_return    35
+pik_interest        12
+contribution         6
+exit_fee             5
+2025-10-26 20:22:25,555 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,555 [INFO] irr_calc.utils: Top values in 'currency':
+currency
+usd    110
+eur     27
+2025-10-26 20:22:25,555 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,557 [INFO] irr_calc.clean_cash_flow: entity_id clean complete - cleaned db: entity_id
+f001    28
+f002    28
+f003    27
+f004    27
+f005    27
+Name: count, dtype: int64
+2025-10-26 20:22:25,558 [INFO] irr_calc.clean_cash_flow: Applied cash flow sign convention.
+2025-10-26 20:22:25,558 [INFO] irr_calc.clean_cash_flow:   • Negative cash flow types: ['contribution']
+2025-10-26 20:22:25,558 [INFO] irr_calc.clean_cash_flow:   • Rows converted to negative: 6
+2025-10-26 20:22:25,558 [INFO] irr_calc.clean_cash_flow:   • Rows converted to positive: 131
+2025-10-26 20:22:25,562 [INFO] irr_calc.clean_cash_flow: ----------------------------------------------------------------------
+2025-10-26 20:22:25,562 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:22:25,562 [INFO] irr_calc.utils: Input shape: (5, 10)
+2025-10-26 20:22:25,570 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:22:25,572 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:22:25,572 [INFO] irr_calc.utils: Output shape: (5, 10)
+2025-10-26 20:22:25,572 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,573 [INFO] irr_calc.utils: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-26 20:22:25,573 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,574 [INFO] irr_calc.utils: Top values in 'rate_type':
+rate_type
+sofr+spread       3
+fixed             1
+euribor+spread    1
+2025-10-26 20:22:25,574 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,574 [INFO] irr_calc.utils: Top values in 'day_count':
+day_count
+act/360    4
+30/360     1
+2025-10-26 20:22:25,574 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,575 [INFO] irr_calc.utils: Top values in 'pik':
+pik
+no     3
+yes    2
+2025-10-26 20:22:25,575 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,576 [INFO] irr_calc.utils: Top values in 'delayed_draw':
+delayed_draw
+no     4
+yes    1
+2025-10-26 20:22:25,576 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,576 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:22:25,576 [INFO] irr_calc.utils: Input shape: (48, 3)
+2025-10-26 20:22:25,579 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:22:25,580 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:22:25,580 [INFO] irr_calc.utils: Output shape: (48, 3)
+2025-10-26 20:22:25,580 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,581 [INFO] irr_calc.utils: Top values in 'curve':
+curve
+sofr       23
+euribor    23
+eurib0r     1
+s0fr        1
+2025-10-26 20:22:25,581 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,581 [INFO] irr_calc.clean_curve: Starting curve cleaning process...
+2025-10-26 20:22:25,583 [INFO] irr_calc.clean_curve: Curve cleaning completed — 2 values modified.
+2025-10-26 20:22:25,584 [INFO] irr_calc.clean_curve: curve data after cleaned curve
+sofr       24
+euribor    24
+Name: count, dtype: int64
+2025-10-26 20:22:25,586 [INFO] irr_calc.cli_utils: CLI argument parsed — curve shock: 0.05
+2025-10-26 20:22:25,586 [INFO] irr_calc.main: Applying interest rate shock...
+2025-10-26 20:22:25,587 [INFO] irr_calc.main: curve data shocked for 0.05
+2025-10-26 20:22:25,587 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:22:25,587 [INFO] irr_calc.utils: Input shape: (5, 8)
+2025-10-26 20:22:25,594 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:22:25,596 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:22:25,596 [INFO] irr_calc.utils: Output shape: (5, 8)
+2025-10-26 20:22:25,596 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,597 [INFO] irr_calc.utils: Top values in 'facility_id':
+facility_id
+f001    1
+f002    1
+f003    1
+f004    1
+f005    1
+2025-10-26 20:22:25,597 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,598 [INFO] irr_calc.utils: Top values in 'facility_name':
+facility_name
+term_loan_a          1
+delayed_draw_tl      1
+mezz_loan            1
+refinance_tl         1
+senior_secured_tl    1
+2025-10-26 20:22:25,598 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,599 [INFO] irr_calc.utils: Top values in 'deal_id':
+deal_id
+d001    2
+d002    2
+d003    1
+2025-10-26 20:22:25,599 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,600 [INFO] irr_calc.utils: Top values in 'deal_name':
+deal_name
+acme_industrials_unitranche     2
+greenleaf_real_estate_mezz      2
+bluewave_software_sr_secured    1
+2025-10-26 20:22:25,600 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,601 [INFO] irr_calc.utils: Top values in 'strategy_bucket':
+strategy_bucket
+direct_lending          2
+real_estate_credit      2
+opportunistic_credit    1
+2025-10-26 20:22:25,601 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,602 [INFO] irr_calc.utils: Top values in 'region':
+region
+nan    4
+eu     1
+2025-10-26 20:22:25,602 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,603 [INFO] irr_calc.utils: Top values in 'sector':
+sector
+industrials    2
+real_estate    2
+technology     1
+2025-10-26 20:22:25,603 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,603 [INFO] irr_calc.utils: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     4
+hbc_private_credit_fund_ii    1
+2025-10-26 20:22:25,603 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,603 [INFO] irr_calc.utils: Starting data cleaning.
+2025-10-26 20:22:25,604 [INFO] irr_calc.utils: Input shape: (2, 6)
+2025-10-26 20:22:25,607 [INFO] irr_calc.utils: No NaN values detected in the dataset.
+2025-10-26 20:22:25,608 [INFO] irr_calc.utils: Data cleaning complete.
+2025-10-26 20:22:25,609 [INFO] irr_calc.utils: Output shape: (2, 6)
+2025-10-26 20:22:25,609 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,610 [INFO] irr_calc.utils: Top values in 'fund':
+fund
+hbc_private_credit_fund_i     1
+hbc_private_credit_fund_ii    1
+2025-10-26 20:22:25,610 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,611 [INFO] irr_calc.utils: Top values in 'cost_of_funds_curve':
+cost_of_funds_curve
+sofr       1
+euribor    1
+2025-10-26 20:22:25,611 [INFO] irr_calc.utils: --------------------------------------------------
+2025-10-26 20:22:25,611 [INFO] irr_calc.merge: Starting merge pipeline...
+2025-10-26 20:22:25,611 [INFO] irr_calc.merge: Before structure merge: (137, 6)
+2025-10-26 20:22:25,614 [INFO] irr_calc.merge: After structure merge: (137, 14)
+2025-10-26 20:22:25,616 [INFO] irr_calc.merge: After terms merge: (137, 24)
+2025-10-26 20:22:25,619 [INFO] irr_calc.merge: After leverage merge: (137, 29)
+2025-10-26 20:22:25,620 [INFO] irr_calc.merge: No missing values detected in merged dataset.
+2025-10-26 20:22:25,623 [INFO] irr_calc.merge: No duplicate rows detected in merged dataset.
+2025-10-26 20:22:25,623 [INFO] irr_calc.merge: Merge pipeline completed. Final shape: (137, 29)
+2025-10-26 20:22:25,628 [INFO] irr_calc.merge: Curve merge successful: all rows matched a curve rate.
+2025-10-26 20:22:25,630 [INFO] irr_calc.cash_flow_adjust: Removed 12 PIK interest cashflows (accrued).
+2025-10-26 20:22:25,634 [INFO] irr_calc.cash_flow_adjust: Adjusted OID/origination fees for 6 cashflows.
+2025-10-26 20:22:25,634 [INFO] irr_calc.cash_flow_adjust: Total invested before: -171,000,000.00 | after adjustment: -167,125,000.00
+2025-10-26 20:22:25,640 [INFO] irr_calc.metrics: Computing metrics at level: ['entity_id', 'facility_name', 'deal_id', 'fund']
+2025-10-26 20:22:25,647 [INFO] irr_calc.metrics: Calculated paid-in capital for 5 grouped records at level ['entity_id', 'facility_name', 'deal_id', 'fund'].
+2025-10-26 20:22:25,652 [INFO] irr_calc.metrics: Calculated distributions for 5 grouped records at level ['entity_id', 'facility_name', 'deal_id', 'fund'].
+2025-10-26 20:22:25,655 [INFO] irr_calc.metrics: IRR calculation starts on the entity_id level
+2025-10-26 20:22:25,659 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.140130
+2025-10-26 20:22:25,662 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.128055
+2025-10-26 20:22:25,664 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.149952
+2025-10-26 20:22:25,666 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.113139
+2025-10-26 20:22:25,668 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:22:25,671 [INFO] irr_calc.metrics: Metrics calculated and merged for 5 ['entity_id', 'facility_name', 'deal_id', 'fund'] records.
+2025-10-26 20:22:25,671 [INFO] irr_calc.metrics: Computing metrics at level: ['deal_id', 'deal_name', 'fund']
+2025-10-26 20:22:25,677 [INFO] irr_calc.metrics: Calculated paid-in capital for 3 grouped records at level ['deal_id', 'deal_name', 'fund'].
+2025-10-26 20:22:25,681 [INFO] irr_calc.metrics: Calculated distributions for 3 grouped records at level ['deal_id', 'deal_name', 'fund'].
+2025-10-26 20:22:25,684 [INFO] irr_calc.metrics: IRR calculation starts on the deal_id level
+2025-10-26 20:22:25,687 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.136003
+2025-10-26 20:22:25,689 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.133075
+2025-10-26 20:22:25,691 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:22:25,693 [INFO] irr_calc.metrics: Metrics calculated and merged for 3 ['deal_id', 'deal_name', 'fund'] records.
+2025-10-26 20:22:25,693 [INFO] irr_calc.metrics: Computing metrics at level: ['fund']
+2025-10-26 20:22:25,696 [INFO] irr_calc.metrics: Calculated paid-in capital for 2 grouped records at level ['fund'].
+2025-10-26 20:22:25,698 [INFO] irr_calc.metrics: Calculated distributions for 2 grouped records at level ['fund'].
+2025-10-26 20:22:25,700 [INFO] irr_calc.metrics: IRR calculation starts on the fund level
+2025-10-26 20:22:25,704 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.134758
+2025-10-26 20:22:25,707 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.127697
+2025-10-26 20:22:25,710 [INFO] irr_calc.metrics: Metrics calculated and merged for 2 ['fund'] records.
+2025-10-26 20:22:25,717 [INFO] irr_calc.level_merge: Merged all levels — total rows: 10
+2025-10-26 20:22:25,717 [INFO] irr_calc.level_merge: Facility: 5, Deal: 3, Fund: 2
+2025-10-26 20:22:25,719 [INFO] irr_calc.level_merge: Missing values summary: {'level': 0, 'id': 0, 'name': 0, 'paid_in': 0, 'distributed': 0, 'gross_irr': 0, 'gross_moic': 0, 'net_irr': 10, 'net_moic': 10}
+2025-10-26 20:22:25,721 [INFO] irr_calc.fund_metrics: Starting full fund-level financing pipeline...
+2025-10-26 20:22:25,731 [INFO] irr_calc.fund_metrics: clean_data_fund: processed 6 records.
+2025-10-26 20:22:25,731 [INFO] irr_calc.fund_metrics: Columns: ['entity_id', 'con_date', 'con_amount', 'fund_commitment', 'cost_of_funds_curve', 'fund_spread_bps_lev', 'fund_undrawn_fee_bps', 'advance_rate', 'fund', 'finance_portion', 'credit_line', 'exit_date']
+2025-10-26 20:22:25,732 [INFO] irr_calc.fund_metrics: Missing values summary: {'entity_id': 0, 'con_date': 0, 'con_amount': 0, 'fund_commitment': 0, 'cost_of_funds_curve': 0, 'fund_spread_bps_lev': 0, 'fund_undrawn_fee_bps': 0, 'advance_rate': 0, 'fund': 0, 'finance_portion': 0, 'credit_line': 0, 'exit_date': 0}
+2025-10-26 20:22:25,732 [INFO] irr_calc.fund_metrics: Step 1: clean_data_fund complete — 6 rows
+2025-10-26 20:22:25,742 [INFO] irr_calc.fund_metrics: return_fund_info: aggregated 3 rows for 2 funds.
+2025-10-26 20:22:25,745 [INFO] irr_calc.fund_metrics: Step 2: return_fund_info complete — 3 rows
+2025-10-26 20:22:25,759 [INFO] irr_calc.fund_metrics: expand_and_join_curve: produced 57 fund×month rows across 2 funds.
+2025-10-26 20:22:25,759 [INFO] irr_calc.fund_metrics: expand_and_join_curve: missing curve rates on 0 rows.
+2025-10-26 20:22:25,762 [INFO] irr_calc.fund_metrics: Step 3: expand_and_join_curve complete — 57 rows
+2025-10-26 20:22:25,765 [INFO] irr_calc.fund_metrics: calc_monthly_fee: generated 114 fee rows across 2 funds.
+2025-10-26 20:22:25,766 [INFO] irr_calc.fund_metrics: calc_monthly_fee: interest rows=57, undrawn_fee rows=57
+2025-10-26 20:22:25,769 [INFO] irr_calc.fund_metrics: Step 4: calc_monthly_fee complete — 114 rows
+2025-10-26 20:22:25,769 [INFO] irr_calc.fund_metrics: Pipeline finished successfully. Outputs saved in: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\fund_level
+2025-10-26 20:22:25,786 [INFO] irr_calc.utils: stack_fund_fees_into_master: appended 114 fund rows to 125 master rows (total=239).
+2025-10-26 20:22:25,791 [INFO] irr_calc.metrics: Computing metrics at level: ['fund']
+2025-10-26 20:22:25,795 [INFO] irr_calc.metrics: Calculated paid-in capital for 2 grouped records at level ['fund'].
+2025-10-26 20:22:25,797 [INFO] irr_calc.metrics: Calculated distributions for 2 grouped records at level ['fund'].
+2025-10-26 20:22:25,800 [INFO] irr_calc.metrics: IRR calculation starts on the fund level
+2025-10-26 20:22:25,806 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.076314
+2025-10-26 20:22:25,810 [INFO] irr_calc.metrics: xirr(): Converged successfully at 0.078781
+2025-10-26 20:22:25,812 [INFO] irr_calc.metrics: Metrics calculated and merged for 2 ['fund'] records.
+2025-10-26 20:22:25,816 [INFO] irr_calc.level_merge: assign_fund_net_metrics: updated fund-level net_irr and net_moic for %d funds.
+2025-10-26 20:22:25,818 [INFO] irr_calc.charts: plot_irr_highlighted: starting chart build.
+2025-10-26 20:22:25,824 [INFO] irr_calc.charts: plot_irr_highlighted: counts by level {'Facility': 5, 'Deal': 3, 'Fund': 2}
+2025-10-26 20:22:25,963 [INFO] irr_calc.charts: plot_irr_highlighted: rendering chart to screen.
+2025-10-26 20:22:26,601 [INFO] irr_calc.charts: Chart saved to: C:\Users\zhouy\OneDrive\Documents\pc_project\outputs\irr_plot.png
