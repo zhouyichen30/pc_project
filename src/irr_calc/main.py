@@ -106,7 +106,7 @@ def main() -> None:
     # In a full implementation, we would merge at the deal/facility level
     # to capture distinct base-rate exposures (e.g., SOFR vs. EURIBOR).
     mdbc = merge_curve(mdb, curve_df_cleaned)
-
+    #apply fees
     mdc_cleanned = adjust_cash_flow(mdbc)
 
     #write the cleanned data to a csv files

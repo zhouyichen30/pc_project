@@ -1,7 +1,8 @@
 # Private Credit Performance Analysis
 
-A reproducible Python workflow for ingesting, cleaning, and analyzing private credit cash flow data.  
+A reproducible Python workflow/app for ingesting, cleaning, and analyzing private credit cash flow data.  
 The goal is to normalize raw CSV inputs, compute metrics such as XIRR/MOIC, model leverage impact (net), and output a unified performance summary and chart.
+
 
 ---
 > This project was developed and tested on **Python 3.12.10**.  
@@ -15,17 +16,17 @@ The goal is to normalize raw CSV inputs, compute metrics such as XIRR/MOIC, mode
 ```bash
 git clone https://github.com/zhouyichen30/pc_project.git
 
-#if not in the pc_project
+#if not in the pc_project dir
 cd pc_project
 ```
 
-### 2. If no env activated, create and activate a virtual environment 
+### 2. If no environment activated, create and activate a virtual environment 
 ```bash
 # Activate
-# macOS/Linux
-source venv/bin/activate
 # Windows PowerShell
 venv\Scripts\Activate.ps1
+# macOS/Linux
+source venv/bin/activate
 ```
 
 ### 3. Install dependencies
@@ -57,7 +58,7 @@ python -m irr_calc --shock 0.01
 ---
 ## Inputs Data
 **data/**
-- all the CSVs are saved into the data folder 
+- all the CSVs provided are saved into the data folder 
 ---
 ## Output
 
@@ -84,8 +85,8 @@ python -m irr_calc --shock 0.01
 ## Modeling Assumptions
 
 ### General
-- No base-currency conversion; IRR/MOIC in fund currency from `structure.csv`.
-- Provided cashflows are treated as fixed (per instructions).
+- No base-currency conversion
+- Provided facility level cashflows are treated as fixed.
 
 ### Curves and Financing
 - Rates reset monthly.
@@ -133,13 +134,15 @@ python -m irr_calc --shock 0.01
 - First period anchor: prior month-end of con_date used for rate alignment.
 - No working-day adjustment and no floor on rates.
 
-### Apply Shock
-- When shocking interest rates, they cannot become negative.
+### Rates Shock
+- Shocking impact only apply on the fund level
+- It only applies parallel shocks to the monthly interest rate data.
+- When shocking interest rates, interest cannot become negative.
 
-### Net IRR
+### IRR
 - Paid-in capital treated as negative.
 - Distributions treated as positive.
-- Expenses reduce distributions.
+- Fund level expenses reduce distributions.
 
 ### Other Simplifications
 - No interest-rate floors.
@@ -153,16 +156,17 @@ python -m irr_calc --shock 0.01
    - Normalize date, text, and numeric columns using `clean_data_format()`.
    - Apply specialized cleaners:
      - `cash_flow_clean()` — fixes sign conventions and filters malformed rows.
-     - `clean_curve_df()` — fixes curve labels, enforces non-negative rates, applies optional rate shocks.
+     - `clean_curve_df()` — fixes curve labels, shock the rates if shock applied
 
 2. **Merge standardized datasets**
    - Merge cleaned cashflow, term, structure, and leverage data with `merge_db()`.
    - Merge fund-level curve data with `merge_curve()` using `cost_of_funds_curve` and prior month-end anchors.
-   - Output intermediate dataset → `/outputs/cash_master/cleanned_cashflow_master.csv`.
+   
 
 3. **Adjust cashflows for fees and PIK**
    - Apply origination, OID, and non-cash PIK adjustments via `adjust_cash_flow()`.
    - Save cleaned and adjusted master dataset.
+   - Output intermediate dataset → `/outputs/cash_master/cleanned_cashflow_master.csv`.
 
 4. **Compute multi-level metrics**
    - Use `metrics()` to compute Paid-In, Distributed, MOIC, and IRR at:
@@ -254,8 +258,7 @@ Log outputs are saved to the /logs/ directory for review (logs/project.log).
 ## Streamlit Dashboard
 
 This Streamlit dashboard provides an interactive interface for the Private Credit Performance pipeline.
-It allows users to apply a custom interest-rate shock, trigger the underlying data-processing workflow,
-and visualize the resulting Gross vs. Net IRR chart.
+It allows users to apply a custom parallel shocks to the monthly interest rate data, trigger the underlying data-processing workflow, and visualize the resulting Gross vs. Net IRR chart on different levels.
 
 ### Live Demo
 https://pcproject-txbae7crmzj9kvncbpzow7.streamlit.app/
@@ -265,6 +268,10 @@ https://pcproject-txbae7crmzj9kvncbpzow7.streamlit.app/
 - Runs the same core pipeline as the command line version (`python -m irr_calc --shock <value>`)
 - Displays process logs and the generated IRR chart
 - Saves all outputs to the `outputs/` folder
+### App Input
+- choose the rates they want to shock the monthly intrest rate
+### App Output
+- The diagram showing the performance impacted by the shock
 
 ### How to Run Locally
 1. Activate your virtual environment:

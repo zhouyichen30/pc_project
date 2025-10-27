@@ -4,13 +4,23 @@ import subprocess
 from pathlib import Path
 import streamlit as st
 
+#This Streamlit dashboard provides an interactive interface for the Private Credit Performance pipeline.
+#It allows users to apply a custom parallel shocks to the monthly interest rate data, trigger the underlying data-processing workflow, and visualize the resulting Gross vs. Net IRR chart on different levels.
+
+
 REPO_ROOT = Path(__file__).resolve().parent
 SRC_DIR = REPO_ROOT / "src"
 OUTPUTS = REPO_ROOT / "outputs"
 PLOT = OUTPUTS / "irr_plot.png"
 
 st.set_page_config(page_title="Private Credit IRR Runner", layout="centered")
-st.title("Private Credit Performance – Shock Impact")
+st.title("Private Credit Performance")
+
+st.write(
+    "Note: The applied shock is a **parallel shift** to the monthly interest rate data. "
+    "It is implemented only at the **fund level**, affecting **net IRR** and **net MOIC** results."
+    "Please read the model detail: https://github.com/zhouyichen30/pc_project?tab=readme-ov-file"
+)
 
 st.write(
     "Enter an optional interest-rate shock (absolute decimal). "
@@ -40,7 +50,7 @@ def run_pipeline(shock_value: float):
     return proc
 
 if run:
-    st.info("Running pipeline… this will execute `python -m irr_calc` under the hood.")
+    st.info("Running pipeline… this will execute `python -m irr_calc`.")
     result = run_pipeline(shock)
 
     st.subheader("Chart")
