@@ -20,7 +20,7 @@ git clone https://github.com/zhouyichen30/pc_project.git
 cd pc_project
 ```
 
-### 2. If no environment activated, create and activate a virtual environment 
+### 2. If no environment activated, activate a virtual environment 
 ```bash
 # Activate
 # Windows PowerShell
