@@ -21,8 +21,6 @@ cd pc_project
 
 ### 2. If no env activated, create and activate a virtual environment 
 ```bash
-python -m venv .venv
-
 # Activate
 # macOS/Linux
 source venv/bin/activate
@@ -56,7 +54,10 @@ python -m irr_calc --shock 0.01
 | --------- | ------- | --------- | -------------------------- |
 | `--shock` | decimal | `0.01`    | **+100 bps** upward shock  |
 |           |         | `-0.0025` | **–25 bps** downward shock |
-
+---
+## Inputs Data
+**data/**
+- all the CSVs are saved into the data folder 
 ---
 ## Output
 
@@ -250,8 +251,43 @@ Exceptions and warnings are automatically captured with full stack traces.
 Log outputs are saved to the /logs/ directory for review (logs/project.log).
 
 ---
+## Streamlit Dashboard
+
+This Streamlit dashboard provides an interactive interface for the Private Credit Performance pipeline.
+It allows users to apply a custom interest-rate shock, trigger the underlying data-processing workflow,
+and visualize the resulting Gross vs. Net IRR chart.
+
+### Live Demo
+https://pcproject-txbae7crmzj9kvncbpzow7.streamlit.app/
+
+### Overview
+- Accepts a user-input interest rate shock (e.g., 0.01 = +100bps, -0.0025 = -25bps)
+- Runs the same core pipeline as the command line version (`python -m irr_calc --shock <value>`)
+- Displays process logs and the generated IRR chart
+- Saves all outputs to the `outputs/` folder
+
+### How to Run Locally
+1. Activate your virtual environment:
+   - Windows PowerShell:
+     .\venv\Scripts\Activate.ps1
+   - macOS/Linux:
+     source venv/bin/activate
+
+2. Install dependencies:
+   pip install -r requirements.txt
+
+3. Launch the Streamlit app:
+   streamlit run streamlit_app.py
+
+### How It Works
+1. User inputs an interest rate shock in the web interface.
+2. The app executes the Python module `irr_calc` with the corresponding shock parameter.
+3. The backend pipeline processes the input data, recalculates performance metrics, and generates a chart.
+4. The app displays the updated Gross vs. Net IRR chart and saves it to `outputs/irr_plot.png`.
+---
 
 ## Known Limitations and Future Improvements
+- data only read from csv. Should connect to a database if data is fed daily
 - Currency consistency QC (ensure EUR loans map to EUR curves)
 - FX conversion between base and local IRR
 - PIK verification QC
